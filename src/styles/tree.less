@@ -1,0 +1,36 @@
+.tree {
+	display: flex;
+	flex-direction: column;
+	margin: 3rem 0;
+
+	&__node {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__label {
+		position: relative;
+		display: flex;
+		padding: 1rem;
+		font-size: 1rem;
+		font-weight: 580;
+		color: var(--color);
+		background-color: var(--background-faded);
+		border: 2px solid;
+		outline: var(--color) 2px solid;
+		transition: color 0.1s, background-color 0.1s;
+		cursor: grab;
+
+		&:hover {
+			z-index: 2;
+			--color: var(--accent-color);
+			background-color: var(--accent-background);
+		}
+	}
+
+	&__subnodes {
+		display: flex;
+		flex-direction: column;
+		padding-left: 2.5rem;
+	}
+}
