@@ -4,6 +4,7 @@
 	margin: 3rem 0;
 
 	&__node {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 	}
@@ -53,8 +54,24 @@
 	}
 
 	&__subnodes {
-		display: flex;
+		display: none;
 		flex-direction: column;
 		padding-left: 2.5rem;
+
+		[open] > & {
+			display: flex;
+		}
+	}
+
+	&__collapse {
+		position: absolute;
+		top: 0.5em;
+		left: -2em;
+		padding: 0.5em;
+		cursor: pointer;
+	}
+
+	&__subnodes:empty + &__collapse {
+		display: none;
 	}
 }

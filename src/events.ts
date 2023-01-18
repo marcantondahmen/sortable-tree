@@ -123,6 +123,7 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 		return false;
 	}
 
+	const parentNode = target.parentElement.parentElement as NodeComponent;
 	const id = event.dataTransfer.getData('text');
 	const dropType = getDropType(event);
 	const moved = document.getElementById(id) as NodeComponent;
@@ -141,7 +142,7 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 
 	if (dropType === DropType.BEFORE) {
 		target.parentNode.insertBefore(moved, target);
-		tree.onDrop(moved, target.parentElement.parentElement);
+		tree.onDrop(moved, parentNode);
 
 		return false;
 	}
@@ -151,10 +152,10 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 
 		if (next) {
 			target.parentNode.insertBefore(moved, next);
-			tree.onDrop(moved, target.parentElement.parentElement);
+			tree.onDrop(moved, parentNode);
 		} else {
 			target.parentNode.appendChild(moved);
-			tree.onDrop(moved, target.parentElement.parentElement);
+			tree.onDrop(moved, parentNode);
 		}
 
 		return false;

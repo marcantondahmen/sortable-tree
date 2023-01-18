@@ -33,7 +33,7 @@ export class NodeComponent extends HTMLElement {
 		super();
 	}
 
-	connectedCallback() {
+	connectedCallback(): void {
 		this.setAttribute('id', guid());
 		this.setAttribute('draggable', 'true');
 	}
