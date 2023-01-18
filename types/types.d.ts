@@ -5,9 +5,12 @@
  */
 import { NodeComponent } from './Node';
 import SortableTree from './SortableTree';
+interface Attributes {
+    [key: string]: string;
+}
 export interface NodeData {
     text: string;
-    attributes: object;
+    attributes: Attributes;
     nodes: NodeData[];
 }
 export interface SortableTreeOptions {
@@ -17,6 +20,7 @@ export interface SortableTreeOptions {
     styles?: Styles;
     lockRootLevel?: boolean;
     onChange?: Function;
+    initCollapseLevel?: number;
 }
 export interface Styles {
     tree?: string;
@@ -27,6 +31,7 @@ export interface Styles {
     nodeDropAfter?: string;
     label?: string;
     subnodes?: string;
+    collapseButton?: string;
 }
 export interface ListenerOptions {
     node: NodeComponent;
@@ -42,5 +47,6 @@ export interface NodeComponentData {
 export interface DropResultData {
     nodes: NodeComponentData[];
     moved: NodeComponent;
-    parent: HTMLElement;
+    parentNode: NodeComponent;
 }
+export {};

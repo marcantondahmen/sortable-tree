@@ -11,9 +11,13 @@ export default class SortableTree {
     readonly lockRootLevel: boolean;
     readonly styles: Styles;
     readonly onChange: Function;
-    constructor({ nodes, element, renderLabel, styles, lockRootLevel, onChange, }: SortableTreeOptions);
+    readonly initCollapseLevel: number;
+    iconShowSubnodes: string;
+    iconHideSubnodes: string;
+    constructor({ nodes, element, renderLabel, styles, lockRootLevel, onChange, initCollapseLevel, }: SortableTreeOptions);
     private defineElements;
     private render;
+    private toggleCollapseButton;
     private parseTree;
-    onDrop(moved: NodeComponent, parent: HTMLElement): void;
+    onDrop(moved: NodeComponent, parentNode: NodeComponent): void;
 }
