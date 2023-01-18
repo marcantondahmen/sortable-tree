@@ -12,20 +12,44 @@
 		position: relative;
 		display: flex;
 		padding: 1rem;
+		margin-top: -@border-width;
 		font-size: 1rem;
 		font-weight: 580;
 		color: var(--color);
 		background-color: var(--background-faded);
-		border: 2px solid;
-		outline: var(--color) 2px solid;
+		border: @border-width solid;
 		transition: color 0.1s, background-color 0.1s;
 		cursor: move;
 
 		&:hover {
 			z-index: 2;
-			--color: var(--accent-color);
-			background-color: var(--accent-background);
+			--color: var(--hover-color);
+			background-color: var(--hover-background);
 		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			z-index: 4;
+			inset: -(@border-width + 2) -@border-width;
+			border-top: (@border-width + 4) solid transparent;
+			border-bottom: (@border-width + 4) solid transparent;
+			transition: border-color 0.2s;
+		}
+	}
+
+	&__node--drop-before > &__label:after {
+		border-top-color: var(--accent-color);
+	}
+
+	&__node--drop-after > &__label:after {
+		border-bottom-color: var(--accent-color);
+	}
+
+	&__node--drop-inside > &__label {
+		z-index: 3;
+		--color: var(--accent-color);
+		background-color: var(--accent-background);
 	}
 
 	&__subnodes {

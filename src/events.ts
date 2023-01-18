@@ -17,6 +17,7 @@ export const registerEvents = (
 		drop: dropHandler,
 		dragover: dragoverHandler,
 		dragend: dragendHandler,
+		dragleave: dragleaveHandler,
 	};
 
 	for (const [eventName, handler] of Object.entries(eventMap)) {
@@ -50,8 +51,9 @@ enum DropType {
 	AFTER = 'AFTER',
 }
 
-const getDropType = (event: DragEvent, target: NodeComponent): DropType => {
+const getDropType = (event: DragEvent): DropType => {
 	const y = event.clientY;
+	const target = getNode(event);
 	const rect = target.label.getBoundingClientRect();
 	const threshold = Math.round(rect.height / 4);
 
@@ -66,6 +68,42 @@ const getDropType = (event: DragEvent, target: NodeComponent): DropType => {
 	return DropType.INSIDE;
 };
 
+const getNode = (event: DragEvent): NodeComponent => {
+	return (event.target as HTMLElement).closest(
+		NodeComponent.TAG_NAME
+	) as NodeComponent;
+};
+
+const toggleStyles = (event: DragEvent, tree: SortableTree): void => {
+	const target = getNode(event);
+	const dropType = getDropType(event);
+
+	target.classList.toggle(
+		tree.styles.nodeDropBefore,
+		dropType === DropType.BEFORE
+	);
+
+	target.classList.toggle(
+		tree.styles.nodeDropInside,
+		dropType === DropType.INSIDE
+	);
+
+	target.classList.toggle(
+		tree.styles.nodeDropAfter,
+		dropType === DropType.AFTER
+	);
+};
+
+const removeStyles = (event: DragEvent, tree: SortableTree): void => {
+	const target = getNode(event);
+
+	target.classList.remove(
+		tree.styles.nodeDropAfter,
+		tree.styles.nodeDropBefore,
+		tree.styles.nodeDropInside
+	);
+};
+
 const dragstartHandler = (event: DragEvent, tree: SortableTree): void => {
 	event.stopPropagation();
 
@@ -77,31 +115,33 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 	event.stopPropagation();
 	event.preventDefault();
 
-	const target = (event.target as HTMLElement).closest(
-		NodeComponent.TAG_NAME
-	) as NodeComponent;
+	removeStyles(event, tree);
 
-	if (
-		tree.lockRootLevel &&
-		!target.parentElement.closest(NodeComponent.TAG_NAME)
-	) {
-		return false;
-	}
+	const target = getNode(event);
 
 	if (!target) {
 		return false;
 	}
 
 	const id = event.dataTransfer.getData('text');
-	const dropType = getDropType(event, target);
-	const moved = document.getElementById(id);
+	const dropType = getDropType(event);
+	const moved = document.getElementById(id) as NodeComponent;
 
 	if (moved.contains(target)) {
 		return false;
 	}
 
+	if (
+		tree.lockRootLevel &&
+		!target.parentElement.closest(NodeComponent.TAG_NAME) &&
+		(dropType === DropType.BEFORE || dropType === DropType.AFTER)
+	) {
+		return false;
+	}
+
 	if (dropType === DropType.BEFORE) {
 		target.parentNode.insertBefore(moved, target);
+		tree.onDrop(moved, target.parentElement.parentElement);
 
 		return false;
 	}
@@ -111,16 +151,17 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 
 		if (next) {
 			target.parentNode.insertBefore(moved, next);
-
-			return false;
+			tree.onDrop(moved, target.parentElement.parentElement);
+		} else {
+			target.parentNode.appendChild(moved);
+			tree.onDrop(moved, target.parentElement.parentElement);
 		}
-
-		target.parentNode.appendChild(moved);
 
 		return false;
 	}
 
 	target.subnodes.appendChild(moved);
+	tree.onDrop(moved, target);
 
 	return false;
 };
@@ -128,6 +169,14 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 const dragoverHandler = (event: DragEvent, tree: SortableTree): void => {
 	event.preventDefault();
 	event.dataTransfer.dropEffect = 'move';
+
+	toggleStyles(event, tree);
 };
 
-const dragendHandler = (event: DragEvent, tree: SortableTree): void => {};
+const dragleaveHandler = (event: DragEvent, tree: SortableTree): void => {
+	removeStyles(event, tree);
+};
+
+const dragendHandler = (event: DragEvent, tree: SortableTree): void => {
+	removeStyles(event, tree);
+};

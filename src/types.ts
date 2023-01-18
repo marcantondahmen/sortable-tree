@@ -19,9 +19,11 @@ export interface SortableTreeOptions {
 	renderLabel?: Function;
 	styles?: Styles;
 	lockRootLevel?: boolean;
+	onChange?: Function;
 }
 
 export interface Styles {
+	tree?: string;
 	node?: string;
 	nodeHover?: string;
 	nodeDropBefore?: string;
@@ -36,4 +38,16 @@ export interface ListenerOptions {
 	eventName: string;
 	handler: Function;
 	tree: SortableTree;
+}
+
+export interface NodeComponentData {
+	id: string;
+	element: NodeComponent;
+	subnodes: NodeComponentData[];
+}
+
+export interface DropResultData {
+	nodes: NodeComponentData[];
+	moved: NodeComponent;
+	parent: HTMLElement;
 }
