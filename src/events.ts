@@ -140,6 +140,10 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 		return false;
 	}
 
+	if (!tree.confirm(moved, parentNode)) {
+		return false;
+	}
+
 	if (dropType === DropType.BEFORE) {
 		target.parentNode.insertBefore(moved, target);
 		tree.onDrop(moved, parentNode);

@@ -25,6 +25,7 @@ export interface SortableTreeOptions {
 	lockRootLevel?: boolean;
 	onChange?: Function;
 	initCollapseLevel?: number;
+	confirm?: Function;
 }
 
 export interface Styles {

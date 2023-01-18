@@ -4,6 +4,12 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
+import {
+	defaultConfirm,
+	defaultOnChange,
+	defaultRenderLabel,
+	defaultStyles,
+} from './defaults';
 import { registerEvents } from './events';
 import { NodeComponent } from './Node';
 import {
@@ -15,24 +21,6 @@ import {
 } from './types';
 import { create } from './utils';
 
-const defaultRenderLabel = (data: NodeData): string => {
-	return data.text;
-};
-
-const defaultStyles: Styles = {
-	tree: 'tree',
-	node: 'tree__node',
-	nodeHover: 'tree__node--hover',
-	nodeDropBefore: 'tree__node--drop-before',
-	nodeDropInside: 'tree__node--drop-inside',
-	nodeDropAfter: 'tree__node--drop-after',
-	label: 'tree__label',
-	subnodes: 'tree__subnodes',
-	collapseButton: 'tree__collapse',
-};
-
-const defaultOnChange = (result: DropResultData): void => {};
-
 export default class SortableTree {
 	private renderLabel: Function;
 
@@ -43,6 +31,8 @@ export default class SortableTree {
 	readonly styles: Styles;
 
 	readonly onChange: Function;
+
+	readonly confirm: Function;
 
 	readonly initCollapseLevel: number;
 
@@ -60,6 +50,7 @@ export default class SortableTree {
 		lockRootLevel,
 		onChange,
 		initCollapseLevel,
+		confirm,
 	}: SortableTreeOptions) {
 		this.defineElements();
 
@@ -69,6 +60,7 @@ export default class SortableTree {
 		this.lockRootLevel =
 			typeof lockRootLevel === 'undefined' ? true : lockRootLevel;
 		this.onChange = onChange || defaultOnChange;
+		this.confirm = confirm || defaultConfirm;
 		this.initCollapseLevel =
 			typeof initCollapseLevel === 'undefined' ? 2 : initCollapseLevel;
 
