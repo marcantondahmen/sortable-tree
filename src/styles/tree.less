@@ -10,7 +10,6 @@
 	}
 
 	&__label {
-		position: relative;
 		display: flex;
 		padding: 1rem;
 		margin-top: -@border-width;
@@ -32,10 +31,11 @@
 			content: '';
 			position: absolute;
 			z-index: 4;
-			inset: -(@border-width + 2) -@border-width;
+			inset: (-@border-width - 2) 0 (-@border-width + 2) 0;
 			border-top: (@border-width + 4) solid transparent;
 			border-bottom: (@border-width + 4) solid transparent;
 			transition: border-color 0.2s;
+			pointer-events: none;
 		}
 	}
 
