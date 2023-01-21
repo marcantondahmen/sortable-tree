@@ -25,6 +25,8 @@ export const defaultStyles: Styles = {
 
 export const defaultOnChange = (result: DropResultData): void => {};
 
+export const defaultOnClick = (event: Event, node: NodeComponent): void => {};
+
 export const defaultConfirm = async (
 	moved: NodeComponent,
 	parentNode: NodeComponent

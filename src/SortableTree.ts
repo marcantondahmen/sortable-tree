@@ -7,6 +7,7 @@
 import {
 	defaultConfirm,
 	defaultOnChange,
+	defaultOnClick,
 	defaultRenderLabel,
 	defaultStyles,
 } from './defaults';
@@ -40,6 +41,8 @@ export default class SortableTree {
 
 	readonly onChange: Function;
 
+	readonly onClick: Function;
+
 	readonly confirm: Function;
 
 	readonly initCollapseLevel: number;
@@ -51,6 +54,7 @@ export default class SortableTree {
 		styles,
 		lockRootLevel,
 		onChange,
+		onClick,
 		initCollapseLevel,
 		confirm,
 	}: SortableTreeOptions) {
@@ -62,6 +66,7 @@ export default class SortableTree {
 		this.lockRootLevel =
 			typeof lockRootLevel === 'undefined' ? true : lockRootLevel;
 		this.onChange = onChange || defaultOnChange;
+		this.onClick = onClick || defaultOnClick;
 		this.confirm = confirm || defaultConfirm;
 		this.initCollapseLevel =
 			typeof initCollapseLevel === 'undefined' ? 2 : initCollapseLevel;
@@ -124,6 +129,7 @@ export default class SortableTree {
 				parent: element,
 				renderLabel: this.renderLabel,
 				data: nodeData.data,
+				onClick: this.onClick,
 			});
 
 			registerEvents(node, this);

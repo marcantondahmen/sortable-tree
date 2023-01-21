@@ -25,6 +25,7 @@ export interface NodeCreationOptions {
 	renderLabel: Function;
 	data: KeyValue;
 	parent: HTMLElement;
+	onClick: Function;
 }
 
 export interface SortableTreeOptions {
@@ -34,6 +35,7 @@ export interface SortableTreeOptions {
 	styles?: Styles;
 	lockRootLevel?: boolean;
 	onChange?: Function;
+	onClick?: Function;
 	initCollapseLevel?: number;
 	confirm?: Function;
 }

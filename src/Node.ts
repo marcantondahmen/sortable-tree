@@ -16,6 +16,7 @@ export class NodeComponent extends HTMLElement {
 		renderLabel,
 		styles,
 		parent,
+		onClick,
 	}: NodeCreationOptions): NodeComponent {
 		const node = create(
 			NodeComponent.TAG_NAME,
@@ -30,6 +31,9 @@ export class NodeComponent extends HTMLElement {
 		label.innerHTML = renderLabel(data);
 		collapseButton.innerHTML = SortableTree.ICON_COLLAPSED;
 		collapseButton.addEventListener('click', node.toggle.bind(node));
+		label.addEventListener('click', (event: Event) => {
+			onClick(event, node);
+		});
 
 		node._data = data;
 		node._label = label;
