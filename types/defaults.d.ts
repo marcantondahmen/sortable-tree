@@ -4,8 +4,8 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 import { NodeComponent } from './Node';
-import { DropResultData, Styles } from './types';
-export declare const defaultRenderLabel: (data: any) => string;
+import { DropResultData, KeyValue, Styles } from './types';
+export declare const defaultRenderLabel: (data: KeyValue) => string;
 export declare const defaultStyles: Styles;
 export declare const defaultOnChange: (result: DropResultData) => void;
 export declare const defaultOnClick: (event: Event, node: NodeComponent) => void;
