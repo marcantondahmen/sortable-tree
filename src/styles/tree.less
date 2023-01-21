@@ -53,6 +53,11 @@
 		background-color: var(--accent-background);
 	}
 
+	&__node--dragging > &__label {
+		border-style: dashed;
+		cursor: move !important;
+	}
+
 	&__subnodes {
 		display: none;
 		flex-direction: column;

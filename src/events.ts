@@ -115,6 +115,8 @@ const dragstartHandler = (event: DragEvent, tree: SortableTree): void => {
 
 	event.dataTransfer.setData('text', node.guid);
 	event.dataTransfer.effectAllowed = 'move';
+
+	node.classList.add(tree.styles.nodeDragging);
 };
 
 const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
@@ -189,5 +191,8 @@ const dragleaveHandler = (event: DragEvent, tree: SortableTree): void => {
 };
 
 const dragendHandler = (event: DragEvent, tree: SortableTree): void => {
+	const node = event.target as NodeComponent;
+
+	node.classList.remove(tree.styles.nodeDragging);
 	removeStyles(event, tree);
 };

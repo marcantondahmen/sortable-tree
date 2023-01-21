@@ -15,6 +15,7 @@ export const defaultStyles: Styles = {
 	tree: 'tree',
 	node: 'tree__node',
 	nodeHover: 'tree__node--hover',
+	nodeDragging: 'tree__node--dragging',
 	nodeDropBefore: 'tree__node--drop-before',
 	nodeDropInside: 'tree__node--drop-inside',
 	nodeDropAfter: 'tree__node--drop-after',

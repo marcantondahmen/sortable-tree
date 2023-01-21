@@ -44,6 +44,7 @@ export interface Styles {
 	tree?: string;
 	node?: string;
 	nodeHover?: string;
+	nodeDragging?: string;
 	nodeDropBefore?: string;
 	nodeDropInside?: string;
 	nodeDropAfter?: string;
