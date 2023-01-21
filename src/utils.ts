@@ -7,7 +7,6 @@
 export const create = (
 	tag: string,
 	classes: string[] = [],
-	attributes: object = {},
 	parent: HTMLElement | null = null
 ): any => {
 	const element = document.createElement(tag);
@@ -15,10 +14,6 @@ export const create = (
 	classes.forEach((cls) => {
 		element.classList.add(cls);
 	});
-
-	for (const [key, value] of Object.entries(attributes)) {
-		element.setAttribute(key, value);
-	}
 
 	if (parent) {
 		parent.appendChild(element);
@@ -35,4 +30,19 @@ export const guid = () => {
 	};
 
 	return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
+};
+
+export const queryParents = (
+	selector: string,
+	element: HTMLElement
+): HTMLElement[] => {
+	const parents: HTMLElement[] = [];
+	let parent = element.closest(selector) as HTMLElement;
+
+	while (parent !== null) {
+		parents.push(parent);
+		parent = (parent.parentNode as HTMLElement).closest(selector);
+	}
+
+	return parents;
 };

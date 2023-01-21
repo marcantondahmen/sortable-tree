@@ -5,10 +5,10 @@
  */
 
 import { NodeComponent } from './Node';
-import { DropResultData, NodeData, Styles } from './types';
+import { DropResultData, Styles } from './types';
 
-export const defaultRenderLabel = (data: NodeData): string => {
-	return data.text;
+export const defaultRenderLabel = (data: any): string => {
+	return data.title;
 };
 
 export const defaultStyles: Styles = {
@@ -20,14 +20,14 @@ export const defaultStyles: Styles = {
 	nodeDropAfter: 'tree__node--drop-after',
 	label: 'tree__label',
 	subnodes: 'tree__subnodes',
-	collapseButton: 'tree__collapse',
+	collapse: 'tree__collapse',
 };
 
 export const defaultOnChange = (result: DropResultData): void => {};
 
-export const defaultConfirm = (
+export const defaultConfirm = async (
 	moved: NodeComponent,
 	parentNode: NodeComponent
-): boolean => {
+): Promise<boolean> => {
 	return true;
 };
