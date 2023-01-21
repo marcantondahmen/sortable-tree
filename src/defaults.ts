@@ -5,10 +5,10 @@
  */
 
 import { NodeComponent } from './Node';
-import { DropResultData, Styles } from './types';
+import { DropResultData, KeyValue, Styles } from './types';
 
-export const defaultRenderLabel = (data: any): string => {
-	return data.title;
+export const defaultRenderLabel = (data: KeyValue): string => {
+	return `<span>${data.title}</span>`;
 };
 
 export const defaultStyles: Styles = {

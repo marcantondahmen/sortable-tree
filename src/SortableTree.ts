@@ -58,6 +58,10 @@ export default class SortableTree {
 		initCollapseLevel,
 		confirm,
 	}: SortableTreeOptions) {
+		if (!nodes) {
+			return;
+		}
+
 		this.defineElements();
 
 		this.root = element;
