@@ -5,13 +5,21 @@
  */
 import { NodeComponent } from './Node';
 import SortableTree from './SortableTree';
-interface Attributes {
-    [key: string]: string;
+export interface KeyValue {
+    [key: string]: unknown;
 }
 export interface NodeData {
-    text: string;
-    attributes: Attributes;
+    data: KeyValue;
     nodes: NodeData[];
+}
+export interface NodeCollection {
+    [key: string]: NodeComponent;
+}
+export interface NodeCreationOptions {
+    styles: Styles;
+    renderLabel: Function;
+    data: KeyValue;
+    parent: HTMLElement;
 }
 export interface SortableTreeOptions {
     nodes: NodeData[];
@@ -32,7 +40,7 @@ export interface Styles {
     nodeDropAfter?: string;
     label?: string;
     subnodes?: string;
-    collapseButton?: string;
+    collapse?: string;
 }
 export interface ListenerOptions {
     node: NodeComponent;
@@ -40,14 +48,13 @@ export interface ListenerOptions {
     handler: Function;
     tree: SortableTree;
 }
-export interface NodeComponentData {
-    id: string;
+export interface ParsedNodeComponentData {
+    guid: string;
     element: NodeComponent;
-    subnodes: NodeComponentData[];
+    subnodes: ParsedNodeComponentData[];
 }
 export interface DropResultData {
-    nodes: NodeComponentData[];
+    nodes: ParsedNodeComponentData[];
     moved: NodeComponent;
     parentNode: NodeComponent;
 }
-export {};

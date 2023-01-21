@@ -6,19 +6,21 @@
 import { NodeComponent } from './Node';
 import { SortableTreeOptions, Styles } from './types';
 export default class SortableTree {
+    static ICON_COLLAPSED: string;
+    static ICON_OPEN: string;
     private renderLabel;
     private root;
+    private nodeCollection;
     readonly lockRootLevel: boolean;
     readonly styles: Styles;
     readonly onChange: Function;
     readonly confirm: Function;
     readonly initCollapseLevel: number;
-    iconShowSubnodes: string;
-    iconHideSubnodes: string;
     constructor({ nodes, element, renderLabel, styles, lockRootLevel, onChange, initCollapseLevel, confirm, }: SortableTreeOptions);
+    getNode(guid: string): NodeComponent;
+    findNode(key: string, value: unknown): NodeComponent;
+    onDrop(moved: NodeComponent, parentNode: NodeComponent): void;
     private defineElements;
     private render;
-    private toggleCollapseButton;
     private parseTree;
-    onDrop(moved: NodeComponent, parentNode: NodeComponent): void;
 }

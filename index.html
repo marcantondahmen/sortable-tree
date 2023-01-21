@@ -1,79 +1,64 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sortable Tree</title><link href="main.css?672e4de8b8976f4e3224" rel="stylesheet"><script src="main.js?672e4de8b8976f4e3224"></script></head><body><main><h1>Sortable Tree</h1><nav><a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">GitHub</a> <a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a></nav><div id="tree" class="tree"></div></main><script>const nodes = [
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sortable Tree</title><link href="main.css?a28ed222fa332eda7430" rel="stylesheet"><script src="main.js?a28ed222fa332eda7430"></script></head><body><main><h1>Sortable Tree</h1><nav><a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">GitHub</a> <a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a></nav><div id="tree" class="tree"></div></main><script>const nodes = [
 			{
-				text: 'Homepage',
-				attributes: {
-					'data-id': '1'
+				data: {
+					title: 'Homepage',
+					path: '/',
 				},
 				nodes: [
 					{
-						text: 'Page 1',
-						attributes: {
-							'data-id': '1.1'
+						data: {
+							title: 'Page Number One',
+							path: '/page-number-one',
 						},
 						nodes: [
 							{
-								text: 'Subpage 1',
-								attributes: {
-									'data-id': '1.1.1'
+								data: {
+									title: 'Subpage',
+									path: '/page-number-one/subpage',
 								},
-								nodes: [
-
-								]
+								nodes: []
 							},
 							{
-								text: 'Subpage 2',
-								attributes: {
-									'data-id': '1.1.2'
+								data: {
+									title: 'Another Subpage',
+									path: '/page-number-one/another-subpage',
 								},
 								nodes: [
 									{
-										text: 'Level 3',
-										attributes: {
-											'data-id': '1.1.2.1'
+										data: {
+											title: 'Deep Nested Page',
+											path: '/page-number-one/another-subpage/deep-nested-page',
 										},
-										nodes: [
-
-										]
-									},
+										nodes: []
+									}
 								]
-							},
+							}
 						]
 					},
 					{
-						text: 'Page 2',
-						attributes: {
-							'data-id': '1.2'
+						data: {
+							title: 'Page Two',
+							path: '/page-two',
 						},
-						nodes: [
-
-						]
+						nodes: []
 					},
 					{
-						text: 'Page 3',
-						attributes: {
-							'data-id': '1.3'
+						data: {
+							title: 'Third Page',
+							path: '/third-page',
 						},
-						nodes: [
-
-						]
-					},
-					{
-						text: 'Page 4',
-						attributes: {
-							'data-id': '1.4'
-						},
-						nodes: [
-
-						]
-					},
+						nodes: []
+					}
 				]
 			}
-		];
+		]
 
 		const options = {
 			nodes,
 			element: document.querySelector('#tree'),
 			lockRootLevel: true,
+			initCollapseLevel: 0,
+			onChange: (data) => {console.log(data);}
 		}
 
 		const tree = new SortableTree(options);</script></body></html>
