@@ -8,4 +8,5 @@ import { DropResultData, Styles } from './types';
 export declare const defaultRenderLabel: (data: any) => string;
 export declare const defaultStyles: Styles;
 export declare const defaultOnChange: (result: DropResultData) => void;
+export declare const defaultOnClick: (event: Event, node: NodeComponent) => void;
 export declare const defaultConfirm: (moved: NodeComponent, parentNode: NodeComponent) => Promise<boolean>;

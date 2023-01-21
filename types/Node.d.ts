@@ -6,7 +6,7 @@
 import { KeyValue, NodeCreationOptions } from './types';
 export declare class NodeComponent extends HTMLElement {
     static TAG_NAME: string;
-    static create({ data, renderLabel, styles, parent, }: NodeCreationOptions): NodeComponent;
+    static create({ data, renderLabel, styles, parent, onClick, }: NodeCreationOptions): NodeComponent;
     private collapseButton;
     private _label;
     private _nodes;
