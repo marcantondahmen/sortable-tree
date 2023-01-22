@@ -11,8 +11,7 @@ Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanill
 
 - [Getting Started](#getting-started)
   - [NPM](#npm)
-  - [CDN](#cdn)
-- [Usage](#usage)
+  - [CDN and Browser](#cdn-and-browser)
 - [Options](#options)
   - [The `nodes` Object in Detail](#the-nodes-object-in-detail)
   - [Rendering Nodes](#rendering-nodes)
@@ -22,8 +21,8 @@ Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanill
   - [Confirming Changes](#confirming-changes)
 - [The Tree Object](#the-tree-object)
   - [Tree Methods](#tree-methods)
-    - [`findNode(key: string, value: unknown): NodeComponent`](#findnodekey-string-value-unknown-nodecomponent)
-    - [`getNode(guid: string): NodeComponent`](#getnodeguid-string-nodecomponent)
+    - [`findNode(key: string, value: unknown): SortableTreeNodeComponent`](#findnodekey-string-value-unknown-sortabletreenodecomponent)
+    - [`getNode(guid: string): SortableTreeNodeComponent`](#getnodeguid-string-sortabletreenodecomponent)
 - [Nodes](#nodes)
   - [Node Propterties](#node-propterties)
   - [Node Methods](#node-methods)
@@ -33,8 +32,7 @@ Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanill
 
 ## Getting Started
 
-
-
+You can either 
 ### NPM
 
 Install with `npm`:
@@ -43,26 +41,44 @@ Install with `npm`:
 npm i sortable-tree
 ```
 
-Import into your project:
+Import into your project create tree:
 
 ```typescript
-import SortableTree from "./SortableTree";
+import { SortableTree, SortableTreeNodeData } from 'sortable-tree';
+
+const nodes: SortableTreeNodeData[] = [
+  {
+    data: { title: 'Home' }, nodes: [
+      { data: { title: 'Page 1' }, nodes: [] },
+      { data: { title: 'Page 2' }, nodes: [
+        { data: { title: 'Subpage' }, nodes: [] }
+      ] }
+    ]
+  }
+];
+
+const tree = new SortableTree({
+  nodes: nodes,
+  element: document.querySelector('#tree'),
+  renderLabel: (data) => {
+    return `<span>${data.title}</span>`;
+  },
+  onChange: ({ nodes, movedNode, srcParentNode, targetParentNode }) => { 
+    console.log(movedNode.data); 
+  },
+  onClick: (event, node) => { 
+    console.log(node.data); 
+  }
+});
 ```
 
-### CDN
+### CDN and Browser
 
 In order to use this package in a browser just load it from a CDN as follows:
 
 ```html
-<script src="https://unpkg.com/sortable-tree/dist/main.js"></script>
-```
-
-## Usage
-
-The tree is rendered based on an array of `node` objects. Every node must consist of a `data` and a `nodes` property. While the `data` object is nothing more than a collection of key/value pairs that are passed to the `renderLabel()` function, the `nodes` property represents the array of subnodes that have the same recursive structure.
-
-```html
 <div id="tree" class="tree"></div>
+<script src="https://unpkg.com/sortable-tree/dist/main.js"></script>
 <script>
   const nodes = [
     {
@@ -87,6 +103,8 @@ The tree is rendered based on an array of `node` objects. Every node must consis
 </script>
 ```
 
+In both scenarios, a sortable tree is rendered based on an array of `node` objects. Every node must consist of a `data` and a `nodes` property. While the `data` object is nothing more than a collection of key/value pairs that are passed to the `renderLabel()` function, the `nodes` property represents the array of subnodes that have the same recursive structure.
+
 ## Options
 
 The following options can be used when creating a new tree object:
@@ -109,19 +127,19 @@ const tree = new SortableTree({
   },
   lockRootLevel: true,
   initCollapseLevel: 2,
-  renderLabel: (data: KeyValue): string => {
+  renderLabel: (data: SortableTreeKeyValue): string => {
     return `<span>${data.title}</span>`;
   },
   confirm: async (
-    moved: NodeComponent,
-    parentNode: NodeComponent
+    moved: SortableTreeNodeComponent,
+    parentNode: SortableTreeNodeComponent
   ): Promise<boolean> => {
     return true;
   },
-  onChange: (result: DropResultData): void => {
+  onChange: (result: SortableTreeDropResultData): void => {
     console.log(result); 
   },
-  onClick: (event: Event, node: NodeComponent): void => {
+  onClick: (event: Event, node: SortableTreeNodeComponent): void => {
     console.log(node.data); 
   }
 });
@@ -143,7 +161,7 @@ const tree = new SortableTree({
 
 The `nodes` object contains the initial array of nodes that is used to construct the tree. A node is a recursive object that contains itself other (sub)nodes and must contain the following two items:
 
-- `data`: An `KeyValue` object that is passed to the `renderLabel` function
+- `data`: An `SortableTreeKeyValue` object that is passed to the `renderLabel` function
 - `nodes`: An array of subnodes that have the same shape as the node itself
 
 ### Rendering Nodes
@@ -166,7 +184,7 @@ A typical implementation that uses the `title` and `path` fields could look like
 const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
-  renderLabel: (data: KeyValue): string => {
+  renderLabel: (data: SortableTreeKeyValue): string => {
     return `
       <span data-path="${data.path}">
         ${data.title}
@@ -200,8 +218,8 @@ const tree = new SortableTree({
 
 ### The `onChange` Method
 
-The `onChange` method is called whenever a node is dropped successfully somewhere in the tree and a `DropResultData` object is passed as argument.
-A `DropResultData` object consists of three items:
+The `onChange` method is called whenever a node is dropped successfully somewhere in the tree and a `SortableTreeDropResultData` object is passed as argument.
+A `SortableTreeDropResultData` object consists of three items:
 
 - `nodes`: The tree structure that contains a `guid`, `element` and `subnodes` for each node
 - `movedNode`: The [node](#nodes) that has been moved
@@ -217,7 +235,7 @@ const tree = SortableTree({
     movedNode,
     srcParentNode,
     targetParentNode,
-  }: DropResultData): void => {
+  }: SortableTreeDropResultData): void => {
     const data = movedNode.data;
     const src = srcParentNode.data;
     const target = targetParentNode.data;
@@ -237,7 +255,7 @@ The original event object as well as the clicked [node](#nodes) are passed as ar
 const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
-  onClick: (event: Event, node: NodeComponent):void => {
+  onClick: (event: Event, node: SortableTreeNodeComponent):void => {
     console.log(event, node);
   },
 });
@@ -252,8 +270,8 @@ const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
   confirm: async (
-    movedNode: NodeComponent,
-    targetParentNode: NodeComponent
+    movedNode: SortableTreeNodeComponent,
+    targetParentNode: SortableTreeNodeComponent
   ): Promise<boolean> => {
     return confirm('Are you sure?');
   },
@@ -268,7 +286,7 @@ The tree object represents the collection of nodes and allows for retrieving nod
 
 The following public methods are available:
 
-#### `findNode(key: string, value: unknown): NodeComponent`
+#### `findNode(key: string, value: unknown): SortableTreeNodeComponent`
 
 You can search for a [node](#nodes) by a key/value pair in the initial nodes [data object](#node-propterties) that was used to create the tree by using the `findNode` method. Note that only the first match is returned:
 
@@ -280,7 +298,7 @@ console.log(node.guid);
 console.log(node.data);
 ```
 
-#### `getNode(guid: string): NodeComponent`
+#### `getNode(guid: string): SortableTreeNodeComponent`
 
 In case you have already a GUID of a node from a previous search or similar, you can use the `getNode` method to get the node from the tree:
 
@@ -336,4 +354,4 @@ The `toggle` method is used to toggle the `collapse` state.
 
 ---
 
-(c) 2023 Marc Anton Dahmen, MIT license
+&copy; 2023 Marc Anton Dahmen, MIT license
