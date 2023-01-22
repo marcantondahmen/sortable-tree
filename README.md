@@ -21,14 +21,14 @@ Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanill
   - [Confirming Changes](#confirming-changes)
 - [The Tree Object](#the-tree-object)
   - [Tree Methods](#tree-methods)
-    - [`findNode(key: string, value: unknown): SortableTreeNodeComponent`](#findnodekey-string-value-unknown-sortabletreenodecomponent)
-    - [`getNode(guid: string): SortableTreeNodeComponent`](#getnodeguid-string-sortabletreenodecomponent)
+    - [`findNode(key: string, value: unknown)`](#findnodekey-string-value-unknown)
+    - [`getNode(guid: string)`](#getnodeguid-string)
 - [Nodes](#nodes)
   - [Node Propterties](#node-propterties)
   - [Node Methods](#node-methods)
-    - [`collapse(state: boolean): void`](#collapsestate-boolean-void)
-    - [`reveal(): void`](#reveal-void)
-    - [`toggle(): void`](#toggle-void)
+    - [`collapse(state: boolean)`](#collapsestate-boolean)
+    - [`reveal()`](#reveal)
+    - [`toggle()`](#toggle)
 
 ## Getting Started
 
@@ -97,8 +97,12 @@ In order to use this package in a browser just load it from a CDN as follows:
     renderLabel: (data) => {
       return `<span>${data.title}</span>`;
     },
-    onChange: (result) => { console.log(result); },
-    onClick: (event, node) => { console.log(node.data); }
+    onChange: ({ nodes, movedNode, srcParentNode, targetParentNode }) => { 
+      console.log(movedNode.data); 
+    },
+    onClick: (event, node) => { 
+      console.log(node.data); 
+    }
   });
 </script>
 ```
@@ -127,19 +131,19 @@ const tree = new SortableTree({
   },
   lockRootLevel: true,
   initCollapseLevel: 2,
-  renderLabel: (data: SortableTreeKeyValue): string => {
+  renderLabel: (data) => {
     return `<span>${data.title}</span>`;
   },
   confirm: async (
-    moved: SortableTreeNodeComponent,
-    parentNode: SortableTreeNodeComponent
-  ): Promise<boolean> => {
+    moved,
+    parentNode
+  ) => {
     return true;
   },
-  onChange: (result: SortableTreeDropResultData): void => {
+  onChange: (result) => {
     console.log(result); 
   },
-  onClick: (event: Event, node: SortableTreeNodeComponent): void => {
+  onClick: (event, node) => {
     console.log(node.data); 
   }
 });
@@ -184,7 +188,7 @@ A typical implementation that uses the `title` and `path` fields could look like
 const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
-  renderLabel: (data: SortableTreeKeyValue): string => {
+  renderLabel: (data) => {
     return `
       <span data-path="${data.path}">
         ${data.title}
@@ -235,7 +239,7 @@ const tree = SortableTree({
     movedNode,
     srcParentNode,
     targetParentNode,
-  }: SortableTreeDropResultData): void => {
+  }) => {
     const data = movedNode.data;
     const src = srcParentNode.data;
     const target = targetParentNode.data;
@@ -255,7 +259,7 @@ The original event object as well as the clicked [node](#nodes) are passed as ar
 const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
-  onClick: (event: Event, node: SortableTreeNodeComponent):void => {
+  onClick: (event, node) => {
     console.log(event, node);
   },
 });
@@ -269,10 +273,7 @@ Whenever a node is dropped, it is possible to request confirmation before actual
 const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
-  confirm: async (
-    movedNode: SortableTreeNodeComponent,
-    targetParentNode: SortableTreeNodeComponent
-  ): Promise<boolean> => {
+  confirm: async (movedNode, targetParentNode) => {
     return confirm('Are you sure?');
   },
 });
@@ -286,7 +287,7 @@ The tree object represents the collection of nodes and allows for retrieving nod
 
 The following public methods are available:
 
-#### `findNode(key: string, value: unknown): SortableTreeNodeComponent`
+#### `findNode(key: string, value: unknown)`
 
 You can search for a [node](#nodes) by a key/value pair in the initial nodes [data object](#node-propterties) that was used to create the tree by using the `findNode` method. Note that only the first match is returned:
 
@@ -298,7 +299,7 @@ console.log(node.guid);
 console.log(node.data);
 ```
 
-#### `getNode(guid: string): SortableTreeNodeComponent`
+#### `getNode(guid: string)`
 
 In case you have already a GUID of a node from a previous search or similar, you can use the `getNode` method to get the node from the tree:
 
@@ -325,7 +326,7 @@ The following public properties can be accessed on a node element:
 
 Every node exposes the folowing public methods:
 
-#### `collapse(state: boolean): void`
+#### `collapse(state: boolean)`
 
 You can control the `collapse` state of a node as follows:
 
@@ -337,7 +338,7 @@ node.collapse(true); // Hide all subnodes
 node.collapse(false); // Show all subnodes
 ```
 
-#### `reveal(): void`
+#### `reveal()`
 
 The `reveal` method can be used to unfold the tree down to the node:
 
@@ -348,7 +349,7 @@ const node = tree.findNode('title', 'home');
 node.reveal();
 ```
 
-#### `toggle(): void`
+#### `toggle()`
 
 The `toggle` method is used to toggle the `collapse` state.
 
