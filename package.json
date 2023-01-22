@@ -5,7 +5,9 @@
 	"main": "dist/main.js",
 	"types": "dist/types/index.d.ts",
 	"files": [
-		"dist",
+		"dist/types",
+		"dist/main.js",
+		"dist/main.js.LICENSE.txt",
 		"src",
 		"LICENSE",
 		"README.md"
