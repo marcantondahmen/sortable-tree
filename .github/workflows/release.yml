@@ -1,0 +1,37 @@
+name: Release Notes and NPM Publish
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  release-notes:
+    name: Release Notes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: marcantondahmen/release-notes-action@master
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
+          draft: false
+          filter: "^(feat|fix|refactor|docs)"
+          strict: true
+  npm-publish:
+    name: NPM Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          persist-credentials: false
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Install
+        run: npm ci
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
