@@ -146,7 +146,7 @@ const tree = new SortableTree({
     srcParentNode,
     targetParentNode,
   }) => {
-    console.log(result); 
+    console.log(movedNode.data); 
   },
   onClick: (event, node) => {
     console.log(node.data); 
