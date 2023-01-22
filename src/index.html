@@ -13,7 +13,7 @@
 			<a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">GitHub</a>
 			<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a>
 		</nav>
-		<div id="tree" class="tree"></div>
+		<div id="tree"></div>
 	</main>
 	<script>
 		const nodes = [
@@ -75,8 +75,25 @@
 			nodes,
 			element: document.querySelector('#tree'),
 			lockRootLevel: true,
-			initCollapseLevel: 0,
-			onChange: (data) => {console.log(data);}
+			initCollapseLevel: 2,
+			onChange: ({
+				nodes,
+				movedNode,
+				srcParentNode,
+				targetParentNode,
+			}) => {
+				const data = movedNode.data;
+				const src = srcParentNode.data;
+				const target = targetParentNode.data;
+
+				console.log(data, src, target);
+			},
+			onClick: (event, node) => {
+				console.log(event, node);
+			},
+			confirm: async (movedNode, targetParentNode) => {
+				return true;
+			}
 		}
 
 		const tree = new SortableTree(options);

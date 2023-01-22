@@ -4,6 +4,8 @@ Easily create *drag'n'drop*, *sortable* and *collapsable* trees &mdash; vanilla 
 
 [Check out the demo here.](https://marcantondahmen.github.io/sortable-tree/)
 
+---
+
 - [Getting Started](#getting-started)
   - [NPM](#npm)
   - [CDN](#cdn)
@@ -25,8 +27,6 @@ Easily create *drag'n'drop*, *sortable* and *collapsable* trees &mdash; vanilla 
     - [`collapse(state: boolean): void`](#collapsestate-boolean-void)
     - [`reveal(): void`](#reveal-void)
     - [`toggle(): void`](#toggle-void)
-
----
 
 ## Getting Started
 
