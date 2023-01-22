@@ -58,6 +58,7 @@ export interface ParsedNodeComponentData {
 }
 export interface DropResultData {
     nodes: ParsedNodeComponentData[];
-    moved: NodeComponent;
-    parentNode: NodeComponent;
+    movedNode: NodeComponent;
+    targetParentNode: NodeComponent;
+    srcParentNode: NodeComponent;
 }

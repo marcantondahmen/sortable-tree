@@ -9,8 +9,8 @@ export default class SortableTree {
     static ICON_COLLAPSED: string;
     static ICON_OPEN: string;
     private renderLabel;
-    private root;
     private nodeCollection;
+    readonly root: HTMLElement;
     readonly lockRootLevel: boolean;
     readonly styles: Styles;
     readonly onChange: Function;
@@ -20,7 +20,7 @@ export default class SortableTree {
     constructor({ nodes, element, renderLabel, styles, lockRootLevel, onChange, onClick, initCollapseLevel, confirm, }: SortableTreeOptions);
     getNode(guid: string): NodeComponent;
     findNode(key: string, value: unknown): NodeComponent;
-    onDrop(moved: NodeComponent, parentNode: NodeComponent): void;
+    onDrop(movedNode: NodeComponent, srcParentNode: NodeComponent, targetParentNode: NodeComponent): void;
     private defineElements;
     private render;
     private parseTree;
