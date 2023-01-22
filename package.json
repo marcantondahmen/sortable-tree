@@ -1,6 +1,6 @@
 {
 	"name": "sortable-tree",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A vanilla TypeScript sortable tree",
 	"main": "dist/main.js",
 	"types": "dist/types/index.d.ts",
