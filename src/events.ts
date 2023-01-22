@@ -129,7 +129,10 @@ const dragstartHandler = (event: DragEvent, tree: SortableTree): void => {
 	node.classList.add(tree.styles.nodeDragging);
 };
 
-const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
+const dropHandler = async (
+	event: DragEvent,
+	tree: SortableTree
+): Promise<boolean> => {
 	event.stopPropagation();
 	event.preventDefault();
 
@@ -159,7 +162,9 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 		return false;
 	}
 
-	if (!tree.confirm(movedNode, targetParentNode)) {
+	const confirmed = await tree.confirm(movedNode, targetParentNode);
+
+	if (!confirmed) {
 		return false;
 	}
 
