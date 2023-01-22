@@ -32,7 +32,7 @@ Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanill
 
 ## Getting Started
 
-You can either 
+You can either install this package with `npm` and import it into your TypeScript project or use the JavaScript verion in a browser.
 ### NPM
 
 Install with `npm`:
