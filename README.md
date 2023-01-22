@@ -140,7 +140,12 @@ const tree = new SortableTree({
   ) => {
     return true;
   },
-  onChange: (result) => {
+  onChange: ({
+    nodes,
+    movedNode,
+    srcParentNode,
+    targetParentNode,
+  }) => {
     console.log(result); 
   },
   onClick: (event, node) => {
