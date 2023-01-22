@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sortable Tree</title><link href="main.css?5ff454a7103bbf66d0d4" rel="stylesheet"><script src="main.js?5ff454a7103bbf66d0d4"></script></head><body><main><h1>Sortable Tree</h1><nav><a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">GitHub</a> <a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a></nav><div id="tree" class="tree"></div></main><script>const nodes = [
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sortable Tree</title><link href="main.css?23077624d388ed2e57e6" rel="stylesheet"><script src="main.js?23077624d388ed2e57e6"></script></head><body><main><h1>Sortable Tree</h1><nav><a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">GitHub</a> <a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a></nav><div id="tree"></div></main><script>const nodes = [
 			{
 				data: {
 					title: 'Homepage',
@@ -57,8 +57,25 @@
 			nodes,
 			element: document.querySelector('#tree'),
 			lockRootLevel: true,
-			initCollapseLevel: 0,
-			onChange: (data) => {console.log(data);}
+			initCollapseLevel: 2,
+			onChange: ({
+				nodes,
+				movedNode,
+				srcParentNode,
+				targetParentNode,
+			}) => {
+				const data = movedNode.data;
+				const src = srcParentNode.data;
+				const target = targetParentNode.data;
+
+				console.log(data, src, target);
+			},
+			onClick: (event, node) => {
+				console.log(event, node);
+			},
+			confirm: async (movedNode, targetParentNode) => {
+				return true;
+			}
 		}
 
 		const tree = new SortableTree(options);</script></body></html>
