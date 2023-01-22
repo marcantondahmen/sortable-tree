@@ -1,8 +1,11 @@
 # Sortable Tree
 
-Easily create *drag'n'drop*, *sortable* and *collapsable* trees &mdash; vanilla TypeScript, lightweight and no dependencies.
+![NPM](https://img.shields.io/npm/l/sortable-tree)
+![npm](https://img.shields.io/npm/v/sortable-tree)
 
-[Check out the demo here.](https://marcantondahmen.github.io/sortable-tree/)
+Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanilla TypeScript, lightweight and no dependencies.
+
+:wave: [Check out the demo](https://marcantondahmen.github.io/sortable-tree/)
 
 ---
 
@@ -30,9 +33,29 @@ Easily create *drag'n'drop*, *sortable* and *collapsable* trees &mdash; vanilla 
 
 ## Getting Started
 
+
+
 ### NPM
 
+Install with `npm`:
+
+```
+npm i sortable-tree
+```
+
+Import into your project:
+
+```typescript
+import SortableTree from "./SortableTree";
+```
+
 ### CDN
+
+In order to use this package in a browser just load it from a CDN as follows:
+
+```html
+<script src="https://unpkg.com/sortable-tree/dist/main.js"></script>
+```
 
 ## Usage
 
