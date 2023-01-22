@@ -12,38 +12,42 @@ import {
 	defaultStyles,
 } from './defaults';
 import { registerEvents } from './events';
-import { NodeComponent } from './Node';
 import {
-	DropResultData,
-	NodeCollection,
-	ParsedNodeComponentData,
-	NodeData,
+	SortableTreeDropResultData,
+	SortableTreeNodeCollection,
+	SortableTreeNodeComponent,
+	SortableTreeNodeData,
+	SortableTreeParsedNodeComponentData,
 	SortableTreeOptions,
-	Styles,
-} from './types';
+	SortableTreeStyles,
+	SortableTreeRenderLabelFunction,
+	SortableTreeOnChangeFunction,
+	SortableTreeOnClickFunction,
+	SortableTreeConfirmFunction,
+} from '.';
 
-export default class SortableTree {
+export class SortableTree {
 	static ICON_COLLAPSED =
 		'<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg>';
 
 	static ICON_OPEN =
 		'<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
 
-	private renderLabel: Function;
+	private renderLabel: SortableTreeRenderLabelFunction;
 
-	private nodeCollection: NodeCollection = {};
+	private nodeCollection: SortableTreeNodeCollection = {};
 
 	readonly root: HTMLElement;
 
 	readonly lockRootLevel: boolean;
 
-	readonly styles: Styles;
+	readonly styles: SortableTreeStyles;
 
-	readonly onChange: Function;
+	readonly onChange: SortableTreeOnChangeFunction;
 
-	readonly onClick: Function;
+	readonly onClick: SortableTreeOnClickFunction;
 
-	readonly confirm: Function;
+	readonly confirm: SortableTreeConfirmFunction;
 
 	readonly initCollapseLevel: number;
 
@@ -59,6 +63,11 @@ export default class SortableTree {
 		confirm,
 	}: SortableTreeOptions) {
 		if (!nodes) {
+			return;
+		}
+
+		if (!element) {
+			console.error('Error: "element" is not a valid HTML element!');
 			return;
 		}
 
@@ -83,11 +92,11 @@ export default class SortableTree {
 		});
 	}
 
-	getNode(guid: string): NodeComponent {
+	getNode(guid: string): SortableTreeNodeComponent {
 		return this.nodeCollection[guid];
 	}
 
-	findNode(key: string, value: unknown): NodeComponent {
+	findNode(key: string, value: unknown): SortableTreeNodeComponent {
 		const nodes = Object.values(this.nodeCollection);
 
 		for (let i = 0; i < nodes.length; i++) {
@@ -105,11 +114,11 @@ export default class SortableTree {
 	}
 
 	onDrop(
-		movedNode: NodeComponent,
-		srcParentNode: NodeComponent,
-		targetParentNode: NodeComponent
+		movedNode: SortableTreeNodeComponent,
+		srcParentNode: SortableTreeNodeComponent,
+		targetParentNode: SortableTreeNodeComponent
 	): void {
-		const result: DropResultData = {
+		const result: SortableTreeDropResultData = {
 			nodes: this.parseTree(this.root),
 			movedNode,
 			srcParentNode,
@@ -122,7 +131,10 @@ export default class SortableTree {
 
 	private defineElements(): void {
 		try {
-			customElements.define(NodeComponent.TAG_NAME, NodeComponent);
+			customElements.define(
+				SortableTreeNodeComponent.TAG_NAME,
+				SortableTreeNodeComponent
+			);
 		} catch {}
 	}
 
@@ -132,8 +144,8 @@ export default class SortableTree {
 	): void {
 		level++;
 
-		nodes.forEach((nodeData: NodeData) => {
-			const node = NodeComponent.create({
+		nodes.forEach((nodeData: SortableTreeNodeData) => {
+			const node = SortableTreeNodeComponent.create({
 				styles: this.styles,
 				parent: element,
 				renderLabel: this.renderLabel,
@@ -158,13 +170,17 @@ export default class SortableTree {
 		});
 	}
 
-	private parseTree(container: HTMLElement): ParsedNodeComponentData[] {
+	private parseTree(
+		container: HTMLElement
+	): SortableTreeParsedNodeComponentData[] {
 		const nodes = Array.from(
-			container.querySelectorAll(`:scope > ${NodeComponent.TAG_NAME}`)
+			container.querySelectorAll(
+				`:scope > ${SortableTreeNodeComponent.TAG_NAME}`
+			)
 		);
-		const data: ParsedNodeComponentData[] = [];
+		const data: SortableTreeParsedNodeComponentData[] = [];
 
-		nodes.forEach((node: NodeComponent) => {
+		nodes.forEach((node: SortableTreeNodeComponent) => {
 			data.push({
 				element: node,
 				guid: node.guid,

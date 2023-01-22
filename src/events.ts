@@ -4,12 +4,14 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
-import { NodeComponent } from './Node';
-import SortableTree from './SortableTree';
-import { ListenerOptions } from './types';
+import {
+	SortableTreeListenerOptions,
+	SortableTreeNodeComponent,
+	SortableTree,
+} from '.';
 
 export const registerEvents = (
-	node: NodeComponent,
+	node: SortableTreeNodeComponent,
 	tree: SortableTree
 ): void => {
 	const eventMap = {
@@ -35,7 +37,7 @@ const addListener = ({
 	eventName,
 	handler,
 	tree,
-}: ListenerOptions): void => {
+}: SortableTreeListenerOptions): void => {
 	node.addEventListener(
 		eventName,
 		(event: DragEvent) => {
@@ -68,20 +70,22 @@ const calculateDropType = (event: DragEvent): DropType => {
 	return DropType.INSIDE;
 };
 
-const closestNode = (event: DragEvent): NodeComponent => {
+const closestNode = (event: DragEvent): SortableTreeNodeComponent => {
 	return (event.target as HTMLElement).closest(
-		NodeComponent.TAG_NAME
-	) as NodeComponent;
+		SortableTreeNodeComponent.TAG_NAME
+	) as SortableTreeNodeComponent;
 };
 
-const parentNode = (node: NodeComponent): NodeComponent => {
+const parentNode = (
+	node: SortableTreeNodeComponent
+): SortableTreeNodeComponent => {
 	const parent = node.parentElement.parentElement;
 
-	if (parent.tagName.toLowerCase() !== NodeComponent.TAG_NAME) {
+	if (parent.tagName.toLowerCase() !== SortableTreeNodeComponent.TAG_NAME) {
 		return null;
 	}
 
-	return parent as NodeComponent;
+	return parent as SortableTreeNodeComponent;
 };
 
 const toggleStyles = (event: DragEvent, tree: SortableTree): void => {
@@ -117,9 +121,9 @@ const removeStyles = (event: DragEvent, tree: SortableTree): void => {
 const dragstartHandler = (event: DragEvent, tree: SortableTree): void => {
 	event.stopPropagation();
 
-	const node = event.target as NodeComponent;
+	const node = event.target as SortableTreeNodeComponent;
 
-	if (node.tagName.toLowerCase() !== NodeComponent.TAG_NAME) {
+	if (node.tagName.toLowerCase() !== SortableTreeNodeComponent.TAG_NAME) {
 		return;
 	}
 
@@ -156,7 +160,7 @@ const dropHandler = async (
 
 	if (
 		tree.lockRootLevel &&
-		!targetNode.parentElement.closest(NodeComponent.TAG_NAME) &&
+		!targetNode.parentElement.closest(SortableTreeNodeComponent.TAG_NAME) &&
 		(dropType === DropType.BEFORE || dropType === DropType.AFTER)
 	) {
 		return false;
@@ -207,7 +211,7 @@ const dragleaveHandler = (event: DragEvent, tree: SortableTree): void => {
 };
 
 const dragendHandler = (event: DragEvent, tree: SortableTree): void => {
-	const node = event.target as NodeComponent;
+	const node = event.target as SortableTreeNodeComponent;
 
 	node.classList.remove(tree.styles.nodeDragging);
 	removeStyles(event, tree);

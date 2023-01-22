@@ -4,43 +4,63 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
-import { NodeComponent } from './Node';
-import SortableTree from './SortableTree';
+import { SortableTree, SortableTreeNodeComponent } from '.';
 
-export interface KeyValue {
+export interface SortableTreeKeyValue {
 	[key: string]: unknown;
 }
 
-export interface NodeData {
-	data: KeyValue;
-	nodes: NodeData[];
+export interface SortableTreeNodeData {
+	data: SortableTreeKeyValue;
+	nodes: SortableTreeNodeData[];
 }
 
-export interface NodeCollection {
-	[key: string]: NodeComponent;
+export interface SortableTreeNodeCollection {
+	[key: string]: SortableTreeNodeComponent;
 }
 
-export interface NodeCreationOptions {
-	styles: Styles;
+export interface SortableTreeNodeCreationOptions {
+	styles: SortableTreeStyles;
 	renderLabel: Function;
-	data: KeyValue;
+	data: SortableTreeKeyValue;
 	parent: HTMLElement;
 	onClick: Function;
 }
 
+export type SortableTreeRenderLabelFunction = (
+	data: SortableTreeKeyValue
+) => string;
+
+export type SortableTreeOnChangeFunction = ({
+	nodes,
+	movedNode,
+	srcParentNode,
+	targetParentNode,
+}: SortableTreeDropResultData) => void;
+
+export type SortableTreeOnClickFunction = (
+	event: Event,
+	node: SortableTreeNodeComponent
+) => void;
+
+export type SortableTreeConfirmFunction = (
+	movedNode: SortableTreeNodeComponent,
+	targetParentNode: SortableTreeNodeComponent
+) => Promise<boolean>;
+
 export interface SortableTreeOptions {
-	nodes: NodeData[];
+	nodes: SortableTreeNodeData[];
 	element: HTMLElement;
-	renderLabel?: Function;
-	styles?: Styles;
+	renderLabel?: SortableTreeRenderLabelFunction;
+	styles?: SortableTreeStyles;
 	lockRootLevel?: boolean;
-	onChange?: Function;
-	onClick?: Function;
+	onChange?: SortableTreeOnChangeFunction;
+	onClick?: SortableTreeOnClickFunction;
 	initCollapseLevel?: number;
-	confirm?: Function;
+	confirm?: SortableTreeConfirmFunction;
 }
 
-export interface Styles {
+export interface SortableTreeStyles {
 	tree?: string;
 	node?: string;
 	nodeHover?: string;
@@ -53,22 +73,22 @@ export interface Styles {
 	collapse?: string;
 }
 
-export interface ListenerOptions {
-	node: NodeComponent;
+export interface SortableTreeListenerOptions {
+	node: SortableTreeNodeComponent;
 	eventName: string;
 	handler: Function;
 	tree: SortableTree;
 }
 
-export interface ParsedNodeComponentData {
+export interface SortableTreeParsedNodeComponentData {
 	guid: string;
-	element: NodeComponent;
-	subnodes: ParsedNodeComponentData[];
+	element: SortableTreeNodeComponent;
+	subnodes: SortableTreeParsedNodeComponentData[];
 }
 
-export interface DropResultData {
-	nodes: ParsedNodeComponentData[];
-	movedNode: NodeComponent;
-	targetParentNode: NodeComponent;
-	srcParentNode: NodeComponent;
+export interface SortableTreeDropResultData {
+	nodes: SortableTreeParsedNodeComponentData[];
+	movedNode: SortableTreeNodeComponent;
+	targetParentNode: SortableTreeNodeComponent;
+	srcParentNode: SortableTreeNodeComponent;
 }

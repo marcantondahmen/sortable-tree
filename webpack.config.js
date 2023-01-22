@@ -62,7 +62,7 @@ module.exports = (env, argv) => {
 			library: {
 				name: 'SortableTree',
 				type: 'umd',
-				export: 'default',
+				export: 'SortableTree',
 			},
 		},
 	};

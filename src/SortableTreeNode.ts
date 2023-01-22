@@ -4,12 +4,15 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
-import SortableTree from './SortableTree';
-import { KeyValue, NodeCreationOptions } from './types';
+import {
+	SortableTreeKeyValue,
+	SortableTreeNodeCreationOptions,
+	SortableTree,
+} from '.';
 import { create, guid, queryParents } from './utils';
 
-export class NodeComponent extends HTMLElement {
-	static TAG_NAME = 'tree-node';
+export class SortableTreeNodeComponent extends HTMLElement {
+	static TAG_NAME = 'sortable-tree-node';
 
 	static create({
 		data,
@@ -17,12 +20,12 @@ export class NodeComponent extends HTMLElement {
 		styles,
 		parent,
 		onClick,
-	}: NodeCreationOptions): NodeComponent {
+	}: SortableTreeNodeCreationOptions): SortableTreeNodeComponent {
 		const node = create(
-			NodeComponent.TAG_NAME,
+			SortableTreeNodeComponent.TAG_NAME,
 			[styles.node],
 			parent
-		) as NodeComponent;
+		) as SortableTreeNodeComponent;
 
 		const label = create('div', [styles.label], node);
 		const subnodes = create('div', [styles.subnodes], node);
@@ -51,9 +54,9 @@ export class NodeComponent extends HTMLElement {
 
 	private _guid: string;
 
-	private _data: KeyValue;
+	private _data: SortableTreeKeyValue;
 
-	get data(): KeyValue {
+	get data(): SortableTreeKeyValue {
 		return this._data;
 	}
 
@@ -93,9 +96,9 @@ export class NodeComponent extends HTMLElement {
 	}
 
 	reveal(): void {
-		const nodes = queryParents(NodeComponent.TAG_NAME, this);
+		const nodes = queryParents(SortableTreeNodeComponent.TAG_NAME, this);
 
-		nodes.forEach((node: NodeComponent) => {
+		nodes.forEach((node: SortableTreeNodeComponent) => {
 			node.collapse(false);
 		});
 	}

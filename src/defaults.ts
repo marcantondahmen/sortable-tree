@@ -4,14 +4,24 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
-import { NodeComponent } from './Node';
-import { DropResultData, KeyValue, Styles } from './types';
+import {
+	SortableTreeConfirmFunction,
+	SortableTreeDropResultData,
+	SortableTreeKeyValue,
+	SortableTreeNodeComponent,
+	SortableTreeOnChangeFunction,
+	SortableTreeOnClickFunction,
+	SortableTreeRenderLabelFunction,
+	SortableTreeStyles,
+} from '.';
 
-export const defaultRenderLabel = (data: KeyValue): string => {
+export const defaultRenderLabel: SortableTreeRenderLabelFunction = (
+	data: SortableTreeKeyValue
+): string => {
 	return `<span>${data.title}</span>`;
 };
 
-export const defaultStyles: Styles = {
+export const defaultStyles: SortableTreeStyles = {
 	tree: 'tree',
 	node: 'tree__node',
 	nodeHover: 'tree__node--hover',
@@ -24,18 +34,21 @@ export const defaultStyles: Styles = {
 	collapse: 'tree__collapse',
 };
 
-export const defaultOnChange = ({
+export const defaultOnChange: SortableTreeOnChangeFunction = ({
 	nodes,
 	movedNode,
 	srcParentNode,
 	targetParentNode,
-}: DropResultData): void => {};
+}: SortableTreeDropResultData): void => {};
 
-export const defaultOnClick = (event: Event, node: NodeComponent): void => {};
+export const defaultOnClick: SortableTreeOnClickFunction = (
+	event: Event,
+	node: SortableTreeNodeComponent
+): void => {};
 
-export const defaultConfirm = async (
-	movedNode: NodeComponent,
-	targetParentNode: NodeComponent
+export const defaultConfirm: SortableTreeConfirmFunction = async (
+	movedNode: SortableTreeNodeComponent,
+	targetParentNode: SortableTreeNodeComponent
 ): Promise<boolean> => {
 	return true;
 };
