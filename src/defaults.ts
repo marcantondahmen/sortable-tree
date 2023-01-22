@@ -24,13 +24,18 @@ export const defaultStyles: Styles = {
 	collapse: 'tree__collapse',
 };
 
-export const defaultOnChange = (result: DropResultData): void => {};
+export const defaultOnChange = ({
+	nodes,
+	movedNode,
+	srcParentNode,
+	targetParentNode,
+}: DropResultData): void => {};
 
 export const defaultOnClick = (event: Event, node: NodeComponent): void => {};
 
 export const defaultConfirm = async (
-	moved: NodeComponent,
-	parentNode: NodeComponent
+	movedNode: NodeComponent,
+	targetParentNode: NodeComponent
 ): Promise<boolean> => {
 	return true;
 };

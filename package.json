@@ -3,9 +3,17 @@
 	"version": "0.1.0",
 	"description": "A vanilla TypeScript sortable tree",
 	"main": "dist/main.js",
+	"types": "dist/types/index.d.ts",
+	"files": [
+		"dist",
+		"src",
+		"LICENSE",
+		"README.md"
+	],
 	"scripts": {
 		"start": "webpack serve --open --mode development",
-		"build": "webpack --mode production"
+		"build": "webpack --mode production",
+		"prepare": "npm run build"
 	},
 	"repository": {
 		"type": "git",

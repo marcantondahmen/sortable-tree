@@ -31,9 +31,9 @@ export default class SortableTree {
 
 	private renderLabel: Function;
 
-	private root: HTMLElement;
-
 	private nodeCollection: NodeCollection = {};
+
+	readonly root: HTMLElement;
 
 	readonly lockRootLevel: boolean;
 
@@ -104,14 +104,19 @@ export default class SortableTree {
 		return null;
 	}
 
-	onDrop(moved: NodeComponent, parentNode: NodeComponent): void {
+	onDrop(
+		movedNode: NodeComponent,
+		srcParentNode: NodeComponent,
+		targetParentNode: NodeComponent
+	): void {
 		const result: DropResultData = {
 			nodes: this.parseTree(this.root),
-			moved,
-			parentNode,
+			movedNode,
+			srcParentNode,
+			targetParentNode: targetParentNode,
 		};
 
-		parentNode.collapse(false);
+		targetParentNode.collapse(false);
 		this.onChange(result);
 	}
 

@@ -8,6 +8,6 @@ indent_style = tab
 indent_size = 4
 quote_type = single
 
-[*.yml]
+[*.{md,yml}]
 indent_style = space
 indent_size = 2

@@ -74,6 +74,16 @@ const closestNode = (event: DragEvent): NodeComponent => {
 	) as NodeComponent;
 };
 
+const parentNode = (node: NodeComponent): NodeComponent => {
+	const parent = node.parentElement.parentElement;
+
+	if (parent.tagName.toLowerCase() !== NodeComponent.TAG_NAME) {
+		return null;
+	}
+
+	return parent as NodeComponent;
+};
+
 const toggleStyles = (event: DragEvent, tree: SortableTree): void => {
 	const target = closestNode(event);
 	const dropType = calculateDropType(event);
@@ -125,56 +135,57 @@ const dropHandler = (event: DragEvent, tree: SortableTree): boolean => {
 
 	removeStyles(event, tree);
 
-	const node = closestNode(event);
+	const targetNode = closestNode(event);
 
-	if (!node) {
+	if (!targetNode) {
 		return false;
 	}
 
-	const parentNode = node.parentElement.parentElement as NodeComponent;
+	const targetParentNode = parentNode(targetNode);
 	const guid = event.dataTransfer.getData('text');
 	const dropType = calculateDropType(event);
-	const moved = tree.getNode(guid);
+	const movedNode = tree.getNode(guid);
+	const srcParentNode = parentNode(movedNode);
 
-	if (moved.contains(node)) {
+	if (movedNode.contains(targetNode)) {
 		return false;
 	}
 
 	if (
 		tree.lockRootLevel &&
-		!node.parentElement.closest(NodeComponent.TAG_NAME) &&
+		!targetNode.parentElement.closest(NodeComponent.TAG_NAME) &&
 		(dropType === DropType.BEFORE || dropType === DropType.AFTER)
 	) {
 		return false;
 	}
 
-	if (!tree.confirm(moved, parentNode)) {
+	if (!tree.confirm(movedNode, targetParentNode)) {
 		return false;
 	}
 
 	if (dropType === DropType.BEFORE) {
-		node.parentNode.insertBefore(moved, node);
-		tree.onDrop(moved, parentNode);
+		targetNode.parentNode.insertBefore(movedNode, targetNode);
+		tree.onDrop(movedNode, srcParentNode, targetParentNode);
 
 		return false;
 	}
 
 	if (dropType === DropType.AFTER) {
-		const next = node.nextElementSibling;
+		const next = targetNode.nextElementSibling;
 
 		if (next) {
-			node.parentNode.insertBefore(moved, next);
-			tree.onDrop(moved, parentNode);
+			targetNode.parentNode.insertBefore(movedNode, next);
+			tree.onDrop(movedNode, srcParentNode, targetParentNode);
 		} else {
-			node.parentNode.appendChild(moved);
-			tree.onDrop(moved, parentNode);
+			targetNode.parentNode.appendChild(movedNode);
+			tree.onDrop(movedNode, srcParentNode, targetParentNode);
 		}
 
 		return false;
 	}
 
-	node.subnodes.appendChild(moved);
-	tree.onDrop(moved, node);
+	targetNode.subnodes.appendChild(movedNode);
+	tree.onDrop(movedNode, srcParentNode, targetNode);
 
 	return false;
 };
