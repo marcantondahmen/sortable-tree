@@ -3,24 +3,23 @@
  *
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
-import { NodeComponent } from './Node';
-import { SortableTreeOptions, Styles } from './types';
-export default class SortableTree {
+import { SortableTreeNodeComponent, SortableTreeOptions, SortableTreeStyles, SortableTreeOnChangeFunction, SortableTreeOnClickFunction, SortableTreeConfirmFunction } from '.';
+export declare class SortableTree {
     static ICON_COLLAPSED: string;
     static ICON_OPEN: string;
     private renderLabel;
     private nodeCollection;
     readonly root: HTMLElement;
     readonly lockRootLevel: boolean;
-    readonly styles: Styles;
-    readonly onChange: Function;
-    readonly onClick: Function;
-    readonly confirm: Function;
+    readonly styles: SortableTreeStyles;
+    readonly onChange: SortableTreeOnChangeFunction;
+    readonly onClick: SortableTreeOnClickFunction;
+    readonly confirm: SortableTreeConfirmFunction;
     readonly initCollapseLevel: number;
     constructor({ nodes, element, renderLabel, styles, lockRootLevel, onChange, onClick, initCollapseLevel, confirm, }: SortableTreeOptions);
-    getNode(guid: string): NodeComponent;
-    findNode(key: string, value: unknown): NodeComponent;
-    onDrop(movedNode: NodeComponent, srcParentNode: NodeComponent, targetParentNode: NodeComponent): void;
+    getNode(guid: string): SortableTreeNodeComponent;
+    findNode(key: string, value: unknown): SortableTreeNodeComponent;
+    onDrop(movedNode: SortableTreeNodeComponent, srcParentNode: SortableTreeNodeComponent, targetParentNode: SortableTreeNodeComponent): void;
     private defineElements;
     private render;
     private parseTree;

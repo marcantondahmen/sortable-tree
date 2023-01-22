@@ -5,5 +5,6 @@
  */
 import 'modern-normalize/modern-normalize.css';
 import './styles/styles.less';
-import SortableTree from './SortableTree';
-export default SortableTree;
+export * from './SortableTree';
+export * from './SortableTreeNode';
+export * from './types';
