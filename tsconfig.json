@@ -11,5 +11,5 @@
 		"declaration": true,
 		"declarationDir": "./dist/types"
 	},
-	"include": ["src/**/*"]
+	"include": ["index.ts", "src/**/*", "demo/**/*"]
 }

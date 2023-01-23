@@ -29,6 +29,7 @@ Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanill
     - [`collapse(state: boolean)`](#collapsestate-boolean)
     - [`reveal()`](#reveal)
     - [`toggle()`](#toggle)
+- [Styling](#styling)
 
 ## Getting Started
 
@@ -41,10 +42,11 @@ Install with `npm`:
 npm i sortable-tree
 ```
 
-Import into your project create tree:
+Import into your project and create a tree as follows:
 
 ```typescript
 import { SortableTree, SortableTreeNodeData } from 'sortable-tree';
+import 'sortable-tree/dist/sortable-tree.css'; // basic styles
 
 const nodes: SortableTreeNodeData[] = [
   {
@@ -74,11 +76,17 @@ const tree = new SortableTree({
 
 ### CDN and Browser
 
-In order to use this package in a browser just load it from a CDN as follows:
+In order to use this package in a browser just load add the following tags to your `<head>` section:
+
+```html
+<script src="https://unpkg.com/sortable-tree/dist/sortable-tree.js"></script>
+<link href="https://unpkg.com/sortable-tree/dist/sortable-tree.css" rel="stylesheet">
+```
+
+Add use it in your body as follows:
 
 ```html
 <div id="tree" class="tree"></div>
-<script src="https://unpkg.com/sortable-tree/dist/main.js"></script>
 <script>
   const nodes = [
     {
@@ -357,6 +365,10 @@ node.reveal();
 #### `toggle()`
 
 The `toggle` method is used to toggle the `collapse` state.
+
+## Styling
+
+The included styles only cover the most basic functionality such as collapsing and indentation. All other styling and theming is dependend on the project the tree is used in. As mentioned above, also the markup of the rendered nodes is felxible and can be controlled with the `renderLabel` function. [Check out the demo](https://marcantondahmen.github.io/sortable-tree/) for some examples for theming and styling.
 
 ---
 

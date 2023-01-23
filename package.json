@@ -3,11 +3,10 @@
 	"version": "0.1.3",
 	"description": "A vanilla TypeScript sortable tree",
 	"main": "src/index.ts",
-	"types": "dist/types/index.d.ts",
+	"types": "dist/types/src/index.d.ts",
 	"files": [
-		"dist/types",
-		"dist/main.js",
-		"dist/main.js.LICENSE.txt",
+		"dist/types/src",
+		"dist/sortable-tree.*",
 		"src",
 		"LICENSE",
 		"README.md"

@@ -1,13 +1,15 @@
 .tree {
+	@border-width: 4px;
+
+	--st-label-height: 3.75rem;
+	--st-subnodes-padding-left: 2.5rem;
+	--st-collapse-icon-width: 1.75rem;
+	--st-collapse-icon-height: 3.5rem;
+	--st-collapse-icon-size: 1rem;
+
 	display: flex;
 	flex-direction: column;
 	margin: 3rem 0;
-
-	&__node {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-	}
 
 	&__label {
 		display: flex;
@@ -56,27 +58,5 @@
 	&__node--dragging > &__label {
 		border-style: dashed;
 		cursor: move !important;
-	}
-
-	&__subnodes {
-		display: none;
-		flex-direction: column;
-		padding-left: 2.5rem;
-
-		[open] > & {
-			display: flex;
-		}
-	}
-
-	&__collapse {
-		position: absolute;
-		top: 0.5em;
-		left: -2em;
-		padding: 0.5em;
-		cursor: pointer;
-	}
-
-	&__subnodes:empty + &__collapse {
-		display: none;
 	}
 }

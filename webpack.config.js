@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = (env, argv) => {
 	const isDevMode = argv.mode === 'development';
 	const config = {
-		entry: { main: './src/index.ts' },
+		entry: { 'sortable-tree': './index.ts' },
 		module: {
 			rules: [
 				{
@@ -44,13 +44,24 @@ module.exports = (env, argv) => {
 		},
 		optimization: {
 			minimizer: [new CssMinimizerPlugin(), '...'],
+			splitChunks: {
+				cacheGroups: {
+					vendor: {
+						test: /(demo|node_modules)/,
+						chunks: 'all',
+						name: 'demo',
+						enforce: true,
+					},
+				},
+			},
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
 				hash: true,
-				template: 'src/index.html',
+				template: 'demo/index.html',
 				scriptLoading: 'blocking',
 				inject: 'head',
+				minify: false,
 			}),
 			new MiniCssExtractPlugin({
 				filename: '[name].css',
