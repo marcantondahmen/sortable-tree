@@ -1,0 +1,372 @@
+/*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+/*
+Document
+========
+*/
+/**
+Use a better box model (opinionated).
+*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+/**
+Use a more readable tab size (opinionated).
+*/
+html {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+/**
+1. Correct the line height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+*/
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/*
+Sections
+========
+*/
+/**
+Remove the margin in all browsers.
+*/
+body {
+  margin: 0;
+}
+/**
+Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+*/
+body {
+  font-family: system-ui, -apple-system, /* Firefox supports this but not yet `system-ui` */ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+/*
+Grouping content
+================
+*/
+/**
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+*/
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+}
+/*
+Text-level semantics
+====================
+*/
+/**
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+abbr[title] {
+  text-decoration: underline dotted;
+}
+/**
+Add the correct font weight in Edge and Safari.
+*/
+b,
+strong {
+  font-weight: bolder;
+}
+/**
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the odd 'em' font sizing in all browsers.
+*/
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+/**
+Add the correct font size in all browsers.
+*/
+small {
+  font-size: 80%;
+}
+/**
+Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+/*
+Tabular data
+============
+*/
+/**
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+}
+/*
+Forms
+=====
+*/
+/**
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+/**
+Remove the inheritance of text transform in Edge and Firefox.
+1. Remove the inheritance of text transform in Firefox.
+*/
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+/**
+Correct the inability to style clickable types in iOS and Safari.
+*/
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+/**
+Remove the inner border and padding in Firefox.
+*/
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+/**
+Restore the focus styles unset by the previous rule.
+*/
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+/**
+Remove the additional ':invalid' styles in Firefox.
+See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737
+*/
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+/**
+Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
+legend {
+  padding: 0;
+}
+/**
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+/**
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+/**
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+/**
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/**
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to 'inherit' in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+/*
+Interactive
+===========
+*/
+/*
+Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(./fonts/inter-roman-var.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url(./fonts/inter-italic-var.woff2) format('woff2');
+}
+html,
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--color);
+  background-color: var(--background);
+  font-size: 18px;
+}
+h1 {
+  font-weight: 760;
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+  line-height: 1.2;
+  margin: 1rem 0;
+}
+main {
+  width: 28rem;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+nav a {
+  position: relative;
+  display: inline-block;
+  padding: 0.4rem 0;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: var(--accent-color);
+}
+nav a:after {
+  content: '';
+  position: absolute;
+  display: block;
+  inset: 0;
+  border-bottom: 2px solid;
+  transition: inset 0.2s;
+}
+nav a:hover:after {
+  inset: 0 50% 0 0;
+}
+
+.tree {
+  --st-label-height: 3.75rem;
+  --st-subnodes-padding-left: 2.5rem;
+  --st-collapse-icon-width: 1.75rem;
+  --st-collapse-icon-height: 3.5rem;
+  --st-collapse-icon-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+}
+.tree__label {
+  display: flex;
+  padding: 1rem;
+  margin-top: -4px;
+  font-size: 1rem;
+  font-weight: 580;
+  color: var(--color);
+  background-color: var(--background-faded);
+  border: 4px solid;
+  transition: color 0.1s, background-color 0.1s;
+  cursor: move;
+}
+.tree__label:hover {
+  z-index: 2;
+  --color: var(--hover-color);
+  background-color: var(--hover-background);
+}
+.tree__label:after {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  inset: -6px 0 -2px 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  transition: border-color 0.2s;
+  pointer-events: none;
+}
+.tree__node--drop-before > .tree__label:after {
+  border-top-color: var(--accent-color);
+}
+.tree__node--drop-after > .tree__label:after {
+  border-bottom-color: var(--accent-color);
+}
+.tree__node--drop-inside > .tree__label {
+  z-index: 3;
+  --color: var(--accent-color);
+  background-color: var(--accent-background);
+}
+.tree__node--dragging > .tree__label {
+  border-style: dashed;
+  cursor: move !important;
+}
+
+:root {
+  --color: #e2e5ea;
+  --background: #17181b;
+  --background-faded: #1f2125;
+  --accent-color: #2b83ff;
+  --accent-background: #081930;
+  --hover-color: #c6c9d0;
+  --hover-background: #292b31;
+}
+

@@ -1,4 +1,22 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sortable Tree</title><link href="main.css?8eaad88a0da1bacb87f8" rel="stylesheet"><script src="main.js?8eaad88a0da1bacb87f8"></script></head><body><main><h1>Sortable Tree</h1><nav><a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">GitHub</a> <a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a></nav><div id="tree"></div></main><script>const nodes = [
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sortable Tree</title>
+<link href="demo.css?667a3fdb4198cd8e4504" rel="stylesheet"><link href="sortable-tree.css?667a3fdb4198cd8e4504" rel="stylesheet"><script src="sortable-tree.js?667a3fdb4198cd8e4504"></script></head>
+<body>
+	<main>
+		<h1>Sortable Tree</h1>
+		<nav>
+			<a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">GitHub</a>
+			<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a>
+		</nav>
+		<div id="tree"></div>
+	</main>
+	<script>
+		const nodes = [
 			{
 				data: {
 					title: 'Homepage',
@@ -78,4 +96,7 @@
 			}
 		}
 
-		const tree = new SortableTree(options);</script></body></html>
+		const tree = new SortableTree(options);
+	</script>
+</body>
+</html>
