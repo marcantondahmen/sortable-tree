@@ -5,98 +5,234 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sortable Tree</title>
-</head>
-<body>
-	<main>
-		<h1>Sortable Tree</h1>
-		<nav>
-			<a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">GitHub</a>
-			<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a>
-		</nav>
-		<div id="tree"></div>
-	</main>
 	<script>
 		const nodes = [
 			{
-				data: {
-					title: 'Homepage',
-					path: '/',
-				},
+				data: { title: 'Homepage', path: '/' },
 				nodes: [
 					{
-						data: {
-							title: 'Page Number One',
-							path: '/page-number-one',
-						},
+						data: { title: 'Page Number One', path: '/page-number-one' },
 						nodes: [
 							{
-								data: {
-									title: 'Subpage',
-									path: '/page-number-one/subpage',
-								},
+								data: { title: 'Subpage', path: '/page-number-one/subpage' },
 								nodes: []
 							},
 							{
-								data: {
-									title: 'Another Subpage',
-									path: '/page-number-one/another-subpage',
-								},
+								data: { title: 'Another Subpage', path: '/page-number-one/another-subpage' },
 								nodes: [
 									{
-										data: {
-											title: 'Deep Nested Page',
-											path: '/page-number-one/another-subpage/deep-nested-page',
-										},
+										data: { title: 'Deep Nested Page', path: '/page-number-one/another-subpage/deep-nested-page' },
 										nodes: []
 									}
 								]
 							}
 						]
 					},
-					{
-						data: {
-							title: 'Page Two',
-							path: '/page-two',
-						},
-						nodes: []
-					},
-					{
-						data: {
-							title: 'Third Page',
-							path: '/third-page',
-						},
-						nodes: []
-					}
+					{ data: { title: 'Page Two', path: '/page-two' }, nodes: [] },
+					{ data: { title: 'Third Page', path: '/third-page' }, nodes: [] }
 				]
 			}
-		]
-
-		const options = {
-			nodes,
-			element: document.querySelector('#tree'),
-			lockRootLevel: true,
-			initCollapseLevel: 2,
-			onChange: ({
-				nodes,
-				movedNode,
-				srcParentNode,
-				targetParentNode,
-			}) => {
-				const data = movedNode.data;
-				const src = srcParentNode.data;
-				const target = targetParentNode.data;
-
-				console.log(data, src, target);
-			},
-			onClick: (event, node) => {
-				console.log(event, node);
-			},
-			confirm: async (movedNode, targetParentNode) => {
-				return true;
-			}
-		}
-
-		const tree = new SortableTree(options);
+		];
 	</script>
+</head>
+<body>
+	<nav>
+		<span>
+			<a href="./">Sortable Tree</a>
+		</span>
+		<span>
+			<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/README.md" target="_blank">Docs</a>
+			<a href="https://github.com/marcantondahmen/sortable-tree" target="_blank">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+					<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+				</svg>
+			</a>
+			<a href="https://www.npmjs.com/package/sortable-tree" target="_blank">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z" />
+				</svg>
+			</a>
+		</span>
+	</nav>
+	<div class="grid">
+		<aside>
+			<demo-toc></demo-toc>
+		</aside>
+		<main>
+			<h2>Basic Configuration</h2>
+			<p>
+				The most basic configuration only requires a <i>nodes</i> dataset and a parent <i>element</i>.<br>
+			</p>
+			<p>
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L72">
+					View Code ⟶
+				</a>
+			</p>
+			<div id="demo-1"></div>
+			<script>
+				const tree1 = new SortableTree({
+					nodes,
+					element: document.getElementById('demo-1')
+				});
+			</script>
+			
+			<h2>Custom Label</h2>
+			<p>
+				The actual clickable and draggable area &mdash; <i>the label</i> &mdash; 
+				is rendered by a fully customizable function that can be passed to the tree constructor.
+			</p>
+			<p>
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L90">
+					View Code ⟶
+				</a>
+			</p>
+			<div id="demo-2"></div>
+			<script>
+				const tree2 = new SortableTree({
+					nodes,
+					element: document.getElementById('demo-2'),
+					// Note that data object that is passed to the render function
+					// must have the same shape as the data field in the nodes dataset 
+					// defined above.
+					renderLabel: ({ title, path }) => {
+						return `
+							<span>
+								<span>⌘ ${title}</span>
+								<span>↕</span>
+							</span>
+						`;
+					}
+				});
+			</script>
+			
+			<h2>Confirmation Dialog</h2>
+			<p>
+				It is possible to catch the drop event and wait for confirmation before actually moving things around.
+			</p>
+			<p>
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L118">
+					View Code ⟶
+				</a>
+			</p>
+			<div id="demo-3"></div>
+			<script>
+				const tree3 = new SortableTree({
+					nodes,
+					element: document.getElementById('demo-3'),
+					confirm: async (movedNode, targetParentNode) => {
+						const moved = movedNode.data.title;
+						const target = targetParentNode.data.title;
+
+						return confirm(`Do you really want to move "${moved}" into "${target}"?`);
+					}
+				});
+			</script>
+			
+			<h2>Handling Change Events</h2>
+			<p>
+				You can define your own drop event handler in tree constructor options. 
+			</p>
+			<p>
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L141">
+					View Code ⟶
+				</a>
+			</p>
+			<div id="demo-4"></div>
+			<script>
+				const tree4 = new SortableTree({
+					nodes,
+					element: document.getElementById('demo-4'),
+					onChange: ({
+						nodes,
+						movedNode,
+						srcParentNode,
+						targetParentNode
+					}) => {
+						alert('Check out the browser\'s console to see the updated node data.');
+
+						console.log({
+							nodes,
+							movedNode,
+							srcParentNode,
+							targetParentNode
+						});
+					}
+				});
+			</script>
+
+			<h2>Handling Click Events</h2>
+			<p>
+				Aside from drop events, it is also possible to define a custom handle for click events.
+			</p>
+			<p>
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L173">
+					View Code ⟶
+				</a>
+			</p>
+			<div id="demo-5"></div>
+			<script>
+				const tree5 = new SortableTree({
+					nodes,
+					element: document.getElementById('demo-5'),
+					onClick: (event, node) => {
+						alert(`You clicked on "${node.data.title}".`)
+					}
+				});
+			</script>
+
+			<h2>Find and Reveal Nodes</h2>
+			<p>
+				You can search for nodes and interact with them. <a href="#" id="reveal">Click here</a> in order to reveal the hidden node
+				with the title "Deep Nested Page".
+			</p>
+			<p>
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L194">
+					View Code ⟶
+				</a>
+			</p>
+			<div id="demo-6"></div>
+			<script>
+				const button = document.getElementById('reveal');
+				const tree6 = new SortableTree({
+					nodes,
+					element: document.getElementById('demo-6'),
+					initCollapseLevel: 1
+				});
+
+				button.addEventListener('click', (event) => {
+					event.preventDefault();
+					const node = tree6.findNode('title', 'Deep Nested Page');
+					node.reveal();
+				});
+			</script>
+
+			<h2>No Theme</h2>
+			<p>
+				By default, the included styles only cover the most basic functionality such as collapsing and indentation. 
+				You can assign your CSS classes to the rendered elements as well as fully customize the render function.
+				Without any theming, the generated tree looks as follows.
+			</p>
+			<p>
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L194">
+					View Code ⟶
+				</a>
+			</p>
+			<div id="demo-7"></div>
+			<script>
+				const tree7 = new SortableTree({
+					nodes,
+					element: document.getElementById('demo-7'),
+					initCollapseLevel: 4,
+					styles: {
+						tree: 'my-tree',
+						node: 'my-tree__node',
+						label: 'my-tree__label',
+						subnodes: 'my-tree__subnodes',
+						collapse: 'my-tree__collapse',
+					},
+				});
+			</script>
+		</main>
+	</div>
 </body>
 </html>

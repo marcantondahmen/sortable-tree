@@ -23,55 +23,38 @@ body {
 	font-family: 'Inter', sans-serif;
 	color: var(--color);
 	background-color: var(--background);
-	font-size: 18px;
+	font-size: 16px;
+	font-weight: 480;
+	line-height: 1.6;
 }
 
-h1 {
-	font-weight: 760;
-	font-size: 2.5rem;
-	letter-spacing: -0.02em;
-	text-align: center;
-	line-height: 1.2;
-	margin: 1rem 0;
+body {
+	max-width: 72rem;
+	margin: auto;
+	padding: 0 2rem;
 }
 
-main {
-	width: 28rem;
-	max-width: 100%;
-	margin: 0 auto;
-	padding: 1.5rem;
+h2 {
+	margin: -0.175em 0 1rem 0;
+	scroll-margin-top: 5.5rem;
+	font-size: 1.8em;
+	font-weight: 680;
+
+	* + & {
+		margin-top: 2em;
+	}
 }
 
-nav {
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
-	margin: 1.5rem 0;
+p {
+	margin: 1em 0;
 
 	& a {
-		position: relative;
-		display: inline-block;
-		padding: 0.4rem 0;
-		font-weight: 600;
-		color: inherit;
+		color: var(--accent-color);
 		text-decoration: none;
 		transition: color 0.2s;
 
 		&:hover {
-			color: var(--accent-color);
-		}
-
-		&:after {
-			content: '';
-			position: absolute;
-			display: block;
-			inset: 0;
-			border-bottom: 2px solid;
-			transition: inset 0.2s;
-		}
-
-		&:hover:after {
-			inset: 0 50% 0 0;
+			color: var(--color);
 		}
 	}
 }

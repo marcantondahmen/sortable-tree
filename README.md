@@ -368,7 +368,7 @@ The `toggle` method is used to toggle the `collapse` state.
 
 ## Styling
 
-The included styles only cover the most basic functionality such as collapsing and indentation. All other styling and theming is dependend on the project the tree is used in. As mentioned above, also the markup of the rendered nodes is felxible and can be controlled with the `renderLabel` function. [Check out the demo](https://marcantondahmen.github.io/sortable-tree/) for some examples for theming and styling.
+The included styles only cover the most basic functionality such as collapsing and indentation. All other styling and theming is dependend on the project the tree is used in. As mentioned above, also the markup of the rendered nodes is flexible and can be controlled with the `renderLabel` function. [Check out the demo](https://marcantondahmen.github.io/sortable-tree/) for some examples for theming and styling.
 
 ---
 

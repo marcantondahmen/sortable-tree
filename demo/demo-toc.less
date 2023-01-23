@@ -1,0 +1,19 @@
+demo-toc {
+	position: sticky;
+	top: 6rem;
+	display: flex;
+	flex-direction: column;
+
+	& a {
+		line-height: 1.8rem;
+		font-size: 1rem;
+		text-decoration: none;
+		color: var(--muted-color);
+		transition: color 0.2s;
+
+		&.active,
+		&:hover {
+			color: var(--color);
+		}
+	}
+}

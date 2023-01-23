@@ -1,0 +1,35 @@
+nav {
+	position: sticky;
+	z-index: 10;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
+	padding-top: 0.3rem;
+	background-color: var(--background);
+	border-bottom: 2px solid;
+	box-shadow: -3rem 0 0 var(--background);
+
+	& > * {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	& a {
+		line-height: 4rem;
+		padding: 0;
+		text-decoration: none;
+		color: var(--color);
+		transition: color 0.2s;
+
+		&:hover {
+			color: var(--hover-color);
+		}
+	}
+
+	& :first-child a {
+		font-size: 1.25rem;
+		font-weight: 590;
+	}
+}
