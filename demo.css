@@ -261,88 +261,154 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--color);
   background-color: var(--background);
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 480;
+  line-height: 1.6;
 }
-h1 {
-  font-weight: 760;
-  font-size: 2.5rem;
-  letter-spacing: -0.02em;
-  text-align: center;
-  line-height: 1.2;
-  margin: 1rem 0;
+body {
+  max-width: 72rem;
+  margin: auto;
+  padding: 0 2rem;
 }
-main {
-  width: 28rem;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1.5rem;
+h2 {
+  margin: -0.175em 0 1rem 0;
+  scroll-margin-top: 5.5rem;
+  font-size: 1.8em;
+  font-weight: 680;
 }
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
+* + h2 {
+  margin-top: 2em;
 }
-nav a {
-  position: relative;
-  display: inline-block;
-  padding: 0.4rem 0;
-  font-weight: 600;
-  color: inherit;
+p {
+  margin: 1em 0;
+}
+p a {
+  color: var(--accent-color);
   text-decoration: none;
   transition: color 0.2s;
 }
-nav a:hover {
-  color: var(--accent-color);
+p a:hover {
+  color: var(--color);
 }
-nav a:after {
-  content: '';
-  position: absolute;
-  display: block;
-  inset: 0;
+
+demo-toc {
+  position: sticky;
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+}
+demo-toc a {
+  line-height: 1.8rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--muted-color);
+  transition: color 0.2s;
+}
+demo-toc a.active,
+demo-toc a:hover {
+  color: var(--color);
+}
+
+.grid {
+  display: grid;
+  max-width: 76rem;
+  padding: 2rem 0;
+  margin: 2rem auto;
+  grid-template-columns: 0 1fr 0;
+}
+@media (max-width: 899px) {
+  .grid > :first-child {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 2fr 4.5fr 0;
+  }
+}
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: 2fr 4fr 2fr;
+  }
+}
+
+nav {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  padding-top: 0.3rem;
+  background-color: var(--background);
   border-bottom: 2px solid;
-  transition: inset 0.2s;
+  box-shadow: -3rem 0 0 var(--background);
 }
-nav a:hover:after {
-  inset: 0 50% 0 0;
+nav > * {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+nav a {
+  line-height: 4rem;
+  padding: 0;
+  text-decoration: none;
+  color: var(--color);
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: var(--hover-color);
+}
+nav :first-child a {
+  font-size: 1.25rem;
+  font-weight: 590;
 }
 
 .tree {
   --st-label-height: 3.75rem;
-  --st-subnodes-padding-left: 2.5rem;
-  --st-collapse-icon-width: 1.75rem;
-  --st-collapse-icon-height: 3.5rem;
-  --st-collapse-icon-size: 1rem;
+  --st-subnodes-padding-left: 3rem;
+  --st-collapse-icon-width: 1.5rem;
+  --st-collapse-icon-height: 3.75rem;
+  --st-collapse-icon-size: 0.9rem;
   display: flex;
   flex-direction: column;
-  margin: 3rem 0;
+  margin: 1.5rem 0;
 }
 .tree__label {
   display: flex;
-  padding: 1rem;
-  margin-top: -4px;
+  padding: 4px;
   font-size: 1rem;
-  font-weight: 580;
-  color: var(--color);
-  background-color: var(--background-faded);
-  border: 4px solid;
-  transition: color 0.1s, background-color 0.1s;
+  font-weight: 480;
   cursor: move;
 }
 .tree__label:hover {
   z-index: 2;
   --color: var(--hover-color);
-  background-color: var(--hover-background);
+  --background: var(--hover-background);
 }
 .tree__label:after {
   content: '';
   position: absolute;
   z-index: 4;
-  inset: -6px 0 -2px 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
+  inset: -2px 2px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
   transition: border-color 0.2s;
   pointer-events: none;
+}
+.tree__label > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  border: 2px solid;
+  border-radius: 6px;
+  color: var(--color);
+  background-color: var(--background);
+  transition: color 0.2s, background 0.2s;
 }
 .tree__node--drop-before > .tree__label:after {
   border-top-color: var(--accent-color);
@@ -353,20 +419,21 @@ nav a:hover:after {
 .tree__node--drop-inside > .tree__label {
   z-index: 3;
   --color: var(--accent-color);
-  background-color: var(--accent-background);
+  --background: var(--accent-background);
 }
-.tree__node--dragging > .tree__label {
+.tree__node--dragging > .tree__label > span {
   border-style: dashed;
   cursor: move !important;
 }
 
 :root {
-  --color: #e2e5ea;
-  --background: #17181b;
-  --background-faded: #1f2125;
-  --accent-color: #2b83ff;
-  --accent-background: #081930;
-  --hover-color: #c6c9d0;
-  --hover-background: #292b31;
+  --color: hsl(217, 11%, 90%);
+  --background: hsl(217, 11%, 10%);
+  --background-faded: hsl(217, 11%, 13%);
+  --accent-color: hsl(215, 100%, 58%);
+  --accent-background: hsl(215, 71%, 12%);
+  --hover-color: hsl(217, 11%, 86%);
+  --hover-background: hsl(217, 11%, 15%);
+  --muted-color: hsl(217, 11%, 46%);
 }
 
