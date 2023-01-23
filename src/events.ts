@@ -166,13 +166,11 @@ const dropHandler = async (
 		return false;
 	}
 
-	const confirmed = await tree.confirm(movedNode, targetParentNode);
-
-	if (!confirmed) {
-		return false;
-	}
-
 	if (dropType === DropType.BEFORE) {
+		if (!(await tree.confirm(movedNode, targetParentNode))) {
+			return false;
+		}
+
 		targetNode.parentNode.insertBefore(movedNode, targetNode);
 		tree.onDrop(movedNode, srcParentNode, targetParentNode);
 
@@ -180,6 +178,10 @@ const dropHandler = async (
 	}
 
 	if (dropType === DropType.AFTER) {
+		if (!(await tree.confirm(movedNode, targetParentNode))) {
+			return false;
+		}
+
 		const next = targetNode.nextElementSibling;
 
 		if (next) {
@@ -190,6 +192,10 @@ const dropHandler = async (
 			tree.onDrop(movedNode, srcParentNode, targetParentNode);
 		}
 
+		return false;
+	}
+
+	if (!(await tree.confirm(movedNode, targetNode))) {
 		return false;
 	}
 
