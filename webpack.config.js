@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env, argv) => {
@@ -43,7 +42,6 @@ module.exports = (env, argv) => {
 			extensions: ['.ts', '.js'],
 		},
 		optimization: {
-			minimizer: [new CssMinimizerPlugin(), '...'],
 			splitChunks: {
 				cacheGroups: {
 					vendor: {
