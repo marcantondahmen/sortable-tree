@@ -12,8 +12,9 @@
 		"README.md"
 	],
 	"scripts": {
+		"clean": "rm -rf ./dist",
 		"start": "webpack serve --open --mode development",
-		"build": "webpack --mode production",
+		"build": "npm run clean && webpack --mode production",
 		"release": "sh bin/release.sh",
 		"prepublishOnly": "npm run build"
 	},
