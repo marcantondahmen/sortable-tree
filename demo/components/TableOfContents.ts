@@ -25,7 +25,7 @@ class TableOfContentsComponent extends HTMLElement {
 		}
 
 		headings.forEach((h) => {
-			h.id = h.textContent.toLowerCase().replace(/\W+/, '-');
+			h.id = h.textContent.toLowerCase().replace(/\W+/g, '-');
 
 			items.push({
 				href: `#${h.id}`,

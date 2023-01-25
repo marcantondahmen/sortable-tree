@@ -30,6 +30,8 @@ Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanill
     - [`reveal()`](#reveal)
     - [`toggle()`](#toggle)
 - [Styling](#styling)
+  - [Custom Properties](#custom-properties)
+  - [Demo Theme](#demo-theme)
 
 ## Getting Started
 
@@ -368,7 +370,23 @@ The `toggle` method is used to toggle the `collapse` state.
 
 ## Styling
 
-The included styles only cover the most basic functionality such as collapsing and indentation. All other styling and theming is dependend on the project the tree is used in. As mentioned above, also the markup of the rendered nodes is flexible and can be controlled with the `renderLabel` function. [Check out the demo](https://marcantondahmen.github.io/sortable-tree/) for some examples for theming and styling.
+The [included styles](#custom-properties) only cover the most basic functionality such as collapsing and indentation. All other styling and theming is dependend on the project the tree is used in. As mentioned above, also the markup of the rendered nodes is flexible and can be controlled with the `renderLabel` function. [Check out the demo](https://marcantondahmen.github.io/sortable-tree/) for some examples for theming and styling.
+
+### Custom Properties
+
+The following [CSS custom properties](src/styles.less) are available to control the basic appearance of a tree:
+
+| Name | Description |
+| ---: | ----------- |
+| `--st-label-height` | The height of the node's label |
+| `--st-subnodes-padding-left` | The indentation of subnodes |
+| `--st-collapse-icon-height` | The height of the icon container that can be clicked to toggle subnodes |
+| `--st-collapse-icon-width` | The width of the icon container |
+| `--st-collapse-icon-size` | The actual `font-size` of the collapsing icon |
+
+### Demo Theme
+
+In order to get started quickly, you can take a look at the styles of the [demo theme](demo/tree.less) that cover most of the needed custom styling.
 
 ---
 
