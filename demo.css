@@ -258,6 +258,7 @@ summary {
 }
 html,
 body {
+  color-scheme: dark;
   font-family: 'Inter', sans-serif;
   color: var(--color);
   background-color: var(--background);
