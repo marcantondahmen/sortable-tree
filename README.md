@@ -380,7 +380,7 @@ The [included styles](#custom-properties) only cover the most basic functionalit
 The following [CSS custom properties](src/styles.less) are available to control the basic appearance of a tree:
 
 | Name | Description |
-| ---: | ----------- |
+| ---- | ----------- |
 | `--st-label-height` | The height of the node's label |
 | `--st-subnodes-padding-left` | The indentation of subnodes |
 | `--st-collapse-icon-height` | The height of the icon container that can be clicked to toggle subnodes |
