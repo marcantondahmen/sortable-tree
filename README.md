@@ -1,9 +1,12 @@
 # Sortable Tree
 
-![NPM](https://img.shields.io/npm/l/sortable-tree)
-![npm](https://img.shields.io/npm/v/sortable-tree)
+![npm](https://img.shields.io/npm/v/sortable-tree?color=222222)
+![NPM](https://img.shields.io/npm/l/sortable-tree?color=222222)
+![GitHub top language](https://img.shields.io/github/languages/top/marcantondahmen/sortable-tree?color=222222)
 
 Easily create *drag-and-drop*, *sortable* and *collapsable* trees &mdash; vanilla TypeScript, lightweight and no dependencies.
+
+[![](assets/readme.png)](https://marcantondahmen.github.io/sortable-tree/)
 
 :wave: [Check out the demo](https://marcantondahmen.github.io/sortable-tree/)
 
