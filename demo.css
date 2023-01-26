@@ -422,7 +422,7 @@ nav :first-child a {
   --color: var(--accent-color);
   --background: var(--accent-background);
 }
-.tree__node--dragging > .tree__label > span {
+.tree__node--dragging .tree__label > span {
   border-style: dashed;
   cursor: move !important;
 }
