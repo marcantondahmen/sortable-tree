@@ -6,7 +6,7 @@
 import { SortableTreeKeyValue, SortableTreeNodeCreationOptions } from '.';
 export declare class SortableTreeNodeComponent extends HTMLElement {
     static TAG_NAME: string;
-    static create({ data, renderLabel, styles, parent, onClick, }: SortableTreeNodeCreationOptions): SortableTreeNodeComponent;
+    static create({ data, renderLabel, styles, parent, onClick, draggable, }: SortableTreeNodeCreationOptions): SortableTreeNodeComponent;
     private collapseButton;
     private _label;
     private _nodes;
@@ -17,7 +17,6 @@ export declare class SortableTreeNodeComponent extends HTMLElement {
     get subnodes(): HTMLElement;
     get guid(): string;
     constructor();
-    connectedCallback(): void;
     collapse(state: boolean): void;
     toggle(): void;
     reveal(): void;

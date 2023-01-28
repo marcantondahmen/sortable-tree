@@ -11,6 +11,9 @@ sortable-tree-node {
   display: flex;
   flex-direction: column;
 }
+sortable-tree-node * {
+  user-select: none;
+}
 sortable-tree-node > :first-child {
   display: flex;
   align-items: center;
