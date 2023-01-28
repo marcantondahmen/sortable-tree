@@ -143,6 +143,7 @@ const tree = new SortableTree({
     collapse: 'tree__collapse',
   },
   lockRootLevel: true,
+  disableSorting: false,
   initCollapseLevel: 2,
   renderLabel: (data) => {
     return `<span>${data.title}</span>`;
@@ -173,6 +174,7 @@ const tree = new SortableTree({
 | `element` | The container element where the tree will be created in (required) |
 | `styles` | An optional object of [CSS classes](#overriding-css-classes) that are used for the tree elements |
 | `lockRootLevel` | Prevent moving nodes the root level (default: `true`) |
+| `disableSorting` | Disable sorting functionality |
 | `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`) |
 | `renderLabel` | The function that will be used to [render a node's label](#rendering-nodes) |
 | `onChange` | The [method](#the-onchange-method) that is called when the tree has changed |

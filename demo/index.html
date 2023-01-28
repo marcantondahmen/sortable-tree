@@ -211,15 +211,13 @@
 				});
 			</script>
 
-			<h2>No Theme</h2>
+			<h2>Disable Sorting</h2>
 			<p>
-				By default, the included styles only cover the most basic functionality such as collapsing and indentation. 
-				You can assign your CSS classes to the rendered elements as well as fully customize the render function.
-				Without any theming, the generated tree looks as follows. In addition to that, the basic styles are controlled
-				by <a href="https://github.com/marcantondahmen/sortable-tree/blob/master/src/styles.less#L1">custom properties</a> that allow for easy integration into other design systems.
+				In case you just want to create a tree instance in your app that doesn't provide any sorting functionalty,
+				you can easily disbale the drag-and-drop behavior.
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L194">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L225">
 					View Code ⟶
 				</a>
 			</p>
@@ -228,6 +226,31 @@
 				const tree7 = new SortableTree({
 					nodes,
 					element: document.getElementById('demo-7'),
+					initCollapseLevel: 1,
+					disableSorting: true,
+					onClick: (event, node) => {
+						alert(`You clicked on "${node.data.title}".`)
+					}
+				});
+			</script>
+
+			<h2>No Theme</h2>
+			<p>
+				By default, the included styles only cover the most basic functionality such as collapsing and indentation. 
+				You can assign your CSS classes to the rendered elements as well as fully customize the render function.
+				Without any theming, the generated tree looks as follows. In addition to that, the basic styles are controlled
+				by <a href="https://github.com/marcantondahmen/sortable-tree/blob/master/src/styles.less#L1">custom properties</a> that allow for easy integration into other design systems.
+			</p>
+			<p>
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L250">
+					View Code ⟶
+				</a>
+			</p>
+			<div id="demo-8"></div>
+			<script>
+				const tree8 = new SortableTree({
+					nodes,
+					element: document.getElementById('demo-8'),
 					initCollapseLevel: 4,
 					styles: {
 						tree: 'my-tree',

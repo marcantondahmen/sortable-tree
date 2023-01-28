@@ -25,6 +25,7 @@ export interface SortableTreeNodeCreationOptions {
 	data: SortableTreeKeyValue;
 	parent: HTMLElement;
 	onClick: Function;
+	draggable: boolean;
 }
 
 export type SortableTreeRenderLabelFunction = (
@@ -58,6 +59,7 @@ export interface SortableTreeOptions {
 	onClick?: SortableTreeOnClickFunction;
 	initCollapseLevel?: number;
 	confirm?: SortableTreeConfirmFunction;
+	disableSorting?: boolean;
 }
 
 export interface SortableTreeStyles {

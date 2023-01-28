@@ -41,6 +41,8 @@ export class SortableTree {
 
 	readonly lockRootLevel: boolean;
 
+	readonly disableSorting: boolean;
+
 	readonly styles: SortableTreeStyles;
 
 	readonly onChange: SortableTreeOnChangeFunction;
@@ -61,6 +63,7 @@ export class SortableTree {
 		onClick,
 		initCollapseLevel,
 		confirm,
+		disableSorting,
 	}: SortableTreeOptions) {
 		if (!nodes) {
 			return;
@@ -83,6 +86,7 @@ export class SortableTree {
 		this.confirm = confirm || defaultConfirm;
 		this.initCollapseLevel =
 			typeof initCollapseLevel === 'undefined' ? 2 : initCollapseLevel;
+		this.disableSorting = disableSorting || false;
 
 		element.classList.add(this.styles.tree);
 
@@ -151,9 +155,13 @@ export class SortableTree {
 				renderLabel: this.renderLabel,
 				data: nodeData.data,
 				onClick: this.onClick,
+				draggable: !this.disableSorting,
 			});
 
-			registerEvents(node, this);
+			if (!this.disableSorting) {
+				registerEvents(node, this);
+			}
+
 			node.collapse(level > this.initCollapseLevel);
 
 			this.nodeCollection[node.guid] = node;

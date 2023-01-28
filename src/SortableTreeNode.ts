@@ -20,6 +20,7 @@ export class SortableTreeNodeComponent extends HTMLElement {
 		styles,
 		parent,
 		onClick,
+		draggable,
 	}: SortableTreeNodeCreationOptions): SortableTreeNodeComponent {
 		const node = create(
 			SortableTreeNodeComponent.TAG_NAME,
@@ -37,6 +38,10 @@ export class SortableTreeNodeComponent extends HTMLElement {
 		label.addEventListener('click', (event: Event) => {
 			onClick(event, node);
 		});
+
+		if (draggable) {
+			node.setAttribute('draggable', 'true');
+		}
 
 		node._data = data;
 		node._label = label;
@@ -75,10 +80,6 @@ export class SortableTreeNodeComponent extends HTMLElement {
 	constructor() {
 		super();
 		this._guid = guid();
-	}
-
-	connectedCallback(): void {
-		this.setAttribute('draggable', 'true');
 	}
 
 	collapse(state: boolean): void {
