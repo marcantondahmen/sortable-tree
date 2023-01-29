@@ -1,15 +1,13 @@
 {
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
-		"allowJs": true,
-		"checkJs": false,
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"target": "es6",
-		"outDir": "dist",
+		"outDir": "../dist",
 		"sourceMap": true,
 		"declaration": true,
-		"declarationDir": "./dist/types"
+		"declarationDir": "../dist/types"
 	},
-	"include": ["index.ts", "src/**/*", "demo/**/*"]
+	"include": ["./*"]
 }
