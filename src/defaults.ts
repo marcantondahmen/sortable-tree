@@ -4,16 +4,16 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
+import { SortableTreeNodeComponent } from './SortableTreeNode';
 import {
 	SortableTreeConfirmFunction,
 	SortableTreeDropResultData,
 	SortableTreeKeyValue,
-	SortableTreeNodeComponent,
 	SortableTreeOnChangeFunction,
 	SortableTreeOnClickFunction,
 	SortableTreeRenderLabelFunction,
 	SortableTreeStyles,
-} from '.';
+} from './types';
 
 export const defaultRenderLabel: SortableTreeRenderLabelFunction = (
 	data: SortableTreeKeyValue

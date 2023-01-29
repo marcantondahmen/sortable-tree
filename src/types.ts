@@ -4,7 +4,8 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
-import { SortableTree, SortableTreeNodeComponent } from '.';
+import SortableTree from '.';
+import { SortableTreeNodeComponent } from './SortableTreeNode';
 
 export interface SortableTreeKeyValue {
 	[key: string]: unknown;

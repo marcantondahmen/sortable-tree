@@ -4,11 +4,9 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
-import {
-	SortableTreeListenerOptions,
-	SortableTreeNodeComponent,
-	SortableTree,
-} from '.';
+import SortableTree from '.';
+import { SortableTreeNodeComponent } from './SortableTreeNode';
+import { SortableTreeListenerOptions } from './types';
 
 export const registerEvents = (
 	node: SortableTreeNodeComponent,

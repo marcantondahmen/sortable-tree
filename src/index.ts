@@ -5,7 +5,7 @@
  */
 
 import './styles.less';
+import { SortableTree } from './SortableTree';
 
-export * from './SortableTree';
-export * from './SortableTreeNode';
+export default SortableTree;
 export * from './types';

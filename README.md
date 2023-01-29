@@ -38,7 +38,7 @@ Easily create *sortable*, *draggable* and *collapsable* trees &mdash; vanilla Ty
 
 ## Getting Started
 
-You can either install this package with `npm` and import it into your TypeScript project or use the JavaScript version in a browser.
+You can either install this package with `npm` and import it into your JavaScript or TypeScript project or use it in a browser.
 ### NPM
 
 Install with `npm`:
@@ -50,7 +50,7 @@ npm i sortable-tree
 Import into your project and create a tree as follows:
 
 ```typescript
-import { SortableTree, SortableTreeNodeData } from 'sortable-tree';
+import SortableTree, { SortableTreeNodeData } from 'sortable-tree';
 import 'sortable-tree/dist/sortable-tree.css'; // basic styles
 
 const nodes: SortableTreeNodeData[] = [

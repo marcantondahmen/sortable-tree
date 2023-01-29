@@ -12,19 +12,19 @@ import {
 	defaultStyles,
 } from './defaults';
 import { registerEvents } from './events';
+import { SortableTreeNodeComponent } from './SortableTreeNode';
 import {
+	SortableTreeConfirmFunction,
 	SortableTreeDropResultData,
 	SortableTreeNodeCollection,
-	SortableTreeNodeComponent,
 	SortableTreeNodeData,
-	SortableTreeParsedNodeComponentData,
-	SortableTreeOptions,
-	SortableTreeStyles,
-	SortableTreeRenderLabelFunction,
 	SortableTreeOnChangeFunction,
 	SortableTreeOnClickFunction,
-	SortableTreeConfirmFunction,
-} from '.';
+	SortableTreeOptions,
+	SortableTreeParsedNodeComponentData,
+	SortableTreeRenderLabelFunction,
+	SortableTreeStyles,
+} from './types';
 
 export class SortableTree {
 	static ICON_COLLAPSED =

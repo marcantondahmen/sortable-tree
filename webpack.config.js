@@ -47,6 +47,7 @@ const configMain = (env, argv) => {
 			library: {
 				name: 'SortableTree',
 				type: 'umd',
+				export: 'default',
 			},
 		},
 		plugins: [

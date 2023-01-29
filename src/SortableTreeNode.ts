@@ -4,11 +4,8 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
-import {
-	SortableTreeKeyValue,
-	SortableTreeNodeCreationOptions,
-	SortableTree,
-} from '.';
+import SortableTree from '.';
+import { SortableTreeKeyValue, SortableTreeNodeCreationOptions } from './types';
 import { create, guid, queryParents } from './utils';
 
 export class SortableTreeNodeComponent extends HTMLElement {
