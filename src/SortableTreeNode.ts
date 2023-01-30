@@ -70,6 +70,17 @@ export class SortableTreeNodeComponent extends HTMLElement {
 		return this._nodes;
 	}
 
+	get subnodesData(): SortableTreeKeyValue[] {
+		const data: SortableTreeKeyValue[] = [];
+		const nodes = Array.from(this._nodes.children);
+
+		nodes.forEach((node: SortableTreeNodeComponent) => {
+			data.push(node.data);
+		});
+
+		return data;
+	}
+
 	get guid(): string {
 		return this._guid;
 	}

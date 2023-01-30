@@ -340,6 +340,7 @@ The following public properties can be accessed on a node element:
 | `data` | The custom data object that was assigned when creating the tree |
 | `label` | The clickable and draggable label element |
 | `subnodes` | The container element that hosts the subnodes |
+| `subnodesData` | An array of datasets that are stored in the direct children |
 | `guid` | The node's GUID that can be used to get the node from the tree instance |
 
 ### Node Methods
