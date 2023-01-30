@@ -71,7 +71,7 @@
 				The most basic configuration only requires a <i>nodes</i> dataset and a parent <i>element</i>.<br>
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L72">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L79">
 					View Code ⟶
 				</a>
 			</p>
@@ -89,7 +89,7 @@
 				is rendered by a fully customizable function that can be passed to the tree constructor.
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L90">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L97">
 					View Code ⟶
 				</a>
 			</p>
@@ -117,7 +117,7 @@
 				It is possible to catch the drop event and wait for confirmation before actually moving things around.
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L118">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L125">
 					View Code ⟶
 				</a>
 			</p>
@@ -140,7 +140,7 @@
 				You can define your own drop event handler in tree constructor options. 
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L141">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L148">
 					View Code ⟶
 				</a>
 			</p>
@@ -149,7 +149,7 @@
 				const tree4 = new SortableTree({
 					nodes,
 					element: document.getElementById('demo-4'),
-					onChange: ({
+					onChange: async ({
 						nodes,
 						movedNode,
 						srcParentNode,
@@ -172,7 +172,7 @@
 				Aside from drop events, it is also possible to define a custom handle for click events.
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L173">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L180">
 					View Code ⟶
 				</a>
 			</p>
@@ -181,7 +181,7 @@
 				const tree5 = new SortableTree({
 					nodes,
 					element: document.getElementById('demo-5'),
-					onClick: (event, node) => {
+					onClick: async (event, node) => {
 						alert(`You clicked on "${node.data.title}".`)
 					}
 				});
@@ -193,7 +193,7 @@
 				with the title "Deep Nested Page".
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L194">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L201">
 					View Code ⟶
 				</a>
 			</p>
@@ -219,7 +219,7 @@
 				you can easily disbale the drag-and-drop behavior.
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L225">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L227">
 					View Code ⟶
 				</a>
 			</p>
@@ -230,7 +230,7 @@
 					element: document.getElementById('demo-7'),
 					initCollapseLevel: 1,
 					disableSorting: true,
-					onClick: (event, node) => {
+					onClick: async (event, node) => {
 						alert(`You clicked on "${node.data.title}".`)
 					}
 				});
@@ -244,7 +244,7 @@
 				by <a href="https://github.com/marcantondahmen/sortable-tree/blob/master/src/styles.less#L1">custom properties</a> that allow for easy integration into other design systems.
 			</p>
 			<p>
-				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L250">
+				<a href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L252">
 					View Code ⟶
 				</a>
 			</p>

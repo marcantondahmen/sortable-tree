@@ -34,17 +34,17 @@ export const defaultStyles: SortableTreeStyles = {
 	collapse: 'tree__collapse',
 };
 
-export const defaultOnChange: SortableTreeOnChangeFunction = ({
+export const defaultOnChange: SortableTreeOnChangeFunction = async ({
 	nodes,
 	movedNode,
 	srcParentNode,
 	targetParentNode,
-}: SortableTreeDropResultData): void => {};
+}: SortableTreeDropResultData): Promise<void> => {};
 
-export const defaultOnClick: SortableTreeOnClickFunction = (
+export const defaultOnClick: SortableTreeOnClickFunction = async (
 	event: Event,
 	node: SortableTreeNodeComponent
-): void => {};
+): Promise<void> => {};
 
 export const defaultConfirm: SortableTreeConfirmFunction = async (
 	movedNode: SortableTreeNodeComponent,

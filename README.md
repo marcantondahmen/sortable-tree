@@ -19,8 +19,8 @@ Easily create *sortable*, *draggable* and *collapsable* trees &mdash; vanilla Ty
   - [The `nodes` Object in Detail](#the-nodes-object-in-detail)
   - [Rendering Nodes](#rendering-nodes)
   - [Overriding CSS Classes](#overriding-css-classes)
-  - [The `onChange` Method](#the-onchange-method)
-  - [The `onClick` Method](#the-onclick-method)
+  - [The `onChange` Function](#the-onchange-function)
+  - [The `onClick` Function](#the-onclick-function)
   - [Confirming Changes](#confirming-changes)
 - [The Tree Object](#the-tree-object)
   - [Tree Methods](#tree-methods)
@@ -145,7 +145,7 @@ const tree = new SortableTree({
   lockRootLevel: true,
   disableSorting: false,
   initCollapseLevel: 2,
-  renderLabel: (data) => {
+  renderLabel: async (data) => {
     return `<span>${data.title}</span>`;
   },
   confirm: async (
@@ -154,7 +154,7 @@ const tree = new SortableTree({
   ) => {
     return true;
   },
-  onChange: ({
+  onChange: async ({
     nodes,
     movedNode,
     srcParentNode,
@@ -162,7 +162,7 @@ const tree = new SortableTree({
   }) => {
     console.log(movedNode.data); 
   },
-  onClick: (event, node) => {
+  onClick: async (event, node) => {
     console.log(node.data); 
   }
 });
@@ -176,9 +176,9 @@ const tree = new SortableTree({
 | `lockRootLevel` | Prevent moving nodes the root level (default: `true`) |
 | `disableSorting` | Disable sorting functionality |
 | `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`) |
-| `renderLabel` | The function that will be used to [render a node's label](#rendering-nodes) |
-| `onChange` | The [method](#the-onchange-method) that is called when the tree has changed |
-| `onClick` | The [method](#the-onclick-method) that is called when a node label has been clicked |
+| `renderLabel` | A function that will be used to [render a node's label](#rendering-nodes) |
+| `onChange` | An async [function](#the-onchange-function) that is called when the tree has changed |
+| `onClick` | An async [function](#the-onclick-function) that is called when a node label has been clicked |
 | `confirm` | An async function that is used to [confirm](#confirming-changes) any changes in the tree |
 
 ### The `nodes` Object in Detail
@@ -240,9 +240,9 @@ const tree = new SortableTree({
 });
 ```
 
-### The `onChange` Method
+### The `onChange` Function
 
-The `onChange` method is called whenever a node is dropped successfully somewhere in the tree and a `SortableTreeDropResultData` object is passed as argument.
+The `onChange` function is called whenever a node is dropped successfully somewhere in the tree and a `SortableTreeDropResultData` object is passed as argument.
 A `SortableTreeDropResultData` object consists of three items:
 
 - `nodes`: The tree structure that contains a `guid`, `element` and `subnodes` for each node
@@ -254,7 +254,7 @@ A `SortableTreeDropResultData` object consists of three items:
 const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
-  onChange: ({
+  onChange: async ({
     nodes,
     movedNode,
     srcParentNode,
@@ -270,16 +270,16 @@ const tree = SortableTree({
 });
 ```
 
-### The `onClick` Method
+### The `onClick` Function
 
-The `onClick` method is called whenever a node label is clicked.
+The `onClick` function is called whenever a node label is clicked.
 The original event object as well as the clicked [node](#nodes) are passed as arguments.
 
 ```typescript
 const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
-  onClick: (event, node) => {
+  onClick: async (event, node) => {
     console.log(event, node);
   },
 });

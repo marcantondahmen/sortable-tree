@@ -38,12 +38,12 @@ export type SortableTreeOnChangeFunction = ({
 	movedNode,
 	srcParentNode,
 	targetParentNode,
-}: SortableTreeDropResultData) => void;
+}: SortableTreeDropResultData) => Promise<void>;
 
 export type SortableTreeOnClickFunction = (
 	event: Event,
 	node: SortableTreeNodeComponent
-) => void;
+) => Promise<void>;
 
 export type SortableTreeConfirmFunction = (
 	movedNode: SortableTreeNodeComponent,
