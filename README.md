@@ -228,7 +228,7 @@ const tree = new SortableTree({
   styles: {
     tree: 'my-tree',
     node: 'my-tree__node',
-    nodeHover: 'tmy-ree__node--hover',
+    nodeHover: 'my-tree__node--hover',
     nodeDragging: 'my-tree__node--dragging',
     nodeDropBefore: 'my-tree__node--drop-before',
     nodeDropInside: 'my-tree__node--drop-inside',
