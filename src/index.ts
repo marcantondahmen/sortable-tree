@@ -8,4 +8,5 @@ import './styles.less';
 import { SortableTree } from './SortableTree';
 
 export default SortableTree;
+export * from './SortableTreeNode';
 export * from './types';
