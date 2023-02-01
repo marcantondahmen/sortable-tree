@@ -77,9 +77,9 @@ const closestNode = (event: DragEvent): SortableTreeNodeComponent => {
 const parentNode = (
 	node: SortableTreeNodeComponent
 ): SortableTreeNodeComponent => {
-	const parent = node.parentElement.parentElement;
+	const parent = node?.parentElement.parentElement;
 
-	if (parent.tagName.toLowerCase() !== SortableTreeNodeComponent.TAG_NAME) {
+	if (parent?.tagName.toLowerCase() !== SortableTreeNodeComponent.TAG_NAME) {
 		return null;
 	}
 
@@ -150,15 +150,18 @@ const dropHandler = async (
 	const guid = event.dataTransfer.getData('text');
 	const dropType = calculateDropType(event);
 	const movedNode = tree.getNode(guid);
-	const srcParentNode = parentNode(movedNode);
 
-	if (movedNode.contains(targetNode)) {
+	if (!movedNode || movedNode?.contains(targetNode)) {
 		return false;
 	}
 
+	const srcParentNode = parentNode(movedNode);
+
 	if (
 		tree.lockRootLevel &&
-		!targetNode.parentElement.closest(SortableTreeNodeComponent.TAG_NAME) &&
+		!targetNode?.parentElement.closest(
+			SortableTreeNodeComponent.TAG_NAME
+		) &&
 		(dropType === DropType.BEFORE || dropType === DropType.AFTER)
 	) {
 		return false;
