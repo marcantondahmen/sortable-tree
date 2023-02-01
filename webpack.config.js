@@ -1,6 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const pkg = require('./package.json');
 
 const configCommon = {
 	module: {
@@ -50,6 +53,13 @@ const configMain = (env, argv) => {
 				export: 'default',
 			},
 		},
+		optimization: {
+			minimizer: [
+				new TerserPlugin({
+					extractComments: false,
+				}),
+			],
+		},
 		plugins: [
 			new HtmlWebpackPlugin({
 				hash: true,
@@ -60,6 +70,14 @@ const configMain = (env, argv) => {
 			}),
 			new MiniCssExtractPlugin({
 				filename: '[name].css',
+			}),
+			new webpack.BannerPlugin({
+				banner: () => {
+					const year = new Date().getFullYear();
+
+					return `Sortable Tree ${pkg.version}, (c) ${year} ${pkg.author}, ${pkg.license} license`;
+				},
+				raw: false,
 			}),
 		],
 	});
