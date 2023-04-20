@@ -84,7 +84,7 @@ export interface SortableTreeListenerOptions {
 }
 
 export interface SortableTreeParsedNodeComponentData {
-	guid: string;
+	id: string;
 	element: SortableTreeNodeComponent;
 	subnodes: SortableTreeParsedNodeComponentData[];
 }

@@ -125,7 +125,7 @@ const dragstartHandler = (event: DragEvent, tree: SortableTree): void => {
 		return;
 	}
 
-	event.dataTransfer.setData('text', node.guid);
+	event.dataTransfer.setData('text', node.id);
 	event.dataTransfer.effectAllowed = 'move';
 
 	node.classList.add(tree.styles.nodeDragging);
@@ -147,9 +147,9 @@ const dropHandler = async (
 	}
 
 	const targetParentNode = parentNode(targetNode);
-	const guid = event.dataTransfer.getData('text');
+	const id = event.dataTransfer.getData('text');
 	const dropType = calculateDropType(event);
-	const movedNode = tree.getNode(guid);
+	const movedNode = tree.getNode(id);
 
 	if (!movedNode || movedNode?.contains(targetNode)) {
 		return false;

@@ -4,7 +4,7 @@
 ![NPM](https://img.shields.io/npm/l/sortable-tree?color=222222)
 ![GitHub top language](https://img.shields.io/github/languages/top/marcantondahmen/sortable-tree?color=222222)
 
-Easily create *sortable*, *draggable* and *collapsable* trees &mdash; vanilla TypeScript, lightweight and no dependencies.
+Easily create _sortable_, _draggable_ and _collapsable_ trees &mdash; vanilla TypeScript, lightweight and no dependencies.
 
 [![](assets/readme.png)](https://marcantondahmen.github.io/sortable-tree/)
 
@@ -25,7 +25,7 @@ Easily create *sortable*, *draggable* and *collapsable* trees &mdash; vanilla Ty
 - [The Tree Object](#the-tree-object)
   - [Tree Methods](#tree-methods)
     - [`findNode(key: string, value: unknown)`](#findnodekey-string-value-unknown)
-    - [`getNode(guid: string)`](#getnodeguid-string)
+    - [`getNode(id: string)`](#getnodeid-string)
 - [Nodes](#nodes)
   - [Node Propterties](#node-propterties)
   - [Node Methods](#node-methods)
@@ -39,6 +39,7 @@ Easily create *sortable*, *draggable* and *collapsable* trees &mdash; vanilla Ty
 ## Getting Started
 
 You can either install this package with `npm` and import it into your JavaScript or TypeScript project or use it in a browser.
+
 ### NPM
 
 Install with `npm`:
@@ -55,13 +56,15 @@ import 'sortable-tree/dist/sortable-tree.css'; // basic styles
 
 const nodes: SortableTreeNodeData[] = [
   {
-    data: { title: 'Home' }, nodes: [
+    data: { title: 'Home' },
+    nodes: [
       { data: { title: 'Page 1' }, nodes: [] },
-      { data: { title: 'Page 2' }, nodes: [
-        { data: { title: 'Subpage' }, nodes: [] }
-      ] }
-    ]
-  }
+      {
+        data: { title: 'Page 2' },
+        nodes: [{ data: { title: 'Subpage' }, nodes: [] }],
+      },
+    ],
+  },
 ];
 
 const tree = new SortableTree({
@@ -70,12 +73,12 @@ const tree = new SortableTree({
   renderLabel: (data) => {
     return `<span>${data.title}</span>`;
   },
-  onChange: ({ nodes, movedNode, srcParentNode, targetParentNode }) => { 
-    console.log(movedNode.data); 
+  onChange: ({ nodes, movedNode, srcParentNode, targetParentNode }) => {
+    console.log(movedNode.data);
   },
-  onClick: (event, node) => { 
-    console.log(node.data); 
-  }
+  onClick: (event, node) => {
+    console.log(node.data);
+  },
 });
 ```
 
@@ -85,7 +88,10 @@ In order to use this package in a browser just load add the following tags to yo
 
 ```html
 <script src="https://unpkg.com/sortable-tree/dist/sortable-tree.js"></script>
-<link href="https://unpkg.com/sortable-tree/dist/sortable-tree.css" rel="stylesheet">
+<link
+  href="https://unpkg.com/sortable-tree/dist/sortable-tree.css"
+  rel="stylesheet"
+/>
 ```
 
 Add use it in your body as follows:
@@ -95,13 +101,15 @@ Add use it in your body as follows:
 <script>
   const nodes = [
     {
-      data: { title: 'Home' }, nodes: [
+      data: { title: 'Home' },
+      nodes: [
         { data: { title: 'Page 1' }, nodes: [] },
-        { data: { title: 'Page 2' }, nodes: [
-          { data: { title: 'Subpage' }, nodes: [] }
-        ] }
-      ]
-    }
+        {
+          data: { title: 'Page 2' },
+          nodes: [{ data: { title: 'Subpage' }, nodes: [] }],
+        },
+      ],
+    },
   ];
 
   const tree = new SortableTree({
@@ -110,12 +118,12 @@ Add use it in your body as follows:
     renderLabel: (data) => {
       return `<span>${data.title}</span>`;
     },
-    onChange: ({ nodes, movedNode, srcParentNode, targetParentNode }) => { 
-      console.log(movedNode.data); 
+    onChange: ({ nodes, movedNode, srcParentNode, targetParentNode }) => {
+      console.log(movedNode.data);
     },
-    onClick: (event, node) => { 
-      console.log(node.data); 
-    }
+    onClick: (event, node) => {
+      console.log(node.data);
+    },
   });
 </script>
 ```
@@ -148,38 +156,30 @@ const tree = new SortableTree({
   renderLabel: async (data) => {
     return `<span>${data.title}</span>`;
   },
-  confirm: async (
-    moved,
-    parentNode
-  ) => {
+  confirm: async (moved, parentNode) => {
     return true;
   },
-  onChange: async ({
-    nodes,
-    movedNode,
-    srcParentNode,
-    targetParentNode,
-  }) => {
-    console.log(movedNode.data); 
+  onChange: async ({ nodes, movedNode, srcParentNode, targetParentNode }) => {
+    console.log(movedNode.data);
   },
   onClick: async (event, node) => {
-    console.log(node.data); 
-  }
+    console.log(node.data);
+  },
 });
 ```
 
-| Name | Description |
-| ---- | ----------- |
-| `nodes` | An array of [node objects](#the-nodes-object-in-detail) (required) |
-| `element` | The container element where the tree will be created in (required) |
-| `styles` | An optional object of [CSS classes](#overriding-css-classes) that are used for the tree elements |
-| `lockRootLevel` | Prevent moving nodes the root level (default: `true`) |
-| `disableSorting` | Disable sorting functionality |
-| `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`) |
-| `renderLabel` | A function that will be used to [render a node's label](#rendering-nodes) |
-| `onChange` | An async [function](#the-onchange-function) that is called when the tree has changed |
-| `onClick` | An async [function](#the-onclick-function) that is called when a node label has been clicked |
-| `confirm` | An async function that is used to [confirm](#confirming-changes) any changes in the tree |
+| Name                | Description                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------------ |
+| `nodes`             | An array of [node objects](#the-nodes-object-in-detail) (required)                               |
+| `element`           | The container element where the tree will be created in (required)                               |
+| `styles`            | An optional object of [CSS classes](#overriding-css-classes) that are used for the tree elements |
+| `lockRootLevel`     | Prevent moving nodes the root level (default: `true`)                                            |
+| `disableSorting`    | Disable sorting functionality                                                                    |
+| `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`)                             |
+| `renderLabel`       | A function that will be used to [render a node's label](#rendering-nodes)                        |
+| `onChange`          | An async [function](#the-onchange-function) that is called when the tree has changed             |
+| `onClick`           | An async [function](#the-onclick-function) that is called when a node label has been clicked     |
+| `confirm`           | An async function that is used to [confirm](#confirming-changes) any changes in the tree         |
 
 ### The `nodes` Object in Detail
 
@@ -194,9 +194,9 @@ The `renderLabel` function controls the HTML of the actual node label that is cl
 
 ```typescript
 const nodes = [
-  data: { 
-    title: 'Homepage', 
-    path: '/' 
+  data: {
+    title: 'Homepage',
+    path: '/'
   },
   nodes: []
 ]
@@ -213,8 +213,8 @@ const tree = SortableTree({
       <span data-path="${data.path}">
         ${data.title}
       </span>`;
-  }
-})
+  },
+});
 ```
 
 ### Overriding CSS Classes
@@ -245,7 +245,7 @@ const tree = new SortableTree({
 The `onChange` function is called whenever a node is dropped successfully somewhere in the tree and a `SortableTreeDropResultData` object is passed as argument.
 A `SortableTreeDropResultData` object consists of three items:
 
-- `nodes`: The tree structure that contains a `guid`, `element` and `subnodes` for each node
+- `nodes`: The tree structure that contains a `id`, `element` and `subnodes` for each node
 - `movedNode`: The [node](#nodes) that has been moved
 - `srcParentNode`: The original parent [node](#nodes)
 - `targetParentNode`: The new parent [node](#nodes)
@@ -254,12 +254,7 @@ A `SortableTreeDropResultData` object consists of three items:
 const tree = SortableTree({
   nodes,
   element: document.querySelector('#tree'),
-  onChange: async ({
-    nodes,
-    movedNode,
-    srcParentNode,
-    targetParentNode,
-  }) => {
+  onChange: async ({ nodes, movedNode, srcParentNode, targetParentNode }) => {
     const data = movedNode.data;
     const src = srcParentNode.data;
     const target = targetParentNode.data;
@@ -301,7 +296,7 @@ const tree = SortableTree({
 
 ## The Tree Object
 
-The tree object represents the collection of nodes and allows for retrieving nodes by GUID or values from the initial dataset.
+The tree object represents the collection of nodes and allows for retrieving nodes by id or values from the initial dataset.
 
 ### Tree Methods
 
@@ -315,16 +310,16 @@ You can search for a [node](#nodes) by a key/value pair in the initial nodes [da
 const tree = new SortableTree(options);
 const node = tree.findNode('title', 'home');
 
-console.log(node.guid);
+console.log(node.id);
 console.log(node.data);
 ```
 
-#### `getNode(guid: string)`
+#### `getNode(id: string)`
 
-In case you have already a GUID of a node from a previous search or similar, you can use the `getNode` method to get the node from the tree:
+In case you have already a id of a node from a previous search or similar, you can use the `getNode` method to get the node from the tree:
 
 ```typescript
-const node = tree.getNode(guid);
+const node = tree.getNode(id);
 ```
 
 ## Nodes
@@ -335,13 +330,13 @@ Nodes represent the based units a tree consists of. Nodes can also contain other
 
 The following public properties can be accessed on a node element:
 
-| Name | Description |
-| ---- | ----------- |
-| `data` | The custom data object that was assigned when creating the tree |
-| `label` | The clickable and draggable label element |
-| `subnodes` | The container element that hosts the subnodes |
-| `subnodesData` | An array of datasets that are stored in the direct children |
-| `guid` | The node's GUID that can be used to get the node from the tree instance |
+| Name           | Description                                                           |
+| -------------- | --------------------------------------------------------------------- |
+| `data`         | The custom data object that was assigned when creating the tree       |
+| `label`        | The clickable and draggable label element                             |
+| `subnodes`     | The container element that hosts the subnodes                         |
+| `subnodesData` | An array of datasets that are stored in the direct children           |
+| `id`           | The node's id that can be used to get the node from the tree instance |
 
 ### Node Methods
 
@@ -376,19 +371,22 @@ The `toggle` method is used to toggle the `collapse` state.
 
 ## Styling
 
-The [included styles](#custom-properties) only cover the most basic functionality such as collapsing and indentation. All other styling and theming is dependend on the project the tree is used in. As mentioned above, also the markup of the rendered nodes is flexible and can be controlled with the `renderLabel` function. [Check out the demo](https://marcantondahmen.github.io/sortable-tree/) for some examples for theming and styling.
+The [included styles](#custom-properties) only cover the most basic functionality such as collapsing and indentation.
+All other styling and theming is dependend on the project the tree is used in.
+As mentioned above, also the markup of the rendered nodes is flexible and can be controlled with the `renderLabel` function.
+[Check out the demo](https://marcantondahmen.github.io/sortable-tree/) for some examples for theming and styling.
 
 ### Custom Properties
 
 The following [CSS custom properties](src/styles.less) are available to control the basic appearance of a tree:
 
-| Name | Description |
-| ---- | ----------- |
-| `--st-label-height` | The height of the node's label |
-| `--st-subnodes-padding-left` | The indentation of subnodes |
-| `--st-collapse-icon-height` | The height of the icon container that can be clicked to toggle subnodes |
-| `--st-collapse-icon-width` | The width of the icon container |
-| `--st-collapse-icon-size` | The actual `font-size` of the collapsing icon |
+| Name                         | Description                                                             |
+| ---------------------------- | ----------------------------------------------------------------------- |
+| `--st-label-height`          | The height of the node's label                                          |
+| `--st-subnodes-padding-left` | The indentation of subnodes                                             |
+| `--st-collapse-icon-height`  | The height of the icon container that can be clicked to toggle subnodes |
+| `--st-collapse-icon-width`   | The width of the icon container                                         |
+| `--st-collapse-icon-size`    | The actual `font-size` of the collapsing icon                           |
 
 ### Demo Theme
 

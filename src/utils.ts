@@ -24,7 +24,7 @@ export const create = (
 	return element;
 };
 
-export const guid = () => {
+export const id = () => {
 	return nanoid();
 };
 

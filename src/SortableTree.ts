@@ -96,8 +96,8 @@ export class SortableTree {
 		});
 	}
 
-	getNode(guid: string): SortableTreeNodeComponent {
-		return this.nodeCollection[guid];
+	getNode(id: string): SortableTreeNodeComponent {
+		return this.nodeCollection[id];
 	}
 
 	findNode(key: string, value: unknown): SortableTreeNodeComponent {
@@ -164,7 +164,7 @@ export class SortableTree {
 
 			node.collapse(level > this.initCollapseLevel);
 
-			this.nodeCollection[node.guid] = node;
+			this.nodeCollection[node.id] = node;
 
 			if (nodeData.nodes) {
 				this.render(
@@ -191,7 +191,7 @@ export class SortableTree {
 		nodes.forEach((node: SortableTreeNodeComponent) => {
 			data.push({
 				element: node,
-				guid: node.guid,
+				id: node.id,
 				subnodes: this.parseTree(node.subnodes),
 			});
 		});

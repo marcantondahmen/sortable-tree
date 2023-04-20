@@ -6,7 +6,7 @@
 
 import SortableTree from '.';
 import { SortableTreeKeyValue, SortableTreeNodeCreationOptions } from './types';
-import { create, guid, queryParents } from './utils';
+import { create, id, queryParents } from './utils';
 
 export class SortableTreeNodeComponent extends HTMLElement {
 	static TAG_NAME = 'sortable-tree-node';
@@ -54,7 +54,7 @@ export class SortableTreeNodeComponent extends HTMLElement {
 
 	private _nodes: HTMLElement;
 
-	private _guid: string;
+	private _id: string;
 
 	private _data: SortableTreeKeyValue;
 
@@ -81,13 +81,13 @@ export class SortableTreeNodeComponent extends HTMLElement {
 		return data;
 	}
 
-	get guid(): string {
-		return this._guid;
+	get id(): string {
+		return this._id;
 	}
 
 	constructor() {
 		super();
-		this._guid = guid();
+		this._id = id();
 	}
 
 	collapse(state: boolean): void {
