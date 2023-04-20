@@ -41,6 +41,7 @@
 		"less-loader": "^11.1.0",
 		"mini-css-extract-plugin": "^2.7.2",
 		"modern-normalize": "^1.1.0",
+		"nanoid": "^4.0.2",
 		"string-replace-loader": "^3.1.0",
 		"terser-webpack-plugin": "^5.3.6",
 		"ts-loader": "^9.4.2",
