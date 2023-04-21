@@ -43,12 +43,12 @@ export class SortableTreeNodeComponent extends HTMLElement {
 		node._data = data;
 		node._label = label;
 		node._nodes = subnodes;
-		node.collapseButton = collapseButton;
+		node._collapseButton = collapseButton;
 
 		return node;
 	}
 
-	private collapseButton: HTMLElement;
+	private _collapseButton: HTMLElement;
 
 	private _label: HTMLElement;
 
@@ -93,10 +93,10 @@ export class SortableTreeNodeComponent extends HTMLElement {
 	collapse(state: boolean): void {
 		if (state) {
 			this.removeAttribute('open');
-			this.collapseButton.innerHTML = SortableTree.ICON_COLLAPSED;
+			this._collapseButton.innerHTML = SortableTree.ICON_COLLAPSED;
 		} else {
 			this.setAttribute('open', 'true');
-			this.collapseButton.innerHTML = SortableTree.ICON_OPEN;
+			this._collapseButton.innerHTML = SortableTree.ICON_OPEN;
 		}
 	}
 
