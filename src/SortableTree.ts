@@ -13,6 +13,7 @@ import {
 } from './defaults';
 import { registerEvents } from './events';
 import { SortableTreeNodeComponent } from './SortableTreeNode';
+import { applyState, saveState } from './state';
 import {
 	SortableTreeConfirmFunction,
 	SortableTreeDropResultData,
@@ -36,6 +37,8 @@ export class SortableTree {
 	private renderLabel: SortableTreeRenderLabelFunction;
 
 	private nodeCollection: SortableTreeNodeCollection = {};
+
+	private observer: MutationObserver;
 
 	readonly root: HTMLElement;
 
@@ -64,6 +67,7 @@ export class SortableTree {
 		initCollapseLevel,
 		confirm,
 		disableSorting,
+		stateId,
 	}: SortableTreeOptions) {
 		if (!nodes) {
 			return;
@@ -94,6 +98,12 @@ export class SortableTree {
 			nodes,
 			element,
 		});
+
+		if (stateId) {
+			applyState(stateId, this.parseTree(this.root));
+
+			this.initStateObserver(stateId);
+		}
 	}
 
 	getNode(id: string): SortableTreeNodeComponent {
@@ -131,6 +141,25 @@ export class SortableTree {
 
 		targetParentNode.collapse(false);
 		this.onChange(result);
+	}
+
+	destroy(): void {
+		this.observer.disconnect();
+		this.observer = null;
+	}
+
+	initStateObserver(stateId: string): void {
+		const observerOptions = {
+			childList: true,
+			attributes: true,
+			subtree: true,
+		};
+
+		const observer = new MutationObserver(() => {
+			saveState(stateId, this.parseTree(this.root));
+		});
+
+		observer.observe(this.root, observerOptions);
 	}
 
 	private defineElements(): void {

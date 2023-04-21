@@ -61,6 +61,7 @@ export interface SortableTreeOptions {
 	initCollapseLevel?: number;
 	confirm?: SortableTreeConfirmFunction;
 	disableSorting?: boolean;
+	stateId?: string;
 }
 
 export interface SortableTreeStyles {
@@ -95,3 +96,5 @@ export interface SortableTreeDropResultData {
 	targetParentNode: SortableTreeNodeComponent;
 	srcParentNode: SortableTreeNodeComponent;
 }
+
+export type SortableTreeState = [0 | 1, SortableTreeState[]];

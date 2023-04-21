@@ -150,6 +150,7 @@ const tree = new SortableTree({
     subnodes: 'tree__subnodes',
     collapse: 'tree__collapse',
   },
+  stateId: 'some-tree',
   lockRootLevel: true,
   disableSorting: false,
   initCollapseLevel: 2,
@@ -176,6 +177,7 @@ const tree = new SortableTree({
 | `lockRootLevel`     | Prevent moving nodes the root level (default: `true`)                                            |
 | `disableSorting`    | Disable sorting functionality                                                                    |
 | `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`)                             |
+| `stateId`           | The id that is used to persist the folding state of the tree across browser reloads (optional)   |
 | `renderLabel`       | A function that will be used to [render a node's label](#rendering-nodes)                        |
 | `onChange`          | An async [function](#the-onchange-function) that is called when the tree has changed             |
 | `onClick`           | An async [function](#the-onclick-function) that is called when a node label has been clicked     |
