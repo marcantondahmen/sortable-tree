@@ -267,7 +267,7 @@ body {
   line-height: 1.6;
 }
 body {
-  max-width: 72rem;
+  max-width: 88rem;
   margin: auto;
   padding: 0 2rem;
 }
@@ -312,7 +312,7 @@ demo-toc a:hover {
 
 .grid {
   display: grid;
-  max-width: 76rem;
+  max-width: 100%;
   padding: 2rem 0;
   margin: 2rem auto;
   grid-template-columns: 0 1fr 0;
@@ -325,12 +325,12 @@ demo-toc a:hover {
 }
 @media (min-width: 900px) {
   .grid {
-    grid-template-columns: 2fr 4.5fr 0;
+    grid-template-columns: 20rem minmax(auto, 34rem);
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1255px) {
   .grid {
-    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-columns: 1fr 34rem 1fr;
   }
 }
 
