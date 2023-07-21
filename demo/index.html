@@ -135,7 +135,7 @@
 				</p>
 				<p>
 					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L79"
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L145"
 					>
 						View Code ⟶
 					</a>
@@ -157,7 +157,7 @@
 				</p>
 				<p>
 					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L97"
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L174"
 					>
 						View Code ⟶
 					</a>
@@ -189,7 +189,7 @@
 				</p>
 				<p>
 					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L125"
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L203"
 					>
 						View Code ⟶
 					</a>
@@ -218,7 +218,7 @@
 				</p>
 				<p>
 					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L148"
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L232"
 					>
 						View Code ⟶
 					</a>
@@ -256,7 +256,7 @@
 				</p>
 				<p>
 					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L180"
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L270"
 					>
 						View Code ⟶
 					</a>
@@ -273,7 +273,7 @@
 					});
 				</script>
 
-				<h2>Find and Reveal Nodes</h2>
+				<h2>Finding and Revealing Nodes</h2>
 				<p>
 					You can search for nodes and interact with them.
 					<a href="#" id="reveal">Click here</a> in order to reveal
@@ -281,7 +281,7 @@
 				</p>
 				<p>
 					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L201"
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L299"
 					>
 						View Code ⟶
 					</a>
@@ -306,7 +306,7 @@
 					});
 				</script>
 
-				<h2>Disable Sorting</h2>
+				<h2>Disabling Sorting</h2>
 				<p>
 					In case you just want to create a tree instance in your app
 					that doesn't provide any sorting functionalty, you can
@@ -314,7 +314,7 @@
 				</p>
 				<p>
 					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L227"
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L329"
 					>
 						View Code ⟶
 					</a>
@@ -330,6 +330,32 @@
 						onClick: async (event, node) => {
 							alert(`You clicked on "${node.data.title}".`);
 						},
+					});
+				</script>
+
+				<h2>Unlocking Root</h2>
+				<p>
+					By default, users are not allowed to move nodes next to the
+					root node on the top level. This is useful in order to
+					address use cases such as an actual file system tree that
+					can only have on root node. However, it is possible to
+					disable this restriction by setting the
+					<i>lockRootLevel</i> option to <i>false</i>.
+				</p>
+				<p>
+					<a
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L357"
+					>
+						View Code ⟶
+					</a>
+				</p>
+				<div id="demo-8"></div>
+				<script>
+					const tree8 = new SortableTree({
+						nodes,
+						element: document.getElementById('demo-8'),
+						lockRootLevel: false,
+						stateId: 'demo-8',
 					});
 				</script>
 
@@ -349,17 +375,17 @@
 				</p>
 				<p>
 					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L252"
+						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L390"
 					>
 						View Code ⟶
 					</a>
 				</p>
-				<div id="demo-8"></div>
+				<div id="demo-9"></div>
 				<script>
-					const tree8 = new SortableTree({
+					const tree9 = new SortableTree({
 						nodes,
-						element: document.getElementById('demo-8'),
-						stateId: 'demo-8',
+						element: document.getElementById('demo-9'),
+						stateId: 'demo-9',
 						initCollapseLevel: 4,
 						styles: {
 							tree: 'my-tree',

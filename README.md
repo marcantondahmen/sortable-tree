@@ -174,7 +174,7 @@ const tree = new SortableTree({
 | `nodes`             | An array of [node objects](#the-nodes-object-in-detail) (required)                               |
 | `element`           | The container element where the tree will be created in (required)                               |
 | `styles`            | An optional object of [CSS classes](#overriding-css-classes) that are used for the tree elements |
-| `lockRootLevel`     | Prevent moving nodes the root level (default: `true`)                                            |
+| `lockRootLevel`     | Prevent moving nodes to the root level (default: `true`)                                         |
 | `disableSorting`    | Disable sorting functionality                                                                    |
 | `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`)                             |
 | `stateId`           | The id that is used to persist the folding state of the tree across browser reloads (optional)   |
