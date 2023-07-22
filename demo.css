@@ -266,19 +266,32 @@ body {
   font-weight: 480;
   line-height: 1.6;
 }
+@media (min-width: 1600px) {
+  html,
+  body {
+    font-size: 18px;
+  }
+}
 body {
   max-width: 88rem;
   margin: auto;
   padding: 0 2rem;
 }
+h1 {
+  margin: -0.25rem 0 5rem 0;
+  font-size: 2.45em;
+  font-weight: 620;
+  line-height: 1.28;
+}
 h2 {
-  margin: -0.175em 0 1rem 0;
+  margin: 0 0 1.3rem 0;
   scroll-margin-top: 5.5rem;
   font-size: 1.8em;
   font-weight: 680;
+  line-height: 1.3;
 }
 * + h2 {
-  margin-top: 2em;
+  margin-top: 2.15em;
 }
 p {
   margin: 1em 0;
