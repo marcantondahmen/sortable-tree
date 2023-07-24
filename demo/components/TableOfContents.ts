@@ -11,9 +11,14 @@ class TableOfContentsComponent extends HTMLElement {
 	connectedCallback() {
 		this.classList.add('toc');
 
-		setTimeout(() => {
+		if (document.readyState === 'loading') {
+			document.addEventListener(
+				'DOMContentLoaded',
+				this.render.bind(this)
+			);
+		} else {
 			this.render();
-		}, 0);
+		}
 	}
 
 	render() {
