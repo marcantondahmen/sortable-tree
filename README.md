@@ -1,7 +1,7 @@
 # Sortable Tree
 
-![npm](https://img.shields.io/npm/v/sortable-tree?color=222222)
-![NPM](https://img.shields.io/npm/l/sortable-tree?color=222222)
+[![npm](https://img.shields.io/npm/v/sortable-tree?color=222222)](https://www.npmjs.com/package/sortable-tree)
+[![MIT](https://img.shields.io/npm/l/sortable-tree?color=222222)](https://github.com/marcantondahmen/sortable-tree/blob/master/LICENSE)
 ![GitHub top language](https://img.shields.io/github/languages/top/marcantondahmen/sortable-tree?color=222222)
 
 Easily create _sortable_, _draggable_ and _collapsible_ trees &mdash; vanilla TypeScript, lightweight and no dependencies.
@@ -38,7 +38,7 @@ Easily create _sortable_, _draggable_ and _collapsible_ trees &mdash; vanilla Ty
 
 ## Getting Started
 
-You can either install this package with `npm` and import it into your JavaScript or TypeScript project or use it in a browser.
+You can either install this [package](https://www.npmjs.com/package/sortable-tree) with `npm` and import it into your JavaScript or TypeScript project or use it in a browser.
 
 ### NPM
 
