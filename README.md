@@ -4,7 +4,7 @@
 ![NPM](https://img.shields.io/npm/l/sortable-tree?color=222222)
 ![GitHub top language](https://img.shields.io/github/languages/top/marcantondahmen/sortable-tree?color=222222)
 
-Easily create _sortable_, _draggable_ and _collapsable_ trees &mdash; vanilla TypeScript, lightweight and no dependencies.
+Easily create _sortable_, _draggable_ and _collapsible_ trees &mdash; vanilla TypeScript, lightweight and no dependencies.
 
 [![](assets/readme.png)](https://marcantondahmen.github.io/sortable-tree/)
 
