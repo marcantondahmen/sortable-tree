@@ -232,6 +232,10 @@ It is possible to override the class names that are used when rendering the tree
 const tree = new SortableTree({
   nodes: nodes,
   element: document.querySelector('#tree'),
+  icons: {
+    collapsed: '+',
+    open: '-',
+  },
   styles: {
     tree: 'my-tree',
     node: 'my-tree__node',
