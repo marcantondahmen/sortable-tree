@@ -173,20 +173,20 @@ const tree = new SortableTree({
 });
 ```
 
-| Name                | Description                                                                                                            |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `nodes`             | An array of [node objects](#the-nodes-object-in-detail) (required)                                                     |
-| `element`           | The container element where the tree will be created in (required)                                                     |
-| `icons`             | An object of custom icons in the shape of `{ collapsed: '+', open: '-' }` to indicate that a node is open or collapsed |
-| `styles`            | An optional object of [CSS classes](#customizing-styles-and-icons) that are used for the tree elements                 |
-| `lockRootLevel`     | Prevent moving nodes to the root level (default: `true`)                                                               |
-| `disableSorting`    | Disable sorting functionality                                                                                          |
-| `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`)                                                   |
-| `stateId`           | The id that is used to persist the folding state of the tree across browser reloads (optional)                         |
-| `renderLabel`       | A function that will be used to [render a node's label](#rendering-nodes)                                              |
-| `onChange`          | An async [function](#the-onchange-function) that is called when the tree has changed                                   |
-| `onClick`           | An async [function](#the-onclick-function) that is called when a node label has been clicked                           |
-| `confirm`           | An async function that is used to [confirm](#confirming-changes) any changes in the tree                               |
+| Name                | Description                                                                                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `nodes`             | An array of [node objects](#the-nodes-object-in-detail) (required)                                                                                      |
+| `element`           | The container element where the tree will be created in (required)                                                                                      |
+| `icons`             | An object of [custom icons](#customizing-styles-and-icons) in the shape of `{ collapsed: '+', open: '-' }` to indicate that a node is open or collapsed |
+| `styles`            | An optional object of [CSS classes](#customizing-styles-and-icons) that are used for the tree elements                                                  |
+| `lockRootLevel`     | Prevent moving nodes to the root level (default: `true`)                                                                                                |
+| `disableSorting`    | Disable sorting functionality                                                                                                                           |
+| `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`)                                                                                    |
+| `stateId`           | The id that is used to persist the folding state of the tree across browser reloads (optional)                                                          |
+| `renderLabel`       | A function that will be used to [render a node's label](#rendering-nodes)                                                                               |
+| `onChange`          | An async [function](#the-onchange-function) that is called when the tree has changed                                                                    |
+| `onClick`           | An async [function](#the-onclick-function) that is called when a node label has been clicked                                                            |
+| `confirm`           | An async function that is used to [confirm](#confirming-changes) any changes in the tree                                                                |
 
 ### The `nodes` Object in Detail
 
