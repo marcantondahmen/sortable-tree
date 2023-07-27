@@ -4,8 +4,11 @@
  * (c) 2023 Marc Anton Dahmen, MIT license
  */
 
-import SortableTree from '.';
-import { SortableTreeKeyValue, SortableTreeNodeCreationOptions } from './types';
+import {
+	SortableTreeIcons,
+	SortableTreeKeyValue,
+	SortableTreeNodeCreationOptions,
+} from './types';
 import { create, id, queryParents } from './utils';
 
 export class SortableTreeNodeComponent extends HTMLElement {
@@ -14,6 +17,7 @@ export class SortableTreeNodeComponent extends HTMLElement {
 	static create({
 		data,
 		renderLabel,
+		icons,
 		styles,
 		parent,
 		onClick,
@@ -30,7 +34,7 @@ export class SortableTreeNodeComponent extends HTMLElement {
 		const collapseButton = create('span', [styles.collapse], node);
 
 		label.innerHTML = renderLabel(data);
-		collapseButton.innerHTML = SortableTree.ICON_COLLAPSED;
+		collapseButton.innerHTML = icons.collapsed;
 		collapseButton.addEventListener('click', node.toggle.bind(node));
 		label.addEventListener('click', (event: Event) => {
 			onClick(event, node);
@@ -41,6 +45,7 @@ export class SortableTreeNodeComponent extends HTMLElement {
 		}
 
 		node._data = data;
+		node._icons = icons;
 		node._label = label;
 		node._nodes = subnodes;
 		node._collapseButton = collapseButton;
@@ -49,6 +54,8 @@ export class SortableTreeNodeComponent extends HTMLElement {
 	}
 
 	private _collapseButton: HTMLElement;
+
+	private _icons: SortableTreeIcons;
 
 	private _label: HTMLElement;
 
@@ -93,10 +100,10 @@ export class SortableTreeNodeComponent extends HTMLElement {
 	collapse(state: boolean): void {
 		if (state) {
 			this.removeAttribute('open');
-			this._collapseButton.innerHTML = SortableTree.ICON_COLLAPSED;
+			this._collapseButton.innerHTML = this._icons.collapsed;
 		} else {
 			this.setAttribute('open', 'true');
-			this._collapseButton.innerHTML = SortableTree.ICON_OPEN;
+			this._collapseButton.innerHTML = this._icons.open;
 		}
 	}
 

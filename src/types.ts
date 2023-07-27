@@ -21,6 +21,7 @@ export interface SortableTreeNodeCollection {
 }
 
 export interface SortableTreeNodeCreationOptions {
+	icons: SortableTreeIcons;
 	styles: SortableTreeStyles;
 	renderLabel: Function;
 	data: SortableTreeKeyValue;
@@ -54,6 +55,7 @@ export interface SortableTreeOptions {
 	nodes: SortableTreeNodeData[];
 	element: HTMLElement;
 	renderLabel?: SortableTreeRenderLabelFunction;
+	icons?: SortableTreeIcons;
 	styles?: SortableTreeStyles;
 	lockRootLevel?: boolean;
 	onChange?: SortableTreeOnChangeFunction;
@@ -62,6 +64,11 @@ export interface SortableTreeOptions {
 	confirm?: SortableTreeConfirmFunction;
 	disableSorting?: boolean;
 	stateId?: string;
+}
+
+export interface SortableTreeIcons {
+	collapsed?: string;
+	open?: string;
 }
 
 export interface SortableTreeStyles {

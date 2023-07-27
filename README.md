@@ -18,7 +18,7 @@ Easily create _sortable_, _draggable_ and _collapsible_ trees &mdash; vanilla Ty
 - [Options](#options)
   - [The `nodes` Object in Detail](#the-nodes-object-in-detail)
   - [Rendering Nodes](#rendering-nodes)
-  - [Overriding CSS Classes](#overriding-css-classes)
+  - [Customizing Styles and Icons](#customizing-styles-and-icons)
   - [The `onChange` Function](#the-onchange-function)
   - [The `onClick` Function](#the-onclick-function)
   - [Confirming Changes](#confirming-changes)
@@ -138,6 +138,10 @@ The following options can be used when creating a new tree object:
 const tree = new SortableTree({
   nodes: nodes,
   element: document.querySelector('#tree'),
+  icons: {
+    collapsed: '+',
+    open: '-',
+  },
   styles: {
     tree: 'tree',
     node: 'tree__node',
@@ -169,19 +173,20 @@ const tree = new SortableTree({
 });
 ```
 
-| Name                | Description                                                                                      |
-| ------------------- | ------------------------------------------------------------------------------------------------ |
-| `nodes`             | An array of [node objects](#the-nodes-object-in-detail) (required)                               |
-| `element`           | The container element where the tree will be created in (required)                               |
-| `styles`            | An optional object of [CSS classes](#overriding-css-classes) that are used for the tree elements |
-| `lockRootLevel`     | Prevent moving nodes to the root level (default: `true`)                                         |
-| `disableSorting`    | Disable sorting functionality                                                                    |
-| `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`)                             |
-| `stateId`           | The id that is used to persist the folding state of the tree across browser reloads (optional)   |
-| `renderLabel`       | A function that will be used to [render a node's label](#rendering-nodes)                        |
-| `onChange`          | An async [function](#the-onchange-function) that is called when the tree has changed             |
-| `onClick`           | An async [function](#the-onclick-function) that is called when a node label has been clicked     |
-| `confirm`           | An async function that is used to [confirm](#confirming-changes) any changes in the tree         |
+| Name                | Description                                                                                                            |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `nodes`             | An array of [node objects](#the-nodes-object-in-detail) (required)                                                     |
+| `element`           | The container element where the tree will be created in (required)                                                     |
+| `icons`             | An object of custom icons in the shape of `{ collapsed: '+', open: '-' }` to indicate that a node is open or collapsed |
+| `styles`            | An optional object of [CSS classes](#customizing-styles-and-icons) that are used for the tree elements                 |
+| `lockRootLevel`     | Prevent moving nodes to the root level (default: `true`)                                                               |
+| `disableSorting`    | Disable sorting functionality                                                                                          |
+| `initCollapseLevel` | The level of nesting that will be initially collapsed (default: `2`)                                                   |
+| `stateId`           | The id that is used to persist the folding state of the tree across browser reloads (optional)                         |
+| `renderLabel`       | A function that will be used to [render a node's label](#rendering-nodes)                                              |
+| `onChange`          | An async [function](#the-onchange-function) that is called when the tree has changed                                   |
+| `onClick`           | An async [function](#the-onclick-function) that is called when a node label has been clicked                           |
+| `confirm`           | An async function that is used to [confirm](#confirming-changes) any changes in the tree                               |
 
 ### The `nodes` Object in Detail
 
@@ -219,7 +224,7 @@ const tree = SortableTree({
 });
 ```
 
-### Overriding CSS Classes
+### Customizing Styles and Icons
 
 It is possible to override the class names that are used when rendering the tree. The following fields can be defined in the object that used with the `styles` option:
 
