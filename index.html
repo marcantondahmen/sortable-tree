@@ -74,7 +74,7 @@
 				},
 			];
 		</script>
-	<link href="sortable-tree.css?cd99603edcacff5fe14a" rel="stylesheet"><script src="sortable-tree.js?cd99603edcacff5fe14a"></script></head>
+	<link href="sortable-tree.css?00d7cd01870e907e70ce" rel="stylesheet"><script src="sortable-tree.js?00d7cd01870e907e70ce"></script></head>
 	<body>
 		<nav>
 			<span>
@@ -197,6 +197,24 @@
 					});
 				</script>
 
+				<h2>Custom Icons</h2>
+				<p>
+					Custom icons to indicate opened and collapsed nodes can be
+					defined using the _icons_ property.
+				</p>
+				<div id="demo-3"></div>
+				<script>
+					const tree3 = new SortableTree({
+						nodes,
+						element: document.getElementById('demo-3'),
+						icons: {
+							collapsed: '',
+							open: '',
+						},
+						stateId: 'demo-3',
+					});
+				</script>
+
 				<h2>Confirmation Dialog</h2>
 				<p>
 					It is possible to catch the drop event and wait for
@@ -209,12 +227,12 @@
 						View Code ⟶
 					</a>
 				</p>
-				<div id="demo-3"></div>
+				<div id="demo-4"></div>
 				<script>
-					const tree3 = new SortableTree({
+					const tree4 = new SortableTree({
 						nodes,
-						element: document.getElementById('demo-3'),
-						stateId: 'demo-3',
+						element: document.getElementById('demo-4'),
+						stateId: 'demo-4',
 						confirm: async (movedNode, targetParentNode) => {
 							const moved = movedNode.data.title;
 							const target = targetParentNode.data.title;
@@ -238,12 +256,12 @@
 						View Code ⟶
 					</a>
 				</p>
-				<div id="demo-4"></div>
+				<div id="demo-5"></div>
 				<script>
-					const tree4 = new SortableTree({
+					const tree5 = new SortableTree({
 						nodes,
-						element: document.getElementById('demo-4'),
-						stateId: 'demo-4',
+						element: document.getElementById('demo-5'),
+						stateId: 'demo-5',
 						onChange: async ({
 							nodes,
 							movedNode,
@@ -276,12 +294,12 @@
 						View Code ⟶
 					</a>
 				</p>
-				<div id="demo-5"></div>
+				<div id="demo-6"></div>
 				<script>
-					const tree5 = new SortableTree({
+					const tree6 = new SortableTree({
 						nodes,
-						element: document.getElementById('demo-5'),
-						stateId: 'demo-5',
+						element: document.getElementById('demo-6'),
+						stateId: 'demo-6',
 						onClick: async (event, node) => {
 							alert(`You clicked on "${node.data.title}".`);
 						},
@@ -301,19 +319,19 @@
 						View Code ⟶
 					</a>
 				</p>
-				<div id="demo-6"></div>
+				<div id="demo-7"></div>
 				<script>
 					const button = document.getElementById('reveal');
-					const tree6 = new SortableTree({
+					const tree7 = new SortableTree({
 						nodes,
-						element: document.getElementById('demo-6'),
-						stateId: 'demo-6',
+						element: document.getElementById('demo-7'),
+						stateId: 'demo-7',
 						initCollapseLevel: 1,
 					});
 
 					button.addEventListener('click', (event) => {
 						event.preventDefault();
-						const node = tree6.findNode(
+						const node = tree7.findNode(
 							'title',
 							'Deep Nested Page'
 						);
@@ -334,12 +352,12 @@
 						View Code ⟶
 					</a>
 				</p>
-				<div id="demo-7"></div>
+				<div id="demo-8"></div>
 				<script>
-					const tree7 = new SortableTree({
+					const tree8 = new SortableTree({
 						nodes,
-						element: document.getElementById('demo-7'),
-						stateId: 'demo-7',
+						element: document.getElementById('demo-8'),
+						stateId: 'demo-8',
 						initCollapseLevel: 1,
 						disableSorting: true,
 						onClick: async (event, node) => {
@@ -364,13 +382,13 @@
 						View Code ⟶
 					</a>
 				</p>
-				<div id="demo-8"></div>
+				<div id="demo-9"></div>
 				<script>
-					const tree8 = new SortableTree({
+					const tree9 = new SortableTree({
 						nodes,
-						element: document.getElementById('demo-8'),
+						element: document.getElementById('demo-9'),
 						lockRootLevel: false,
-						stateId: 'demo-8',
+						stateId: 'demo-9',
 					});
 				</script>
 
@@ -395,12 +413,12 @@
 						View Code ⟶
 					</a>
 				</p>
-				<div id="demo-9"></div>
+				<div id="demo-10"></div>
 				<script>
-					const tree9 = new SortableTree({
+					const tree10 = new SortableTree({
 						nodes,
-						element: document.getElementById('demo-9'),
-						stateId: 'demo-9',
+						element: document.getElementById('demo-10'),
+						stateId: 'demo-10',
 						initCollapseLevel: 4,
 						styles: {
 							tree: 'my-tree',
