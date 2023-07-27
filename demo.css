@@ -278,7 +278,7 @@ body {
   padding: 0 2rem;
 }
 h1 {
-  margin: -0.25rem 0 5rem 0;
+  margin: -0.25rem 0 4rem 0;
   font-size: 2.45em;
   font-weight: 620;
   line-height: 1.28;
@@ -303,6 +303,11 @@ p a {
 }
 p a:hover {
   color: var(--color);
+}
+hr {
+  margin: 4rem 0;
+  border: none;
+  border-top: 2px solid;
 }
 
 demo-toc {
