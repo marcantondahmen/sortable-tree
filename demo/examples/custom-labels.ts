@@ -5,9 +5,9 @@ new SortableTree({
 	nodes,
 	element: document.getElementById('tree-labels'),
 	stateId: 'tree-labels',
-	// Note that data object that is passed to the render function
-	// must have the same shape as the data field in the nodes dataset
-	// defined above.
+	// Note that data object that is passed to the render
+	// function must have the same shape as the data field
+	// in the nodes dataset defined above.
 	renderLabel: ({ title, path }) => {
 		return `
 			<span>
