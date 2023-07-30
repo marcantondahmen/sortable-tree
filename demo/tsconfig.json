@@ -5,7 +5,7 @@
 		"noImplicitAny": true,
 		"target": "es6",
 		"outDir": "../dist",
-		"paths": { "sortable-tree": ["../types"] },
+		"paths": { "sortable-tree": ["../src"] },
 		"sourceMap": true
 	},
 	"include": ["./*"]
