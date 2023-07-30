@@ -385,6 +385,9 @@ summary:before {
 summary:hover {
   color: var(--color);
 }
+summary::-webkit-details-marker {
+  display: none;
+}
 
 .emgithub-file .code-area td.hljs-ln-line {
   font-family: 'JetBrains Mono Variable' !important;
