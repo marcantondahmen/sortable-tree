@@ -26,55 +26,8 @@
 			content="https://raw.githubusercontent.com/marcantondahmen/sortable-tree/master/assets/readme.png"
 		/>
 		<link rel="stylesheet" href="demo.css" />
-		<script src="demo.js"></script>
-		<script>
-			const nodes = [
-				{
-					data: { title: 'Homepage', path: '/' },
-					nodes: [
-						{
-							data: {
-								title: 'Page Number One',
-								path: '/page-number-one',
-							},
-							nodes: [
-								{
-									data: {
-										title: 'Subpage',
-										path: '/page-number-one/subpage',
-									},
-									nodes: [],
-								},
-								{
-									data: {
-										title: 'Another Subpage',
-										path: '/page-number-one/another-subpage',
-									},
-									nodes: [
-										{
-											data: {
-												title: 'Deep Nested Page',
-												path: '/page-number-one/another-subpage/deep-nested-page',
-											},
-											nodes: [],
-										},
-									],
-								},
-							],
-						},
-						{
-							data: { title: 'Page Two', path: '/page-two' },
-							nodes: [],
-						},
-						{
-							data: { title: 'Third Page', path: '/third-page' },
-							nodes: [],
-						},
-					],
-				},
-			];
-		</script>
-	<link href="sortable-tree.css?9fb437ce510642ea3ea4" rel="stylesheet"><script src="sortable-tree.js?9fb437ce510642ea3ea4"></script></head>
+		<script defer src="demo.js"></script>
+	<link href="sortable-tree.css?0ed1d052ee7b4df196dc" rel="stylesheet"><script src="sortable-tree.js?0ed1d052ee7b4df196dc"></script></head>
 	<body>
 		<nav>
 			<span>
@@ -134,8 +87,6 @@
 					lightweight and no dependencies.
 				</h1>
 
-				<hr />
-
 				<h2>Getting Started</h2>
 				<p>
 					You can either install this
@@ -148,6 +99,7 @@
 					TypeScript project or directly download it from a
 					<i>CDN</i>.
 				</p>
+				<script src="https://marcantondahmen.github.io/emgithub/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fmarcantondahmen%2Fsortable-tree%2Fblob%2Fmaster%2FREADME.md%3Fplain%3D1%23L48-L48&style=dark&type=code&showCopy=on"></script>
 				<p>
 					<a
 						href="https://github.com/marcantondahmen/sortable-tree#getting-started"
@@ -155,6 +107,28 @@
 					>
 						Follow this guide to get started ⟶
 					</a>
+				</p>
+
+				<h2>Preparing Node Data</h2>
+				<p>
+					A sortable tree is generated based on an
+					<i>recursive</i> array of <i>tree nodes</i>. Every node
+					contains two properties &mdash; a <i>data</i> object and a
+					nested array of <i>nodes</i> that inherit the same structure
+					and therefore build a recursive tree.
+				</p>
+				<demo-embed name="nodes-shape"></demo-embed>
+				<p>
+					The <i>data</i> object can contain any number of custom
+					properties. The names of those properties don't matter at
+					all. The shape is freely defined by the application and the
+					developer.
+				</p>
+				<p>
+					The data object can be accessed by the
+					<a href="#custom-labels">render</a>
+					function in order to define the content and bahavior of each
+					node.
 				</p>
 
 				<h2>Basic Configuration</h2>
@@ -167,217 +141,58 @@
 					>
 					dataset and a parent <i>element</i>.<br />
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L31"
-						target="_blank"
-					>
-						View Example Nodes ⟶
-					</a>
-					<br />
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L187"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-1"></div>
-				<script>
-					const tree1 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-1'),
-						stateId: 'demo-1',
-					});
-				</script>
+				<demo-embed name="basic"></demo-embed>
+				<div id="tree-basic"></div>
 
-				<h2>Custom Label</h2>
+				<h2>Custom Labels</h2>
 				<p>
 					The actual clickable and draggable area &mdash;
 					<i>the label</i> &mdash; is rendered by a fully customizable
 					function that can be passed to the tree constructor.
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L217"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-2"></div>
-				<script>
-					const tree2 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-2'),
-						stateId: 'demo-2',
-						// Note that data object that is passed to the render function
-						// must have the same shape as the data field in the nodes dataset
-						// defined above.
-						renderLabel: ({ title, path }) => {
-							return `
-							<span>
-								<span>⌘ ${title}</span>
-								<span>↕</span>
-							</span>
-						`;
-						},
-					});
-				</script>
+				<demo-embed name="custom-labels"></demo-embed>
+				<div id="tree-labels"></div>
 
 				<h2>Custom Icons</h2>
 				<p>
 					Custom icons to indicate opened and collapsed nodes can be
-					defined using the _icons_ property.
+					defined using the <i>icons</i> property.
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L246"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-3"></div>
-				<script>
-					const tree3 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-3'),
-						icons: {
-							collapsed: '',
-							open: '',
-						},
-						stateId: 'demo-3',
-					});
-				</script>
+				<demo-embed name="custom-icons"></demo-embed>
+				<div id="tree-icons"></div>
 
 				<h2>Confirmation Dialog</h2>
 				<p>
 					It is possible to catch the drop event and wait for
 					confirmation before actually moving things around.
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L273"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-4"></div>
-				<script>
-					const tree4 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-4'),
-						stateId: 'demo-4',
-						confirm: async (movedNode, targetParentNode) => {
-							const moved = movedNode.data.title;
-							const target = targetParentNode.data.title;
-
-							return confirm(
-								`Do you really want to move "${moved}" into "${target}"?`
-							);
-						},
-					});
-				</script>
+				<demo-embed name="confirmation-dialog"></demo-embed>
+				<div id="tree-confirm"></div>
 
 				<h2>Handling Change Events</h2>
 				<p>
 					You can define your own drop event handler in tree
 					constructor options.
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L303"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-5"></div>
-				<script>
-					const tree5 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-5'),
-						stateId: 'demo-5',
-						onChange: async ({
-							nodes,
-							movedNode,
-							srcParentNode,
-							targetParentNode,
-						}) => {
-							alert(
-								"Check out the browser's console to see the updated node data."
-							);
-
-							console.log({
-								nodes,
-								movedNode,
-								srcParentNode,
-								targetParentNode,
-							});
-						},
-					});
-				</script>
+				<demo-embed name="onchange"></demo-embed>
+				<div id="tree-onchange"></div>
 
 				<h2>Handling Click Events</h2>
 				<p>
 					Aside from drop events, it is also possible to define a
 					custom handle for click events.
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L342"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-6"></div>
-				<script>
-					const tree6 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-6'),
-						stateId: 'demo-6',
-						onClick: async (event, node) => {
-							alert(`You clicked on "${node.data.title}".`);
-						},
-					});
-				</script>
+				<demo-embed name="onclick"></demo-embed>
+				<div id="tree-onclick"></div>
 
 				<h2>Finding and Revealing Nodes</h2>
 				<p>
 					You can search for nodes and interact with them.
-					<a href="#" id="reveal">Click here</a> in order to reveal
-					the hidden node with the title "Deep Nested Page".
+					<a href="#" id="reveal-button">Click here</a> in order to
+					reveal the hidden node with the title "Deep Nested Page".
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L372"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-7"></div>
-				<script>
-					const button = document.getElementById('reveal');
-					const tree7 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-7'),
-						stateId: 'demo-7',
-						initCollapseLevel: 1,
-					});
-
-					button.addEventListener('click', (event) => {
-						event.preventDefault();
-						const node = tree7.findNode(
-							'title',
-							'Deep Nested Page'
-						);
-						node.reveal();
-					});
-				</script>
+				<demo-embed name="find-reveal"></demo-embed>
+				<div id="tree-find"></div>
 
 				<h2>Disabling Sorting</h2>
 				<p>
@@ -385,27 +200,8 @@
 					that doesn't provide any sorting functionalty, you can
 					easily disbale the drag-and-drop behavior.
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L403"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-8"></div>
-				<script>
-					const tree8 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-8'),
-						stateId: 'demo-8',
-						initCollapseLevel: 1,
-						disableSorting: true,
-						onClick: async (event, node) => {
-							alert(`You clicked on "${node.data.title}".`);
-						},
-					});
-				</script>
+				<demo-embed name="no-sorting"></demo-embed>
+				<div id="tree-no-sort"></div>
 
 				<h2>Unlocking Root</h2>
 				<p>
@@ -416,23 +212,8 @@
 					disable this restriction by setting the
 					<i>lockRootLevel</i> option to <i>false</i>.
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L432"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-9"></div>
-				<script>
-					const tree9 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-9'),
-						lockRootLevel: false,
-						stateId: 'demo-9',
-					});
-				</script>
+				<demo-embed name="unlock-root"></demo-embed>
+				<div id="tree-unlock-root"></div>
 
 				<h2>No Theme</h2>
 				<p>
@@ -449,30 +230,8 @@
 					>
 					that allow for easy integration into other design systems.
 				</p>
-				<p>
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L467"
-						target="_blank"
-					>
-						View Code ⟶
-					</a>
-				</p>
-				<div id="demo-10"></div>
-				<script>
-					const tree10 = new SortableTree({
-						nodes,
-						element: document.getElementById('demo-10'),
-						stateId: 'demo-10',
-						initCollapseLevel: 4,
-						styles: {
-							tree: 'my-tree',
-							node: 'my-tree__node',
-							label: 'my-tree__label',
-							subnodes: 'my-tree__subnodes',
-							collapse: 'my-tree__collapse',
-						},
-					});
-				</script>
+				<demo-embed name="unstyled"></demo-embed>
+				<div id="tree-unstyled"></div>
 			</main>
 		</div>
 	</body>
