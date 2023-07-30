@@ -423,29 +423,36 @@ code.hljs {
   opacity: 0.25;
 }
 .emgithub-file .hljs-style-dark .hljs {
-  color: var(--code-1);
+  color: var(--code-3);
   background-color: var(--code-background);
+  font-weight: 400;
 }
 .emgithub-file .hljs-style-dark .hljs-comment {
   color: var(--muted-color);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 .emgithub-file .hljs-style-dark .hljs-punctuation,
 .emgithub-file .hljs-style-dark .hljs-tag {
-  color: var(--code-1);
+  color: var(--code-3);
 }
 .emgithub-file .hljs-style-dark .hljs-tag .hljs-attr,
 .emgithub-file .hljs-style-dark .hljs-tag .hljs-name {
   color: var(--code-accent-1);
 }
-.emgithub-file .hljs-style-dark .hljs-attribute,
-.emgithub-file .hljs-style-dark .hljs-doctag,
 .emgithub-file .hljs-style-dark .hljs-keyword,
+.emgithub-file .hljs-style-dark .hljs-property {
+  color: var(--code-1);
+  font-weight: 400;
+}
+.emgithub-file .hljs-style-dark .hljs-attr {
+  color: var(--code-2);
+}
+.emgithub-file .hljs-style-dark .hljs-doctag,
 .emgithub-file .hljs-style-dark .hljs-meta .hljs-keyword,
 .emgithub-file .hljs-style-dark .hljs-name,
 .emgithub-file .hljs-style-dark .hljs-selector-tag {
   color: var(--code-2);
-  font-weight: 600;
+  font-weight: 500;
 }
 .emgithub-file .hljs-style-dark .hljs-deletion,
 .emgithub-file .hljs-style-dark .hljs-number,
@@ -460,7 +467,7 @@ code.hljs {
 .emgithub-file .hljs-style-dark .hljs-section,
 .emgithub-file .hljs-style-dark .hljs-title {
   color: var(--code-accent-1);
-  font-weight: 600;
+  font-weight: 500;
 }
 .emgithub-file .hljs-style-dark .hljs-link,
 .emgithub-file .hljs-style-dark .hljs-operator,
@@ -472,7 +479,7 @@ code.hljs {
 .emgithub-file .hljs-style-dark .hljs-variable,
 .emgithub-file .hljs-style-dark .hljs-params,
 .emgithub-file .hljs-style-dark .hljs-subst {
-  color: var(--code-2);
+  color: var(--code-3);
 }
 .emgithub-file .hljs-style-dark .hljs-literal {
   color: var(--code-3);
@@ -481,7 +488,7 @@ code.hljs {
 .emgithub-file .hljs-style-dark .hljs-built_in,
 .emgithub-file .hljs-style-dark .hljs-bullet,
 .emgithub-file .hljs-style-dark .hljs-code {
-  color: var(--code-1);
+  color: var(--code-3);
 }
 .emgithub-file .hljs-style-dark .hljs-meta {
   color: var(--code-accent-2);
@@ -490,7 +497,7 @@ code.hljs {
   color: var(--code-3);
 }
 .emgithub-file .hljs-style-dark .hljs-strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 demo-toc {
