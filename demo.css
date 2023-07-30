@@ -427,6 +427,9 @@ code.hljs {
   background-color: var(--code-background);
   font-weight: 400;
 }
+.emgithub-file .hljs-style-dark .hljs.language-markdown {
+  color: var(--code-2);
+}
 .emgithub-file .hljs-style-dark .hljs-comment {
   color: var(--muted-color);
   opacity: 0.5;
