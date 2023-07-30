@@ -1,4 +1,4 @@
-import SortableTree, { SortableTreeNodeData } from 'sortable-tree';
+import { SortableTreeNodeData } from 'sortable-tree';
 
 export const nodes: SortableTreeNodeData[] = [
 	{
