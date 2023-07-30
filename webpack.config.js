@@ -112,6 +112,12 @@ const configDemo = (env, argv) => {
 				filename: '[name].css',
 			}),
 		],
+		resolve: {
+			extensions: ['.ts', '.js'],
+			alias: {
+				'sortable-tree': path.resolve(__dirname, './src'),
+			},
+		},
 	});
 
 	return config;

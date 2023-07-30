@@ -1,0 +1,127 @@
+.emgithub-file .code-area td.hljs-ln-line {
+	font-family: 'JetBrains Mono Variable' !important;
+	font-size: 0.85rem !important;
+	line-height: 1.675 !important;
+}
+
+.copy-btn.copy-btn-dark {
+	font-family: 'JetBrains Mono Variable' !important;
+	font-weight: 400;
+	font-size: 0.8rem !important;
+	line-height: 2.4 !important;
+	padding: 0 0.6rem !important;
+	color: var(--code-3) !important;
+	background-color: var(--background) !important;
+	border: none !important;
+	border-radius: 0.4rem !important;
+	transition: color 0.2s, background-color 0.2s;
+
+	&:active {
+		color: var(--color) !important;
+		background-color: var(--accent-color) !important;
+	}
+}
+
+pre code.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 1em;
+}
+
+code.hljs {
+	padding: 3px 5px;
+}
+
+.emgithub-file {
+	border-radius: 0.55rem !important;
+
+	& .code-area .hljs-ln-numbers {
+		color: var(--muted-color) !important;
+		opacity: 0.25;
+	}
+
+	& .hljs-style-dark {
+		.hljs {
+			color: var(--code-1);
+			background-color: var(--code-background);
+		}
+
+		.hljs-comment {
+			color: var(--muted-color);
+			opacity: 0.6;
+		}
+
+		.hljs-punctuation,
+		.hljs-tag {
+			color: var(--code-1);
+		}
+
+		.hljs-tag .hljs-attr,
+		.hljs-tag .hljs-name {
+			color: var(--code-accent-1);
+		}
+
+		.hljs-attribute,
+		.hljs-doctag,
+		.hljs-keyword,
+		.hljs-meta .hljs-keyword,
+		.hljs-name,
+		.hljs-selector-tag {
+			color: var(--code-2);
+			font-weight: 600;
+		}
+
+		.hljs-deletion,
+		.hljs-number,
+		.hljs-quote,
+		.hljs-selector-class,
+		.hljs-selector-id,
+		.hljs-string,
+		.hljs-template-tag,
+		.hljs-type {
+			color: var(--code-accent-2);
+		}
+
+		.hljs-section,
+		.hljs-title {
+			color: var(--code-accent-1);
+			font-weight: 600;
+		}
+
+		.hljs-link,
+		.hljs-operator,
+		.hljs-regexp,
+		.hljs-selector-attr,
+		.hljs-selector-pseudo,
+		.hljs-symbol,
+		.hljs-template-variable,
+		.hljs-variable,
+		.hljs-params,
+		.hljs-subst {
+			color: var(--code-2);
+		}
+
+		.hljs-literal {
+			color: var(--code-3);
+		}
+
+		.hljs-addition,
+		.hljs-built_in,
+		.hljs-bullet,
+		.hljs-code {
+			color: var(--code-1);
+		}
+
+		.hljs-meta {
+			color: var(--code-accent-2);
+		}
+
+		.hljs-meta .hljs-string {
+			color: var(--code-3);
+		}
+
+		.hljs-strong {
+			font-weight: 600;
+		}
+	}
+}
