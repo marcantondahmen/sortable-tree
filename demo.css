@@ -320,7 +320,6 @@ body {
   font-size: 16px;
   font-weight: 480;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 @media (min-width: 1600px) {
   html,
@@ -337,14 +336,39 @@ body {
 body {
   max-width: 88rem;
   margin: auto;
-  padding: 0 2rem;
+  padding: 0 1.75rem;
+}
+img.hero {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--border);
+  border-radius: 0.8rem;
+  mix-blend-mode: lighten;
+  aspect-ratio: 1.65;
+  object-fit: cover;
+}
+@media (max-width: 800px) {
+  img.hero {
+    border: none;
+    aspect-ratio: 1.2;
+    object-fit: cover;
+    margin: -3rem -1.75rem;
+    width: 100vw;
+    max-width: 100vw;
+  }
 }
 h1 {
-  margin: -0.25rem 0 5rem 0;
+  margin: -0.25rem 0 4rem 0;
   font-size: 2.45em;
   font-weight: 620;
   line-height: 1.28;
   max-width: 34rem;
+}
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2.1em;
+  }
 }
 h2 {
   margin: 0 0 1.3rem 0;
@@ -538,6 +562,7 @@ demo-toc a:hover {
 @media (min-width: 900px) {
   .grid {
     display: grid;
+    gap: 1rem;
     grid-template-columns: 20rem minmax(auto, 34rem);
   }
 }
@@ -642,13 +667,14 @@ nav :first-child a {
 
 :root {
   --color: hsl(217, 12%, 90%);
-  --background: hsl(217, 12%, 10%);
+  --background: hsl(217, 12%, 11%);
+  --border: hsl(217, 12%, 15%);
   --accent-color: hsl(215, 100%, 58%);
   --accent-background: hsl(215, 71%, 12%);
   --hover-color: hsl(217, 12%, 84%);
-  --hover-background: hsl(217, 12%, 15%);
+  --hover-background: hsl(217, 12%, 16%);
   --muted-color: hsl(217, 12%, 46%);
-  --code-background: hsl(217, 12%, 13%);
+  --code-background: hsl(217, 12%, 14%);
   --code-1: hsl(217, 12%, 85%);
   --code-2: hsl(217, 12%, 65%);
   --code-3: hsl(217, 12%, 50%);
