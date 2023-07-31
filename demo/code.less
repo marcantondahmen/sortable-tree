@@ -35,6 +35,7 @@ code.hljs {
 
 .emgithub-file {
 	border-radius: 0.55rem !important;
+	transform: translateZ(0); // Safari border radius fix.
 
 	& .code-area .hljs-ln-numbers {
 		color: var(--muted-color) !important;
@@ -42,6 +43,8 @@ code.hljs {
 	}
 
 	& .hljs-style-dark {
+		background-color: var(--code-background);
+
 		.hljs {
 			color: var(--code-3);
 			background-color: var(--code-background);
