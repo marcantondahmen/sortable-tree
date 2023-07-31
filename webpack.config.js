@@ -67,6 +67,7 @@ const configMain = (env, argv) => {
 				scriptLoading: 'blocking',
 				inject: 'head',
 				minify: false,
+				favicon: 'assets/favicon.svg',
 			}),
 			new MiniCssExtractPlugin({
 				filename: '[name].css',
