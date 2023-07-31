@@ -27,8 +27,10 @@ class EmbedComponent extends HTMLElement {
 
 	createSrc(name: string): string {
 		const theme = 'dark';
+		const emgithubUrl = 'https://marcantondahmen.github.io/emgithub';
+		const emgithubVersion = 'embed-v2';
 
-		return `https://marcantondahmen.github.io/emgithub/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fmarcantondahmen%2Fsortable-tree%2Fblob%2Fmaster%2Fdemo%2Fexamples%2F${name}.ts%3Fts%3D2&style=${theme}&type=code&showLineNumbers=on&showCopy=on`;
+		return `${emgithubUrl}/${emgithubVersion}.js?target=https%3A%2F%2Fgithub.com%2Fmarcantondahmen%2Fsortable-tree%2Fblob%2Fmaster%2Fdemo%2Fexamples%2F${name}.ts%3Fts%3D2&style=${theme}&type=code&showLineNumbers=on&showCopy=on`;
 	}
 }
 
