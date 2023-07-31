@@ -27,7 +27,6 @@ body {
 	font-size: 16px;
 	font-weight: 480;
 	line-height: 1.6;
-	overflow-x: hidden;
 
 	@media (min-width: 1600px) {
 		font-size: 18px;
@@ -41,15 +40,39 @@ body {
 body {
 	max-width: 88rem;
 	margin: auto;
-	padding: 0 2rem;
+	padding: 0 1.75rem;
+}
+
+img.hero {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	border: 2px solid var(--border);
+	border-radius: 0.8rem;
+	mix-blend-mode: lighten;
+	aspect-ratio: 1.65;
+	object-fit: cover;
+
+	@media (max-width: 800px) {
+		border: none;
+		aspect-ratio: 1.2;
+		object-fit: cover;
+		margin: -3rem -1.75rem;
+		width: 100vw;
+		max-width: 100vw;
+	}
 }
 
 h1 {
-	margin: -0.25rem 0 5rem 0;
+	margin: -0.25rem 0 4rem 0;
 	font-size: 2.45em;
 	font-weight: 620;
 	line-height: 1.28;
 	max-width: 34rem;
+
+	@media (max-width: 800px) {
+		font-size: 2.1em;
+	}
 }
 
 h2 {
