@@ -336,7 +336,7 @@ body {
 body {
   max-width: 88rem;
   margin: auto;
-  padding: 0 1.75rem;
+  padding: 0 2rem;
 }
 img.hero {
   width: 100%;
@@ -353,7 +353,7 @@ img.hero {
     border: none;
     aspect-ratio: 1.2;
     object-fit: cover;
-    margin: -3rem -1.75rem;
+    margin: -3rem -2rem;
     width: 100vw;
     max-width: 100vw;
   }
@@ -437,7 +437,8 @@ summary::-webkit-details-marker {
 }
 pre code.hljs {
   display: block;
-  overflow-x: auto;
+  max-height: 40rem;
+  overflow: auto;
   padding: 1em;
 }
 code.hljs {
@@ -492,6 +493,7 @@ code.hljs {
 .emgithub-file .hljs-style-dark .hljs-selector-id,
 .emgithub-file .hljs-style-dark .hljs-string,
 .emgithub-file .hljs-style-dark .hljs-template-tag,
+.emgithub-file .hljs-style-dark .hljs-attribute,
 .emgithub-file .hljs-style-dark .hljs-type {
   color: var(--code-accent-2);
 }
@@ -612,7 +614,7 @@ nav :first-child a {
   --st-collapse-icon-size: 0.9rem;
   display: flex;
   flex-direction: column;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 .tree__label {
   display: flex;
@@ -663,6 +665,53 @@ nav :first-child a {
 .tree__node--dragging .tree__label > span {
   border-style: dashed;
   cursor: move !important;
+}
+.tree__subnodes .tree__node {
+  --line-color: hsl(217, 12%, 22%);
+  position: relative;
+}
+.tree__subnodes .tree__node:not(:last-child):before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  left: calc((var(--st-subnodes-padding-left) / -2) + 8px);
+  border-left: 2px solid var(--line-color);
+}
+.tree__subnodes .tree__label > span {
+  position: relative;
+}
+.tree__subnodes .tree__label > span:before {
+  content: '';
+  position: absolute;
+  left: -1.4rem;
+  top: -6px;
+  height: calc(100% + 6px);
+  border-left: 2px solid var(--line-color);
+  mix-blend-mode: lighten;
+}
+:last-child > .tree__subnodes .tree__label > span:before {
+  height: calc(50% + 6px);
+}
+.tree__subnodes .tree__label > span:after {
+  content: '';
+  position: absolute;
+  left: -1.4rem;
+  top: 0;
+  width: calc(1.4rem - 4px);
+  height: 50%;
+  border-bottom: 2px solid var(--line-color);
+  mix-blend-mode: lighten;
+}
+.tree__collapse {
+  z-index: 3;
+}
+.my-icon {
+  margin-left: -0.05rem;
+  font-size: 0.85rem;
+  background-color: var(--background);
+}
+.my-tree {
+  margin: 2rem 0;
 }
 
 :root {
