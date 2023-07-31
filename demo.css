@@ -416,6 +416,14 @@ summary::-webkit-details-marker {
 footer {
   margin-top: 4rem;
 }
+footer p a {
+  color: var(--muted-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer p a:hover {
+  color: var(--color);
+}
 
 .emgithub-file .code-area td.hljs-ln-line {
   font-family: 'JetBrains Mono Variable' !important;
