@@ -320,6 +320,7 @@ body {
   font-size: 16px;
   font-weight: 480;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 @media (min-width: 1600px) {
   html,
@@ -525,20 +526,18 @@ demo-toc a:hover {
 }
 
 .grid {
-  display: grid;
   max-width: 100%;
   padding: 2rem 0;
   margin: 2rem auto;
-  grid-template-columns: 0 1fr 0;
 }
 @media (max-width: 899px) {
   .grid > :first-child {
-    opacity: 0;
-    pointer-events: none;
+    display: none;
   }
 }
 @media (min-width: 900px) {
   .grid {
+    display: grid;
     grid-template-columns: 20rem minmax(auto, 34rem);
   }
 }
