@@ -413,6 +413,9 @@ summary:hover {
 summary::-webkit-details-marker {
   display: none;
 }
+footer {
+  margin-top: 4rem;
+}
 
 .emgithub-file .code-area td.hljs-ln-line {
   font-family: 'JetBrains Mono Variable' !important;
