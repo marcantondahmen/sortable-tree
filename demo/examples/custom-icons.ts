@@ -5,8 +5,8 @@ new SortableTree({
 	nodes,
 	element: document.getElementById('tree-icons'),
 	icons: {
-		collapsed: '',
-		open: '',
+		collapsed: '<span class="my-icon"></span>',
+		open: '<span class="my-icon"></span>',
 	},
 	stateId: 'tree-icons',
 });

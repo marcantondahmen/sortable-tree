@@ -233,8 +233,8 @@ const tree = new SortableTree({
   nodes: nodes,
   element: document.querySelector('#tree'),
   icons: {
-    collapsed: '+',
-    open: '-',
+    collapsed: '<span class="my-icon">+</span>',
+    open: '<span class="my-icon">-</span>',
   },
   styles: {
     tree: 'my-tree',

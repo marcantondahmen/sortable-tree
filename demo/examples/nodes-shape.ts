@@ -2,15 +2,16 @@ import { SortableTreeNodeData } from 'sortable-tree';
 
 const nodes: SortableTreeNodeData[] = [
 	{
-		data: { title: 'Homepage', path: '/' },
+		data: { prop: 'value', anotherProp: 'value' },
 		nodes: [
 			{
-				data: { title: 'Page', path: '/page' },
+				data: { prop: 'value', anotherProp: 'value' },
 				nodes: [
-					// { ... }, { ... }
+					// More nodes
 				],
 			},
-			// { ... }, { ... }
+			// More nodes
 		],
 	},
+	// More nodes
 ];
