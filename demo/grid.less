@@ -1,18 +1,16 @@
 .grid {
-	display: grid;
 	max-width: 100%;
 	padding: 2rem 0;
 	margin: 2rem auto;
-	grid-template-columns: 0 1fr 0;
 
 	@media (max-width: 899px) {
 		& > :first-child {
-			opacity: 0;
-			pointer-events: none;
+			display: none;
 		}
 	}
 
 	@media (min-width: 900px) {
+		display: grid;
 		grid-template-columns: 20rem minmax(auto, 34rem);
 	}
 
