@@ -457,10 +457,14 @@ code.hljs {
 }
 .emgithub-file {
   border-radius: 0.55rem !important;
+  transform: translateZ(0);
 }
 .emgithub-file .code-area .hljs-ln-numbers {
   color: var(--muted-color) !important;
   opacity: 0.25;
+}
+.emgithub-file .hljs-style-dark {
+  background-color: var(--code-background);
 }
 .emgithub-file .hljs-style-dark .hljs {
   color: var(--code-3);
