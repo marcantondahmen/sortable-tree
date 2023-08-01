@@ -9,6 +9,7 @@ import './nav.less';
 import './tree.less';
 import './variables.less';
 
+import './components/Code';
 import './components/Embed';
 import './components/TableOfContents';
 

@@ -1,3 +1,4 @@
+code,
 .emgithub-file .code-area td.hljs-ln-line {
 	font-family: 'JetBrains Mono Variable' !important;
 	font-size: 0.85rem !important;
@@ -29,19 +30,38 @@ pre code.hljs {
 	padding: 1em;
 }
 
+code,
 code.hljs {
 	padding: 3px 5px;
 }
 
-.emgithub-file {
-	border-radius: 0.55rem !important;
-	transform: translateZ(0); // Safari border radius fix.
+code {
+	font-weight: 400;
+	color: var(--code-2);
+	background-color: var(--code-background);
+	border-radius: 0.4rem;
+}
 
-	& .code-area .hljs-ln-numbers {
+demo-code > pre,
+.emgithub-file {
+	margin: 0;
+	border-radius: 0.55rem !important;
+	overflow: hidden !important;
+	transform: translateZ(0); // Safari border radius fix.
+}
+
+demo-code,
+.emgithub-file .code-area {
+	& .hljs-ln-numbers {
+		padding-right: 1rem !important;
 		color: var(--muted-color) !important;
 		opacity: 0.25;
 	}
+}
 
+demo-code,
+.emgithub-file {
+	& pre,
 	& .hljs-style-dark {
 		background-color: var(--code-background);
 
