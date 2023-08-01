@@ -425,6 +425,7 @@ footer p a:hover {
   color: var(--color);
 }
 
+code,
 .emgithub-file .code-area td.hljs-ln-line {
   font-family: 'JetBrains Mono Variable' !important;
   font-size: 0.85rem !important;
@@ -452,98 +453,242 @@ pre code.hljs {
   overflow: auto;
   padding: 1em;
 }
+code,
 code.hljs {
   padding: 3px 5px;
 }
+code {
+  font-weight: 400;
+  color: var(--code-2);
+  background-color: var(--code-background);
+  border-radius: 0.4rem;
+}
+demo-code > pre,
 .emgithub-file {
+  margin: 0;
   border-radius: 0.55rem !important;
+  overflow: hidden !important;
   transform: translateZ(0);
 }
+demo-code .hljs-ln-numbers,
 .emgithub-file .code-area .hljs-ln-numbers {
+  padding-right: 1rem !important;
   color: var(--muted-color) !important;
   opacity: 0.25;
 }
+demo-code pre,
+.emgithub-file pre,
+demo-code .hljs-style-dark,
 .emgithub-file .hljs-style-dark {
   background-color: var(--code-background);
 }
+demo-code pre .hljs,
+.emgithub-file pre .hljs,
+demo-code .hljs-style-dark .hljs,
 .emgithub-file .hljs-style-dark .hljs {
   color: var(--code-3);
   background-color: var(--code-background);
   font-weight: 400;
 }
+demo-code pre .hljs.language-markdown,
+.emgithub-file pre .hljs.language-markdown,
+demo-code .hljs-style-dark .hljs.language-markdown,
 .emgithub-file .hljs-style-dark .hljs.language-markdown {
   color: var(--code-2);
 }
+demo-code pre .hljs-comment,
+.emgithub-file pre .hljs-comment,
+demo-code .hljs-style-dark .hljs-comment,
 .emgithub-file .hljs-style-dark .hljs-comment {
   color: var(--muted-color);
   opacity: 0.5;
 }
+demo-code pre .hljs-punctuation,
+.emgithub-file pre .hljs-punctuation,
+demo-code .hljs-style-dark .hljs-punctuation,
 .emgithub-file .hljs-style-dark .hljs-punctuation,
+demo-code pre .hljs-tag,
+.emgithub-file pre .hljs-tag,
+demo-code .hljs-style-dark .hljs-tag,
 .emgithub-file .hljs-style-dark .hljs-tag {
   color: var(--code-3);
 }
+demo-code pre .hljs-tag .hljs-attr,
+.emgithub-file pre .hljs-tag .hljs-attr,
+demo-code .hljs-style-dark .hljs-tag .hljs-attr,
 .emgithub-file .hljs-style-dark .hljs-tag .hljs-attr,
+demo-code pre .hljs-tag .hljs-name,
+.emgithub-file pre .hljs-tag .hljs-name,
+demo-code .hljs-style-dark .hljs-tag .hljs-name,
 .emgithub-file .hljs-style-dark .hljs-tag .hljs-name {
   color: var(--code-accent-1);
 }
+demo-code pre .hljs-keyword,
+.emgithub-file pre .hljs-keyword,
+demo-code .hljs-style-dark .hljs-keyword,
 .emgithub-file .hljs-style-dark .hljs-keyword,
+demo-code pre .hljs-property,
+.emgithub-file pre .hljs-property,
+demo-code .hljs-style-dark .hljs-property,
 .emgithub-file .hljs-style-dark .hljs-property {
   color: var(--code-1);
   font-weight: 400;
 }
+demo-code pre .hljs-attr,
+.emgithub-file pre .hljs-attr,
+demo-code .hljs-style-dark .hljs-attr,
 .emgithub-file .hljs-style-dark .hljs-attr {
   color: var(--code-2);
 }
+demo-code pre .hljs-doctag,
+.emgithub-file pre .hljs-doctag,
+demo-code .hljs-style-dark .hljs-doctag,
 .emgithub-file .hljs-style-dark .hljs-doctag,
+demo-code pre .hljs-meta .hljs-keyword,
+.emgithub-file pre .hljs-meta .hljs-keyword,
+demo-code .hljs-style-dark .hljs-meta .hljs-keyword,
 .emgithub-file .hljs-style-dark .hljs-meta .hljs-keyword,
+demo-code pre .hljs-name,
+.emgithub-file pre .hljs-name,
+demo-code .hljs-style-dark .hljs-name,
 .emgithub-file .hljs-style-dark .hljs-name,
+demo-code pre .hljs-selector-tag,
+.emgithub-file pre .hljs-selector-tag,
+demo-code .hljs-style-dark .hljs-selector-tag,
 .emgithub-file .hljs-style-dark .hljs-selector-tag {
   color: var(--code-2);
   font-weight: 500;
 }
+demo-code pre .hljs-deletion,
+.emgithub-file pre .hljs-deletion,
+demo-code .hljs-style-dark .hljs-deletion,
 .emgithub-file .hljs-style-dark .hljs-deletion,
+demo-code pre .hljs-number,
+.emgithub-file pre .hljs-number,
+demo-code .hljs-style-dark .hljs-number,
 .emgithub-file .hljs-style-dark .hljs-number,
+demo-code pre .hljs-quote,
+.emgithub-file pre .hljs-quote,
+demo-code .hljs-style-dark .hljs-quote,
 .emgithub-file .hljs-style-dark .hljs-quote,
+demo-code pre .hljs-selector-class,
+.emgithub-file pre .hljs-selector-class,
+demo-code .hljs-style-dark .hljs-selector-class,
 .emgithub-file .hljs-style-dark .hljs-selector-class,
+demo-code pre .hljs-selector-id,
+.emgithub-file pre .hljs-selector-id,
+demo-code .hljs-style-dark .hljs-selector-id,
 .emgithub-file .hljs-style-dark .hljs-selector-id,
+demo-code pre .hljs-string,
+.emgithub-file pre .hljs-string,
+demo-code .hljs-style-dark .hljs-string,
 .emgithub-file .hljs-style-dark .hljs-string,
+demo-code pre .hljs-template-tag,
+.emgithub-file pre .hljs-template-tag,
+demo-code .hljs-style-dark .hljs-template-tag,
 .emgithub-file .hljs-style-dark .hljs-template-tag,
+demo-code pre .hljs-attribute,
+.emgithub-file pre .hljs-attribute,
+demo-code .hljs-style-dark .hljs-attribute,
 .emgithub-file .hljs-style-dark .hljs-attribute,
+demo-code pre .hljs-type,
+.emgithub-file pre .hljs-type,
+demo-code .hljs-style-dark .hljs-type,
 .emgithub-file .hljs-style-dark .hljs-type {
   color: var(--code-accent-2);
 }
+demo-code pre .hljs-section,
+.emgithub-file pre .hljs-section,
+demo-code .hljs-style-dark .hljs-section,
 .emgithub-file .hljs-style-dark .hljs-section,
+demo-code pre .hljs-title,
+.emgithub-file pre .hljs-title,
+demo-code .hljs-style-dark .hljs-title,
 .emgithub-file .hljs-style-dark .hljs-title {
   color: var(--code-accent-1);
   font-weight: 500;
 }
+demo-code pre .hljs-link,
+.emgithub-file pre .hljs-link,
+demo-code .hljs-style-dark .hljs-link,
 .emgithub-file .hljs-style-dark .hljs-link,
+demo-code pre .hljs-operator,
+.emgithub-file pre .hljs-operator,
+demo-code .hljs-style-dark .hljs-operator,
 .emgithub-file .hljs-style-dark .hljs-operator,
+demo-code pre .hljs-regexp,
+.emgithub-file pre .hljs-regexp,
+demo-code .hljs-style-dark .hljs-regexp,
 .emgithub-file .hljs-style-dark .hljs-regexp,
+demo-code pre .hljs-selector-attr,
+.emgithub-file pre .hljs-selector-attr,
+demo-code .hljs-style-dark .hljs-selector-attr,
 .emgithub-file .hljs-style-dark .hljs-selector-attr,
+demo-code pre .hljs-selector-pseudo,
+.emgithub-file pre .hljs-selector-pseudo,
+demo-code .hljs-style-dark .hljs-selector-pseudo,
 .emgithub-file .hljs-style-dark .hljs-selector-pseudo,
+demo-code pre .hljs-symbol,
+.emgithub-file pre .hljs-symbol,
+demo-code .hljs-style-dark .hljs-symbol,
 .emgithub-file .hljs-style-dark .hljs-symbol,
+demo-code pre .hljs-template-variable,
+.emgithub-file pre .hljs-template-variable,
+demo-code .hljs-style-dark .hljs-template-variable,
 .emgithub-file .hljs-style-dark .hljs-template-variable,
+demo-code pre .hljs-variable,
+.emgithub-file pre .hljs-variable,
+demo-code .hljs-style-dark .hljs-variable,
 .emgithub-file .hljs-style-dark .hljs-variable,
+demo-code pre .hljs-params,
+.emgithub-file pre .hljs-params,
+demo-code .hljs-style-dark .hljs-params,
 .emgithub-file .hljs-style-dark .hljs-params,
+demo-code pre .hljs-subst,
+.emgithub-file pre .hljs-subst,
+demo-code .hljs-style-dark .hljs-subst,
 .emgithub-file .hljs-style-dark .hljs-subst {
   color: var(--code-3);
 }
+demo-code pre .hljs-literal,
+.emgithub-file pre .hljs-literal,
+demo-code .hljs-style-dark .hljs-literal,
 .emgithub-file .hljs-style-dark .hljs-literal {
   color: var(--code-3);
 }
+demo-code pre .hljs-addition,
+.emgithub-file pre .hljs-addition,
+demo-code .hljs-style-dark .hljs-addition,
 .emgithub-file .hljs-style-dark .hljs-addition,
+demo-code pre .hljs-built_in,
+.emgithub-file pre .hljs-built_in,
+demo-code .hljs-style-dark .hljs-built_in,
 .emgithub-file .hljs-style-dark .hljs-built_in,
+demo-code pre .hljs-bullet,
+.emgithub-file pre .hljs-bullet,
+demo-code .hljs-style-dark .hljs-bullet,
 .emgithub-file .hljs-style-dark .hljs-bullet,
+demo-code pre .hljs-code,
+.emgithub-file pre .hljs-code,
+demo-code .hljs-style-dark .hljs-code,
 .emgithub-file .hljs-style-dark .hljs-code {
   color: var(--code-3);
 }
+demo-code pre .hljs-meta,
+.emgithub-file pre .hljs-meta,
+demo-code .hljs-style-dark .hljs-meta,
 .emgithub-file .hljs-style-dark .hljs-meta {
   color: var(--code-accent-2);
 }
+demo-code pre .hljs-meta .hljs-string,
+.emgithub-file pre .hljs-meta .hljs-string,
+demo-code .hljs-style-dark .hljs-meta .hljs-string,
 .emgithub-file .hljs-style-dark .hljs-meta .hljs-string {
   color: var(--code-3);
 }
+demo-code pre .hljs-strong,
+.emgithub-file pre .hljs-strong,
+demo-code .hljs-style-dark .hljs-strong,
 .emgithub-file .hljs-style-dark .hljs-strong {
   font-weight: 500;
 }
@@ -666,6 +811,12 @@ nav :first-child a {
   background-color: var(--background);
   transition: color 0.2s, background 0.2s;
 }
+.tree__collapse > * {
+  box-sizing: content-box;
+  margin-left: -5px;
+  padding: 5px;
+  background-color: var(--background);
+}
 .tree__node--drop-before > .tree__label:after {
   border-top-color: var(--accent-color);
 }
@@ -683,6 +834,7 @@ nav :first-child a {
 }
 .tree__subnodes .tree__node {
   --line-color: hsl(217, 12%, 22%);
+  --line-radius: 8px;
   position: relative;
 }
 .tree__subnodes .tree__node:not(:last-child):before {
@@ -701,7 +853,9 @@ nav :first-child a {
   left: -1.4rem;
   top: -6px;
   height: calc(100% + 6px);
+  width: var(--line-radius);
   border-left: 2px solid var(--line-color);
+  border-bottom-left-radius: var(--line-radius);
   mix-blend-mode: lighten;
 }
 :last-child > .tree__subnodes .tree__label > span:before {
@@ -715,6 +869,7 @@ nav :first-child a {
   width: calc(1.4rem - 4px);
   height: 50%;
   border-bottom: 2px solid var(--line-color);
+  border-bottom-left-radius: var(--line-radius);
   mix-blend-mode: lighten;
 }
 .tree__collapse {

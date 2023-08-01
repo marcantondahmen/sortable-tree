@@ -26,11 +26,11 @@
 			property="og:image"
 			content="https://raw.githubusercontent.com/marcantondahmen/sortable-tree/master/assets/readme.png"
 		/>
-		<link rel="stylesheet" href="demo.css?t=1690832993500" />
+		<link rel="stylesheet" href="demo.css?t=1690901713078" />
 		<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
-		<script defer src="demo.js?t=1690832993500"></script>
-	<link rel="icon" href="favicon.svg?1c044342f63bad7eae6d"><link href="sortable-tree.css?1c044342f63bad7eae6d" rel="stylesheet"><script src="sortable-tree.js?1c044342f63bad7eae6d"></script></head>
+		<script defer src="demo.js?t=1690901713078"></script>
+	<link rel="icon" href="favicon.svg?688af24ab28c9e7542d1"><link href="sortable-tree.css?688af24ab28c9e7542d1" rel="stylesheet"><script src="sortable-tree.js?688af24ab28c9e7542d1"></script></head>
 	<body>
 		<nav>
 			<span>
@@ -128,16 +128,16 @@
 				<p>
 					A sortable tree is generated based on an
 					<i>recursive</i> array of <i>tree nodes</i>. Every node
-					contains two properties &mdash; a <i>data</i> object and a
-					nested array of <i>nodes</i> that inherit the same structure
-					and therefore build a recursive tree.
+					contains two properties &mdash; a <code>data</code> object
+					and a nested array of <code>nodes</code> that inherit the
+					same structure and therefore build a recursive tree.
 				</p>
 				<demo-embed name="nodes-shape"></demo-embed>
 				<p>
-					The <i>data</i> object can contain any number of custom
-					properties. The names of those properties don't matter at
-					all. The shape is freely defined by the application and the
-					developer.
+					The <code>data</code> object can contain any number of
+					custom properties. The names of those properties don't
+					matter at all. The shape is freely defined by the
+					application and the developer.
 				</p>
 				<p>
 					The data object can be accessed by the
@@ -148,13 +148,19 @@
 
 				<h2>Basic Configuration</h2>
 				<p>
-					The most basic configuration only requires a
-					<a
-						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/index.html#L31"
-						target="_blank"
-						>nodes</a
-					>
-					dataset and a parent <i>element</i>.<br />
+					First, <i>it is required</i> to included the
+					<code>sortable-tree.css</code> into your bundle in order to
+					handle the basic tree functionality &mdash; this will not
+					apply any other <a href="#unstyled">styling</a> but folding
+					and indentation.
+				</p>
+				<demo-code
+					>import 'sortable-tree/dist/sortable-tree.css';</demo-code
+				>
+				<p>
+					Now the actual tree can be created. The most basic
+					configuration only requires a <code>nodes</code> object
+					array and a target <code>element</code>.
 				</p>
 				<demo-embed name="basic"></demo-embed>
 				<div id="tree-basic"></div>
@@ -227,19 +233,21 @@
 					address use cases such as an actual file system tree that
 					can only have on root node. However, it is possible to
 					disable this restriction by setting the
-					<i>lockRootLevel</i> option to <i>false</i>.
+					<code>lockRootLevel</code> option to <code>false</code>.
 				</p>
 				<demo-embed name="unlock-root"></demo-embed>
 				<div id="tree-unlock-root"></div>
 
-				<h2>No Theme</h2>
+				<h2>Unstyled</h2>
 				<p>
-					By default, the included styles only cover the most basic
-					functionality such as collapsing and indentation. You can
-					assign your own CSS classes to the rendered elements as well
-					as fully customize the render function. Without any theming,
-					the generated tree looks as follows. In addition to that,
-					the basic styles are controlled by
+					By default, the <code>sortable-tree.css</code>, that
+					<i>is required to be imported</i>, only covers the most
+					basic functionality such as collapsing and indentation. You
+					can add your own <a href="#custom-theme">custom</a> CSS
+					classes to the rendered elements as well as fully customize
+					the <a href="#custom-labels">render function</a>. Without
+					any theming, the generated tree looks as follows. In
+					addition to that, the basic styles are controlled by
 					<a
 						href="https://github.com/marcantondahmen/sortable-tree/blob/master/src/styles.less#L1"
 						target="_blank"
@@ -253,7 +261,7 @@
 				<h2>Custom Theme</h2>
 				<p>
 					The theme that is used here on this example page can be
-					found on
+					found as a <code>.less</code> file on
 					<a
 						href="https://github.com/marcantondahmen/sortable-tree/blob/master/demo/tree.less"
 						target="_blank"
