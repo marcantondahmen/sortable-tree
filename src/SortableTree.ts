@@ -139,7 +139,7 @@ export class SortableTree {
 			targetParentNode: targetParentNode,
 		};
 
-		targetParentNode.collapse(false);
+		targetParentNode?.collapse(false);
 		this.onChange(result);
 	}
 
