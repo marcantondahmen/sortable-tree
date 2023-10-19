@@ -34,6 +34,13 @@ const configCommon = {
 			},
 		],
 	},
+	optimization: {
+		minimizer: [
+			new TerserPlugin({
+				extractComments: false,
+			}),
+		],
+	},
 	resolve: {
 		extensions: ['.ts', '.js'],
 	},
@@ -45,7 +52,7 @@ const configMain = (env, argv) => {
 	const config = Object.assign({}, configCommon, {
 		entry: { 'sortable-tree': './src/index.ts' },
 		output: {
-			filename: isDevMode ? '[name].[hash].js' : '[name].js',
+			filename: '[name].js',
 			path: path.resolve(__dirname, 'dist'),
 			library: {
 				name: 'SortableTree',
@@ -53,22 +60,7 @@ const configMain = (env, argv) => {
 				export: 'default',
 			},
 		},
-		optimization: {
-			minimizer: [
-				new TerserPlugin({
-					extractComments: false,
-				}),
-			],
-		},
 		plugins: [
-			new HtmlWebpackPlugin({
-				hash: true,
-				template: 'demo/index.html',
-				scriptLoading: 'blocking',
-				inject: 'head',
-				minify: false,
-				favicon: 'assets/favicon.svg',
-			}),
 			new MiniCssExtractPlugin({
 				filename: '[name].css',
 			}),
@@ -111,6 +103,14 @@ const configDemo = (env, argv) => {
 		plugins: [
 			new MiniCssExtractPlugin({
 				filename: '[name].css',
+			}),
+			new HtmlWebpackPlugin({
+				hash: true,
+				template: 'demo/index.html',
+				scriptLoading: 'defer',
+				inject: 'head',
+				minify: false,
+				favicon: 'assets/favicon.svg',
 			}),
 		],
 		resolve: {
