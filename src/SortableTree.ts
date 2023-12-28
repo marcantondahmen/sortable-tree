@@ -155,11 +155,11 @@ export class SortableTree {
 			subtree: true,
 		};
 
-		const observer = new MutationObserver(() => {
+		this.observer = new MutationObserver(() => {
 			saveState(stateId, this.parseTree(this.root));
 		});
 
-		observer.observe(this.root, observerOptions);
+		this.observer.observe(this.root, observerOptions);
 	}
 
 	private defineElements(): void {
