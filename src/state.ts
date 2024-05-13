@@ -68,7 +68,9 @@ export const applyState = (
 	};
 
 	data.forEach((nodeData, index) => {
-		walk(nodeData, state[index]);
+		if (typeof state[index] !== 'undefined') {
+			walk(nodeData, state[index]);
+		}
 	});
 };
 
