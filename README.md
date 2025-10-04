@@ -12,6 +12,8 @@ Easily create _sortable_, _draggable_ and _collapsible_ trees &mdash; vanilla Ty
 
 ---
 
+<!-- vim-markdown-toc GFM -->
+
 - [Getting Started](#getting-started)
   - [NPM](#npm)
   - [CDN and Browser](#cdn-and-browser)
@@ -26,8 +28,9 @@ Easily create _sortable_, _draggable_ and _collapsible_ trees &mdash; vanilla Ty
   - [Tree Methods](#tree-methods)
     - [`findNode(key: string, value: unknown)`](#findnodekey-string-value-unknown)
     - [`getNode(id: string)`](#getnodeid-string)
+    - [`destroy()`](#destroy)
 - [Nodes](#nodes)
-  - [Node Propterties](#node-propterties)
+  - [Node Properties](#node-properties)
   - [Node Methods](#node-methods)
     - [`collapse(state: boolean)`](#collapsestate-boolean)
     - [`reveal()`](#reveal)
@@ -35,6 +38,8 @@ Easily create _sortable_, _draggable_ and _collapsible_ trees &mdash; vanilla Ty
 - [Styling](#styling)
   - [Custom Properties](#custom-properties)
   - [Demo Theme](#demo-theme)
+
+<!-- vim-markdown-toc -->
 
 ## Getting Started
 
