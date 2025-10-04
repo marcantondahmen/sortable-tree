@@ -22,6 +22,7 @@ export class SortableTreeNodeComponent extends HTMLElement {
 		parent,
 		onClick,
 		draggable,
+		eventBus,
 	}: SortableTreeNodeCreationOptions): SortableTreeNodeComponent {
 		const node = create(
 			SortableTreeNodeComponent.TAG_NAME,
@@ -35,8 +36,8 @@ export class SortableTreeNodeComponent extends HTMLElement {
 
 		label.innerHTML = renderLabel(data);
 		collapseButton.innerHTML = icons.collapsed;
-		collapseButton.addEventListener('click', node.toggle.bind(node));
-		label.addEventListener('click', (event: Event) => {
+		eventBus.listen(collapseButton, 'click', node.toggle.bind(node));
+		eventBus.listen(label, 'click', (event: Event) => {
 			onClick(event, node);
 		});
 

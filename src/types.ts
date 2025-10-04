@@ -5,6 +5,7 @@
  */
 
 import SortableTree from '.';
+import { SortableTreeEventBus } from './SortableTreeEventBus';
 import { SortableTreeNodeComponent } from './SortableTreeNode';
 
 export interface SortableTreeKeyValue {
@@ -28,6 +29,7 @@ export interface SortableTreeNodeCreationOptions {
 	parent: HTMLElement;
 	onClick: Function;
 	draggable: boolean;
+	eventBus: SortableTreeEventBus;
 }
 
 export type SortableTreeRenderLabelFunction = (
@@ -84,11 +86,12 @@ export interface SortableTreeStyles {
 	collapse?: string;
 }
 
-export interface SortableTreeListenerOptions {
-	node: SortableTreeNodeComponent;
+export type SortableTreeEventHandler = (event: Event) => void;
+
+export interface SortableTreeListener {
+	element: HTMLElement;
 	eventName: string;
-	handler: Function;
-	tree: SortableTree;
+	handler: SortableTreeEventHandler;
 }
 
 export interface SortableTreeParsedNodeComponentData {

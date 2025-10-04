@@ -6,7 +6,6 @@
 
 import SortableTree from '.';
 import { SortableTreeNodeComponent } from './SortableTreeNode';
-import { SortableTreeListenerOptions } from './types';
 
 export const registerEvents = (
 	node: SortableTreeNodeComponent,
@@ -21,28 +20,10 @@ export const registerEvents = (
 	};
 
 	for (const [eventName, handler] of Object.entries(eventMap)) {
-		addListener({
-			node,
-			eventName,
-			handler,
-			tree,
+		tree.eventBus.listen(node, eventName, (event: DragEvent) => {
+			handler(event, tree);
 		});
 	}
-};
-
-const addListener = ({
-	node,
-	eventName,
-	handler,
-	tree,
-}: SortableTreeListenerOptions): void => {
-	node.addEventListener(
-		eventName,
-		(event: DragEvent) => {
-			handler(event, tree);
-		},
-		false
-	);
 };
 
 enum DropType {

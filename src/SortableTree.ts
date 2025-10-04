@@ -13,6 +13,7 @@ import {
 	defaultStyles,
 } from './defaults';
 import { registerEvents } from './events';
+import { SortableTreeEventBus } from './SortableTreeEventBus';
 import { SortableTreeNodeComponent } from './SortableTreeNode';
 import { applyState, saveState } from './state';
 import {
@@ -54,6 +55,8 @@ export class SortableTree {
 
 	readonly initCollapseLevel: number;
 
+	eventBus: SortableTreeEventBus;
+
 	constructor({
 		nodes,
 		element,
@@ -79,6 +82,7 @@ export class SortableTree {
 
 		this.defineElements();
 
+		this.eventBus = new SortableTreeEventBus();
 		this.root = element;
 		this.icons = { ...defaultIcons, ...icons };
 		this.styles = { ...defaultStyles, ...styles };
@@ -144,11 +148,12 @@ export class SortableTree {
 	}
 
 	destroy(): void {
+		this.eventBus.clear();
 		this.observer.disconnect();
 		this.observer = null;
 	}
 
-	initStateObserver(stateId: string): void {
+	private initStateObserver(stateId: string): void {
 		const observerOptions = {
 			childList: true,
 			attributes: true,
@@ -186,6 +191,7 @@ export class SortableTree {
 				data: nodeData.data,
 				onClick: this.onClick,
 				draggable: !this.disableSorting,
+				eventBus: this.eventBus,
 			});
 
 			if (!this.disableSorting) {
