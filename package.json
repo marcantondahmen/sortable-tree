@@ -13,10 +13,13 @@
 	],
 	"scripts": {
 		"clean": "rm -rf ./dist",
-		"start": "webpack serve --open --mode development",
+		"dev": "webpack serve --open --mode development",
 		"build": "npm run clean && webpack --mode production",
 		"release": "sh bin/release.sh",
 		"prepublishOnly": "npm run build"
+	},
+	"prettier": {
+		"trailingComma": "es5"
 	},
 	"repository": {
 		"type": "git",
