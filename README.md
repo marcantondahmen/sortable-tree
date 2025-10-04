@@ -333,11 +333,20 @@ In case you have already a id of a node from a previous search or similar, you c
 const node = tree.getNode(id);
 ```
 
+#### `destroy()`
+
+The `destroy` method can be used to remove event listeners and disconnect observers that have been created for tree.
+
+```typescript
+const tree = new SortableTree(options);
+const node = tree.destroy();
+```
+
 ## Nodes
 
 Nodes represent the based units a tree consists of. Nodes can also contain other nodes.
 
-### Node Propterties
+### Node Properties
 
 The following public properties can be accessed on a node element:
 
