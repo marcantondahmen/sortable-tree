@@ -149,7 +149,7 @@ export class SortableTree {
 
 	destroy(): void {
 		this.eventBus.clear();
-		this.observer.disconnect();
+		this.observer?.disconnect();
 		this.observer = null;
 	}
 
