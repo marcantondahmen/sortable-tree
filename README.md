@@ -89,7 +89,7 @@ const tree = new SortableTree({
 
 ### CDN and Browser
 
-In order to use this package in a browser just load add the following tags to your `<head>` section:
+In order to use this package in a browser just add the following tags to your `<head>` section:
 
 ```html
 <script src="https://unpkg.com/sortable-tree/dist/sortable-tree.js"></script>
