@@ -15,7 +15,9 @@ code,
 	background-color: var(--background) !important;
 	border: none !important;
 	border-radius: 0.4rem !important;
-	transition: color 0.2s, background-color 0.2s;
+	transition:
+		color 0.2s,
+		background-color 0.2s;
 
 	&:active {
 		color: var(--color) !important;
@@ -69,6 +71,10 @@ demo-code,
 			color: var(--code-3);
 			background-color: var(--code-background);
 			font-weight: 400;
+		}
+
+		.hljs.language-bash {
+			color: var(--code-1);
 		}
 
 		.hljs.language-markdown {

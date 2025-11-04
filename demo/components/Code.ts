@@ -16,9 +16,10 @@ class CodeComponent extends HTMLElement {
 
 	highlight() {
 		const code = this.textContent;
+		const lang = this.getAttribute('lang') || 'ts';
 
 		this.innerHTML = `
-			<pre><code class="ts">${code}</code></pre>
+			<pre><code class="${lang}">${code}</code></pre>
 		`;
 
 		const element = this.querySelector('code');
