@@ -490,6 +490,12 @@ demo-code .hljs-style-dark .hljs,
   background-color: var(--code-background);
   font-weight: 400;
 }
+demo-code pre .hljs.language-bash,
+.emgithub-file pre .hljs.language-bash,
+demo-code .hljs-style-dark .hljs.language-bash,
+.emgithub-file .hljs-style-dark .hljs.language-bash {
+  color: var(--code-1);
+}
 demo-code pre .hljs.language-markdown,
 .emgithub-file pre .hljs.language-markdown,
 demo-code .hljs-style-dark .hljs.language-markdown,
