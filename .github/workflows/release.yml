@@ -3,7 +3,11 @@ name: Release Notes and NPM Publish
 on:
   push:
     tags:
-      - "*"
+      - '*'
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
   release-notes:
@@ -15,7 +19,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: false
           draft: false
-          filter: "^(feat|fix|refactor|docs)"
+          filter: '^(feat|fix|refactor|docs)'
           strict: true
   npm-publish:
     name: NPM Publish
@@ -28,11 +32,11 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: 20
           registry-url: 'https://registry.npmjs.org'
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Install
         run: npm ci
       - name: Publish
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
